@@ -9,6 +9,7 @@ var command_handled : bool = false
 
 var current_command : String = ""
 
+onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 
 
@@ -60,7 +61,28 @@ func _unhandled_input(event):
 				backlog.append(get_last_line())
 				command_handled = false
 				input_accepted = false
-			
+
+#func render_line(original_text):
+#	var reg_exp_bbCodes = "#\\[[^\\]]+\\]#"
+#	var regex = RegEx.new()
+#	regex.compile(reg_exp_bbCodes)
+#	var text = regex.sub(original_text, "", true)
+#	var container_width = margin_container2.rect.x - output_label.get_font("normal_font").get_char_size('█')
+#	
+#	var minimum_num_chars = floor(container_width
+#			/ output_label.get_font("bold_font").get_char_size('W', 'W'))
+#	var maximum_num_chars = floor(container_width
+#			/ output_label.get_font("normal_font").get_char_size('.', '.'))
+#	
+#	var current_line = text.substr(0, minimum_num_chars)
+#	var current_line_bbb = ""
+#	
+#	for i in range(minimum_num_chars, maximum_num_chars):
+#		
+#	
+#	
+#	if output_label.get_font("normal_font").get_string_size(text).x >= margin_container2.rect.x - 3:
+#		original_text += "\n"
 
 func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
