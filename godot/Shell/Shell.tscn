@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Shell/shell.png" type="Texture" id=1]
-[ext_resource path="res://Shell/shell.gd" type="Script" id=2]
+[ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
 [ext_resource path="res://Shared/Fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Shell/command-parser.gd" type="Script" id=4]
 [ext_resource path="res://Shell/Commands/help-command.gd" type="Script" id=5]
@@ -110,10 +110,9 @@ script = ExtResource( 12 )
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 selecting_enabled = false
+
 [connection signal="timeout" from="CursorBlinkTimer" to="." method="_on_CursorBlinkTimer_timeout"]
-[connection signal="error_occurred" from="Commands" to="." method="_on_Commands_error_occurred"]
-[connection signal="finished_execution" from="Commands" to="." method="_on_Commands_finished_execution"]
-[connection signal="message_sent" from="Commands" to="." method="_on_Commands_message_sent"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

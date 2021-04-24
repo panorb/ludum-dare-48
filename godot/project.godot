@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "",
+"class": "PlayerShell",
+"language": "GDScript",
+"path": "res://Shell/player-shell.gd"
+}, {
+"base": "Control",
+"class": "Shell",
+"language": "GDScript",
+"path": "res://Shell/shell.gd"
+} ]
 _global_script_class_icons={
-
+"PlayerShell": "",
+"Shell": ""
 }
 
 [application]
