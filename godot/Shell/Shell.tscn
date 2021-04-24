@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Shell" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
