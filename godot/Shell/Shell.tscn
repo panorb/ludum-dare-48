@@ -20,6 +20,8 @@ font_data = ExtResource( 3 )
 default_font = SubResource( 1 )
 
 [node name="Shell" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,7 +106,14 @@ script = ExtResource( 12 )
 
 [node name="FileSystem" parent="." instance=ExtResource( 6 )]
 
+[node name="TextEdit" type="TextEdit" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 0
+selecting_enabled = false
 [connection signal="timeout" from="CursorBlinkTimer" to="." method="_on_CursorBlinkTimer_timeout"]
 [connection signal="error_occurred" from="Commands" to="." method="_on_Commands_error_occurred"]
 [connection signal="finished_execution" from="Commands" to="." method="_on_Commands_finished_execution"]
 [connection signal="message_sent" from="Commands" to="." method="_on_Commands_message_sent"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

@@ -12,12 +12,13 @@ var current_command : String = ""
 onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 onready var command_parser = get_node("Commands")
+onready var text_edit = get_node("TextEdit")
 
 export var main_color : Color = Color("#cccccc")
 export var accent_color : Color = Color("#16c60c")
-export(int, 12, 24) var font_size : int 
 
 func _ready():
+	text_edit.grab_focus()
 	backlog.append("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
 func _process(_delta):
@@ -54,28 +55,39 @@ func get_last_line():
 	else:
 		return backlog[-1]
 
-func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and input_accepted:
-			var scancode = event.scancode
-			var scancode_string = OS.get_scancode_string(scancode)
-			
-			if scancode_string.length() == 1:
-				if event.shift:
-					current_command += scancode_string.to_upper()
-				else:
-					current_command += scancode_string.to_lower()
-			
-			if scancode == KEY_SPACE:
-				current_command += " "
-			
-			if scancode == KEY_BACKSPACE:
-				current_command = current_command.substr(0, current_command.length() - 1)
-			
-			if scancode == KEY_ENTER and current_command:
-				backlog.append(get_last_line())
-				command_handled = false
-				input_accepted = false
+var key_dir = {KEY_COLON: [':', '.'], KEY_SEMICOLON: [';', ','], KEY_QUOTELEFT: ['"', '"']} 
+
+#func _unhandled_input(event):
+#	if event is InputEventKey:
+#		if event.pressed and input_accepted:
+#			var scancode = event.scancode
+#			var scancode_string = OS.get_scancode_string(scancode)
+#
+#			if scancode_string.length() == 1:
+#				if event.shift:
+#					current_command += scancode_string.to_upper()
+#				else:
+#					current_command += scancode_string.to_lower()
+#
+#			if scancode in key_dir:
+#				var combo = key_dir[scancode]
+#
+#				if event.shift:
+#					current_command += combo[0]
+#				else:
+#					current_command += combo[1]
+#
+#			if scancode == KEY_SPACE:
+#				current_command += " "
+#
+#			if scancode == KEY_BACKSPACE:
+#				current_command = current_command.substr(0, current_command.length() - 1)
+#
+#			if scancode == KEY_ENTER and current_command:
+#				backlog.append(get_last_line())
+#				command_handled = false
+#				input_accepted = false
+
 
 #func render_line(original_text):
 #	var reg_exp_bbCodes = "#\\[[^\\]]+\\]#"
@@ -113,3 +125,7 @@ func _on_Commands_finished_execution():
 	input_accepted = true
 	
 
+
+func _on_TextEdit_text_changed():
+	if text_edit.text:
+		current_command = text_edit.text
