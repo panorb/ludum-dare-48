@@ -1,0 +1,8 @@
+run-Command
+clear-Command
+config-Command for changing the colors of the console output
+help help should be more scary
+
+Shell:
+- 'up' and 'down' key command history
+- command should be cleared after execute
