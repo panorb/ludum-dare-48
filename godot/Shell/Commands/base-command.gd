@@ -11,7 +11,7 @@ func send_message(text: String):
 	emit_signal("command_message", text)
 
 func print_description():
-	return aliases[0] + " - " + command_description
+	return name + " - " + command_description
 
 func throw_error(message: String):
 	emit_signal("command_error", message)

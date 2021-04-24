@@ -1,38 +1,14 @@
 class_name PlayerShell
 extends "shell.gd"
 
-var display_cursor : bool = false
 var command_history_position = 0
 
 onready var text_edit = get_node("TextEdit")
-onready var margin_container2 = get_node("MarginContainer/MarginContainer")
-onready var output_label = get_node("MarginContainer/MarginContainer/Label")
-
 
 func _ready():
 	text_edit.grab_focus()
 	
 	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
-
-
-func _process(_delta):
-	output_label.bbcode_text = ""
-	
-	for line in backlog:
-		output_label.bbcode_text += line + "\n"
-		
-	if input_accepted:
-		var displayed_cmd = current_command
-		
-		if display_cursor:
-			if text_edit.cursor_get_column() < displayed_cmd.length():
-				displayed_cmd[text_edit.cursor_get_column()] = "█"
-			else:
-				displayed_cmd += "█"
-		
-		output_label.bbcode_text += get_last_line(displayed_cmd)
-	
-	output_label.bbcode_text = insert_colors(output_label.bbcode_text)
 
 
 func _unhandled_input(event):
@@ -87,3 +63,7 @@ func _on_Commands_finished_execution():
 	._on_Commands_finished_execution()
 	yield(get_tree().create_timer(0.1), "timeout")
 	output_label.scroll_following = false
+
+
+func _on_TextEdit_cursor_changed():
+	cursor_index = text_edit.cursor_get_column()

@@ -1,112 +1,44 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Shell/player-shell.gd" type="Script" id=1]
-[ext_resource path="res://Shell/Commands/help-command.gd" type="Script" id=2]
+[ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
 [ext_resource path="res://Shell/Commands/ssh-command.gd" type="Script" id=3]
-[ext_resource path="res://Shell/command-parser.gd" type="Script" id=4]
+[ext_resource path="res://Shell/Commands/help-command.gd" type="Script" id=4]
 [ext_resource path="res://Shell/Commands/probe-command.gd" type="Script" id=5]
 [ext_resource path="res://Shell/Commands/exit-command.gd" type="Script" id=6]
 [ext_resource path="res://Shell/Commands/cd-command.gd" type="Script" id=7]
 [ext_resource path="res://Shell/Commands/ls-command.gd" type="Script" id=8]
-[ext_resource path="res://Shell/shell.png" type="Texture" id=9]
 [ext_resource path="res://FileSystem/PlayerFileSystem.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Shell/Commands/cat-command.gd" type="Script" id=11]
-[ext_resource path="res://Shared/Fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=12]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 12 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
-
-[node name="PlayerShell" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 1291.0
-margin_bottom = 901.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 35
-custom_constants/margin_top = 20
-custom_constants/margin_left = 35
-custom_constants/margin_bottom = 220
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
-margin_left = 35.0
-margin_top = 20.0
-margin_right = 1256.0
-margin_bottom = 681.0
-texture = ExtResource( 9 )
-patch_margin_left = 260
-patch_margin_top = 40
-patch_margin_right = 1
-patch_margin_bottom = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-margin_left = 35.0
-margin_top = 20.0
-margin_right = 1256.0
-margin_bottom = 681.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 60
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
-
-[node name="Label" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
-margin_left = 20.0
-margin_top = 60.0
-margin_right = 1201.0
-margin_bottom = 641.0
-theme = SubResource( 2 )
-bbcode_enabled = true
-bbcode_text = "[color=red]>[/color] [b]ls[/b] /fonts█"
-text = "> ls /fonts█"
-
-[node name="CursorBlinkTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
-[node name="Commands" type="Node" parent="."]
-script = ExtResource( 4 )
-
-[node name="help" type="Node" parent="Commands"]
+[node name="PlayerShell" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="exit" type="Node" parent="Commands"]
-script = ExtResource( 6 )
-
-[node name="cd" type="Node" parent="Commands"]
-script = ExtResource( 7 )
-
-[node name="ls" type="Node" parent="Commands"]
-script = ExtResource( 8 )
-
-[node name="cat" type="Node" parent="Commands"]
+[node name="cat" type="Node" parent="Commands" index="0"]
 script = ExtResource( 11 )
 
-[node name="ssh" type="Node" parent="Commands"]
-script = ExtResource( 3 )
+[node name="cd" type="Node" parent="Commands" index="1"]
+script = ExtResource( 7 )
+file_system_node = NodePath("../../FileSystem")
 
-[node name="probe" type="Node" parent="Commands"]
+[node name="exit" type="Node" parent="Commands" index="2"]
+script = ExtResource( 6 )
+
+[node name="help" type="Node" parent="Commands" index="3"]
+script = ExtResource( 4 )
+
+[node name="ls" type="Node" parent="Commands" index="4"]
+script = ExtResource( 8 )
+
+[node name="probe" type="Node" parent="Commands" index="5"]
 script = ExtResource( 5 )
 
-[node name="FileSystem" parent="." instance=ExtResource( 10 )]
+[node name="ssh" type="Node" parent="Commands" index="6"]
+script = ExtResource( 3 )
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="FileSystem" parent="." index="3" instance=ExtResource( 10 )]
+
+[node name="TextEdit" type="TextEdit" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -117,5 +49,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="timeout" from="CursorBlinkTimer" to="." method="_on_CursorBlinkTimer_timeout"]
+[connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

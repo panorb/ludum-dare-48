@@ -5,9 +5,13 @@ var backlog : PoolStringArray = []
 var command_history : PoolStringArray = []
 
 var current_command : String = ""
+var cursor_index : int = 0
+var display_cursor : bool = false
 
 onready var command_parser = get_node("Commands")
 onready var file_system = get_node("FileSystem")
+onready var margin_container2 = get_node("MarginContainer/MarginContainer")
+onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 
 var input_accepted : bool = true
 export var main_color : Color = Color("#cccccc")
@@ -16,11 +20,30 @@ export var error_color : Color = Color("#c50f1f")
 export var warning_color : Color = Color("#c19c00")
 
 
+
 func _ready():
 	command_parser.connect("error_occurred", self, "_on_Commands_error_occurred")
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("message_sent", self, "_on_Commands_message_sent")
 
+func _process(_delta):
+	output_label.bbcode_text = ""
+	
+	for line in backlog:
+		output_label.bbcode_text += line + "\n"
+		
+	if input_accepted:
+		var displayed_cmd = current_command
+		
+		if display_cursor:
+			if cursor_index < displayed_cmd.length():
+				displayed_cmd[cursor_index] = "█"
+			else:
+				displayed_cmd += "█"
+		
+		output_label.bbcode_text += get_last_line(displayed_cmd)
+	
+	output_label.bbcode_text = insert_colors(output_label.bbcode_text)
 
 func run_command(cmd: String):
 	backlog.append(get_last_line(cmd))
@@ -99,4 +122,6 @@ func _on_Commands_error_occurred(msg):
 
 func _on_Commands_finished_execution():
 	input_accepted = true
-	
+
+func _on_CursorBlinkTimer_timeout():
+	display_cursor = !display_cursor

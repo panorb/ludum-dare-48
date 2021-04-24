@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Shell/shell.gd" type="Script" id=1]
+[ext_resource path="res://Shared/Fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Shell/command-parser.gd" type="Script" id=6]
+[ext_resource path="res://Shell/shell.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Shell" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1291.0
+margin_bottom = 901.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 35
+custom_constants/margin_top = 20
+custom_constants/margin_left = 35
+custom_constants/margin_bottom = 220
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+margin_left = 35.0
+margin_top = 20.0
+margin_right = 1256.0
+margin_bottom = 681.0
+texture = ExtResource( 12 )
+patch_margin_left = 260
+patch_margin_top = 40
+patch_margin_right = 1
+patch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+margin_left = 35.0
+margin_top = 20.0
+margin_right = 1256.0
+margin_bottom = 681.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 60
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 1201.0
+margin_bottom = 641.0
+theme = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=red]>[/color] [b]ls[/b] /fonts█"
+text = "> ls /fonts█"
+
+[node name="CursorBlinkTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Commands" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[connection signal="timeout" from="CursorBlinkTimer" to="." method="_on_CursorBlinkTimer_timeout"]
