@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="FileSystem" type="Node"]
+
+[node name="home" type="Node" parent="."]
+
+[node name="benjamin" type="Node" parent="home"]
+
+[node name="Documents" type="Node" parent="home/benjamin"]
+
+[node name="grandmas pie|txt" type="Node" parent="home/benjamin/Documents"]
+
+[node name="Downloads" type="Node" parent="home/benjamin"]
+
+[node name="hotpussy|txt" type="Node" parent="home/benjamin/Downloads"]
+
+[node name="spell-bane|json" type="Node" parent="home/benjamin/Downloads"]
+
+[node name="user" type="Node" parent="."]
+
+[node name="drivers" type="Node" parent="."]
