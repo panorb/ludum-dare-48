@@ -11,7 +11,7 @@ var current_command : String = ""
 
 onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
-
+onready var command_parser = get_node("Commands")
 
 func _ready():
 	backlog.append("[color=#16c60c]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/color]")
@@ -29,9 +29,7 @@ func _process(_delta):
 			output_label.bbcode_text += "█"
 	elif not command_handled:
 		command_handled = true
-		backlog.append("Stalling...")
-		yield(get_tree().create_timer(0.2), "timeout")
-		input_accepted = true
+		command_parser.execute_command(current_command)
 	
 func get_last_line():
 	if input_accepted:
@@ -86,3 +84,13 @@ func _unhandled_input(event):
 
 func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
+
+func _on_Commands_message_sent(msg):
+	backlog.append(msg)
+
+func _on_Commands_error_occurred(msg):
+	backlog.append("[color=red]" + msg + "[/color]")
+
+func _on_Commands_finished_execution():
+	input_accepted = true
+
