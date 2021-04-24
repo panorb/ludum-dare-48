@@ -113,6 +113,9 @@ anchor_bottom = 1.0
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 selecting_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="CursorBlinkTimer" to="." method="_on_CursorBlinkTimer_timeout"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]
