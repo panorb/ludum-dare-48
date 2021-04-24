@@ -40,5 +40,4 @@ margin_top = 20.0
 margin_right = 1256.0
 margin_bottom = 681.0
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer"]
-margin_bottom = 14.0
+[node name="Label" type="RichTextLabel" parent="MarginContainer/ScrollContainer"]
