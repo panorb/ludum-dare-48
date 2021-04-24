@@ -12,31 +12,21 @@ func execute(args):
 		execution_finished()
 		return
 	
-	if args.size() == 1 or args[1].empty():
+	if args.size() == 1 or args[1].empty() or args[1] == "/":
 		# Go to root directory
 		file_system.current_directory = "/"
 		execution_finished()
 		return
 	
 	var path = args[1]
-	if path.begins_with("."):
-		path = file_system.current_directory + path.lstrip("./")
-
 	path.replace("\\", "/")
-
-	if not args[1].ends_with("/"):
-		path += "/"
-
-	if path.is_rel_path():
-		path = file_system.current_directory + path
-
-	path = path.lstrip("/")
-	
-	var directory_node = file_system.get_node_or_null(path)
-	if not directory_node:
+	if not file_system.path_exists(path):
 		throw_error("Error: No such directory")
+	elif file_system.is_file(path):
+		throw_error("Error: Path points to a file")
 	else:
-		file_system.current_directory = "/" + path
+		file_system.current_directory = file_system.to_absolute_path(path,
+				file_system.current_directory)
 	
 	execution_finished()
 		
