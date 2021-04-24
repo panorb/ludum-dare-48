@@ -13,8 +13,12 @@ onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 onready var command_parser = get_node("Commands")
 
+export var main_color : Color = Color("#cccccc")
+export var accent_color : Color = Color("#16c60c")
+export(int, 12, 24) var font_size : int 
+
 func _ready():
-	backlog.append("[color=#16c60c]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/color]")
+	backlog.append("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
 func _process(_delta):
 	output_label.bbcode_text = ""
@@ -28,18 +32,31 @@ func _process(_delta):
 		if display_cursor:
 			output_label.bbcode_text += "█"
 	elif not command_handled:
+		output_label.scroll_following = true
 		command_handled = true
 		command_parser.execute_command(current_command)
 	
+	output_label.bbcode_text = insert_color(output_label.bbcode_text, "accent", accent_color)
+	output_label.bbcode_text = insert_color(output_label.bbcode_text, "main", main_color)
+	
+	if input_accepted:
+		yield(get_tree(), "idle_frame")
+		output_label.scroll_following = false
+
+func insert_color(text, name, color):
+	text = text.replace("[" + name + "]", "[color=#" + color.to_html() + "]")
+	text = text.replace("[/" + name + "]", "[/color]")
+	return text
+
 func get_last_line():
 	if input_accepted:
-		return "" + current_command
+		return "λ [main]" + current_command + "[/main]"
 	else:
 		return backlog[-1]
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		if event.pressed:
+		if event.pressed and input_accepted:
 			var scancode = event.scancode
 			var scancode_string = OS.get_scancode_string(scancode)
 			
@@ -86,11 +103,13 @@ func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
 
 func _on_Commands_message_sent(msg):
-	backlog.append(msg)
+	backlog.append("[main]" + msg + "[/main]")
 
 func _on_Commands_error_occurred(msg):
 	backlog.append("[color=red]" + msg + "[/color]")
 
 func _on_Commands_finished_execution():
+	yield(get_tree(), "idle_frame")
 	input_accepted = true
+	
 
