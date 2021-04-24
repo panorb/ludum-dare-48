@@ -67,7 +67,6 @@ theme = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[color=red]>[/color] [b]ls[/b] /fonts█"
 text = "> ls /fonts█"
-scroll_following = true
 
 [node name="CursorBlinkTimer" type="Timer" parent="."]
 wait_time = 0.5
