@@ -1,11 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Shell/shell.png" type="Texture" id=1]
 [ext_resource path="res://Shell/shell.gd" type="Script" id=2]
 [ext_resource path="res://Shared/Fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Shell/command-parser.gd" type="Script" id=4]
-[ext_resource path="res://Shell/Commands/not-implemented.gd" type="Script" id=5]
+[ext_resource path="res://Shell/Commands/help-command.gd" type="Script" id=5]
 [ext_resource path="res://FileSystem/HackerFileSystem.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Shell/Commands/ssh-command.gd" type="Script" id=7]
+[ext_resource path="res://Shell/Commands/exit_command.gd" type="Script" id=8]
+[ext_resource path="res://Shell/Commands/cd-command.gd" type="Script" id=9]
+[ext_resource path="res://Shell/Commands/ls-command.gd" type="Script" id=10]
+[ext_resource path="res://Shell/Commands/cat-command.gd" type="Script" id=11]
+[ext_resource path="res://Shell/Commands/probe-command.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -80,24 +86,25 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="exit" type="Node" parent="Commands"]
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 
 [node name="cd" type="Node" parent="Commands"]
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 
 [node name="ls" type="Node" parent="Commands"]
-script = ExtResource( 5 )
+script = ExtResource( 10 )
 
 [node name="cat" type="Node" parent="Commands"]
-script = ExtResource( 5 )
+script = ExtResource( 11 )
 
 [node name="ssh" type="Node" parent="Commands"]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="probe" type="Node" parent="Commands"]
-script = ExtResource( 5 )
+script = ExtResource( 12 )
 
 [node name="FileSystem" parent="." instance=ExtResource( 6 )]
+
 [connection signal="timeout" from="CursorBlinkTimer" to="." method="_on_CursorBlinkTimer_timeout"]
 [connection signal="error_occurred" from="Commands" to="." method="_on_Commands_error_occurred"]
 [connection signal="finished_execution" from="Commands" to="." method="_on_Commands_finished_execution"]
