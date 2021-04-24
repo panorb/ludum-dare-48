@@ -2,10 +2,7 @@ extends Node
 
 export(String) var current_directory = "/"
 
-func _process(_delta):
-	print(current_directory)
-	pass
-	
+
 func to_absolute_path(path, base_path):
 	path = path.replace("~", "/home")
 	if path.is_abs_path():
@@ -30,7 +27,7 @@ func to_absolute_path(path, base_path):
 	if not absolute_path.ends_with("/"):
 		absolute_path += "/"
 	return absolute_path
-	#print(absolute_path)
+
 
 func to_node_path(path):
 	var node_path
@@ -41,12 +38,14 @@ func to_node_path(path):
 	else:
 		node_path = path
 	return node_path.lstrip("/").rstrip("/")
-	
+
+
 func to_file_path(node_path):
 	if node_path.empty():
 		return "/"
 	else:
 		return "/" + node_path + "/"
+
 
 func level_up(directory):
 	if not directory == "/":
@@ -55,9 +54,10 @@ func level_up(directory):
 		directory = directory.left(pos_last_slash)
 	return directory
 
+
 func path_exists(path):
 	path = to_absolute_path(path, current_directory)
-	print(path)
+	
 	var node_path = to_node_path(path)
 	if node_path.empty():
 		return true
@@ -66,7 +66,8 @@ func path_exists(path):
 		return false
 	else:
 		return true
-		
+
+
 func is_file(path):
 	if not path_exists(path):
 		return false

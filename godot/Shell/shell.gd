@@ -1,5 +1,5 @@
-extends Control
 class_name Shell
+extends Control
 
 var backlog : PoolStringArray = []
 var command_history : PoolStringArray = []
@@ -15,19 +15,22 @@ export var accent_color : Color = Color("#16c60c")
 export var error_color : Color = Color("#c50f1f")
 export var warning_color : Color = Color("#c19c00")
 
+
 func _ready():
 	command_parser.connect("error_occurred", self, "_on_Commands_error_occurred")
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("message_sent", self, "_on_Commands_message_sent")
 
-func run(cmd: String):
+
+func run_command(cmd: String):
 	backlog.append(get_last_line(cmd))
 	
 	if not command_history or command_history and command_history[-1] != cmd:
 		command_history.append(cmd)
 	
 	input_accepted = false
-	command_parser.execute_command(cmd)
+	command_parser.execute(cmd)
+
 
 func insert_colors(text: String):
 	text = insert_color(text, "main", main_color)
@@ -36,14 +39,17 @@ func insert_colors(text: String):
 	text = insert_color(text, "warning", warning_color)
 	return text
 
+
 func insert_color(text: String, name: String, color: Color):
 	text = text.replace("[" + name + "]", "[color=#" + color.to_html() + "]")
 	text = text.replace("[/" + name + "]", "[/color]")
 	return text
 
+
 func get_last_line(displayed_cmd : String):
 	return "[accent]" + file_system.current_directory + "[/accent]\n" \
 		+ "λ [main]" + displayed_cmd + "[/main]"
+
 
 func get_cur_dir_line():
 	return "[accent]" + file_system.current_directory + "[/accent]\n"
@@ -70,20 +76,26 @@ func get_cur_dir_line():
 #	if output_label.get_font("normal_font").get_string_size(text).x >= margin_container2.rect.x - 3:
 #		original_text += "\n"
 
+
 func send_message(msg: String):
 	backlog.append("[main]" + msg + "[/main]")
+
 
 func send_warning(msg: String):
 	backlog.append("[warning]" + msg + "[/warning]")
 
+
 func send_error(msg: String):
 	backlog.append("[error]" + msg + "[/error]")
+
 
 func _on_Commands_message_sent(msg: String):
 	send_message(msg)
 
+
 func _on_Commands_error_occurred(msg):
 	backlog.append("[color=red]" + msg + "[/color]")
+
 
 func _on_Commands_finished_execution():
 	input_accepted = true

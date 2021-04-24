@@ -1,7 +1,9 @@
 extends "base-command.gd"
 
+
 func _ready():
-	aliases = ["ssh"]
+	aliases = ["ssh", "connect"]
+
 
 func execute(_args):
 	send_message("Not implemented.")
