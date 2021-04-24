@@ -21,9 +21,9 @@ func _ready():
 	command_parser.connect("message_sent", self, "_on_Commands_message_sent")
 
 func run(cmd: String):
-	backlog.append(get_last_line())
+	backlog.append(get_last_line(cmd))
 	
-	if command_history and command_history[-1] != cmd:
+	if not command_history or command_history and command_history[-1] != cmd:
 		command_history.append(cmd)
 	
 	input_accepted = false
@@ -41,9 +41,9 @@ func insert_color(text: String, name: String, color: Color):
 	text = text.replace("[/" + name + "]", "[/color]")
 	return text
 
-func get_last_line():
+func get_last_line(displayed_cmd : String):
 	return "[accent]" + file_system.current_directory + "[/accent]\n" \
-		+ "λ [main]" + current_command + "[/main]"
+		+ "λ [main]" + displayed_cmd + "[/main]"
 
 func get_cur_dir_line():
 	return "[accent]" + file_system.current_directory + "[/accent]\n"
