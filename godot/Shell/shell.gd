@@ -77,6 +77,8 @@ func insert_color(text: String, name: String, color: Color):
 func command_from_history():
 	if command_history_position >= 0:
 		command_history_position = 0
+		current_command = ""
+		cursor_index = 0
 		return
 	
 	if command_history_position < -command_history.size():
