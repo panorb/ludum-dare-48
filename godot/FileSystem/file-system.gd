@@ -55,9 +55,6 @@ func level_up(directory):
 	return directory
 
 func get_filesystem_node(absolute_path):
-	var base_dir = absolute_path.get_base_dir()
-	var last_element_name = absolute_path.get_file()
-	
 	var path_elements = absolute_path.split("/", false)
 	
 	if path_elements.empty():
@@ -71,8 +68,6 @@ func get_filesystem_node(absolute_path):
 		
 		var child_found = false
 		for child in parent_node.get_children():
-			print(node_name)
-			print(child.get_fs_name())
 			if child.get_fs_name() == node_name:
 				if is_file(child) and not path_elements.empty():
 					return null
