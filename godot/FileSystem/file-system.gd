@@ -1,7 +1,8 @@
 extends Node
 
 export(String) var current_directory = "/"
-	
+
+
 func to_absolute_path(path):
 	if path.begins_with("~"):
 		path = "/home" + path.lstrip("~")

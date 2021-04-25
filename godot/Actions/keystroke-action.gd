@@ -2,7 +2,7 @@ extends "action.gd"
 
 
 func execute(action : Dictionary):
-	assert("char" in action)
+	assert("key" in action)
 	
-	emit_signal("type", action["char"])
+	emit_signal("keystroke", action["key"])
 	emit_signal("finished")
