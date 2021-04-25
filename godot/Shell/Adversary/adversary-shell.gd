@@ -12,6 +12,8 @@ onready var mouse_pointer = get_node("MousePointer")
 
 
 func _ready():
+	current_ssh = "jochen"
+	
 	action_parser.connect("type", self, "type")
 	action_parser.connect("keystroke", self, "keystroke")
 	action_parser.connect("mousepos", self, "set_mouse_position")

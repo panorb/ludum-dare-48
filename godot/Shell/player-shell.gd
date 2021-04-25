@@ -8,6 +8,7 @@ onready var command_ls = get_node("Commands/ls")
 onready var command_ssh = get_node("Commands/ssh")
 
 func _ready():
+	current_ssh = "benjamin"
 	text_edit.grab_focus()
 
 	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
@@ -49,15 +50,17 @@ func _on_TextEdit_cursor_changed():
 	if not "\t" in text_edit.text:
 		cursor_index = text_edit.cursor_get_column()
 
-func _on_ssh_change_filesystem():
+func _on_ssh_change_filesystem(adress):
 	file_system.queue_free()
 	yield(get_tree(), "idle_frame")
-	var adversary_file_system = load("res://FileSystem/Adversary/AdversaryFileSystem.tscn")
+	var adversary_file_system = load(adress["fs"])
 	file_system = adversary_file_system.instance()
 	self.add_child(file_system)
 	command_ls.file_system = file_system
 	command_cd.file_system = file_system
 	command_cat.file_system = file_system
 	command_ssh.file_system = file_system
+	
+	current_ssh = adress["username"]
 	
 	

@@ -29,3 +29,4 @@ file_system_node = NodePath("../../../RecordingShell/FileSystem")
 
 [node name="ssh" parent="Commands" index="6"]
 file_system_node = NodePath("../../FileSystem")
+root_node = NodePath("../..")

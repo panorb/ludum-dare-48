@@ -11,15 +11,18 @@ var time_passed = 0
 var time_passed_mouse = 0
 var recording_active = false
 
+
+func _ready():
+	current_ssh = "benjamin"
+	text_edit.grab_focus()
+
+	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
+
+
 func _process(delta):
 	if recording_active:
 		time_passed += delta
 		time_passed_mouse += delta
-
-func _ready():
-	text_edit.grab_focus()
-
-	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
 
 func _unhandled_input(event):

@@ -1,4 +1,20 @@
 extends Node
 
-var adversary_username = "jochen"
-var adversary_ip_address = "134.234.12.5"
+var valid_adresses = [
+	{
+		"username": "benjamin",
+		"ip": "134.234.12.4",
+		"fs": "res://FileSystem/PlayerFileSystem.tscn"
+	},
+	{
+		"username": "jochen",
+		"ip": "134.234.12.5",
+		"fs": "res://FileSystem/Adversary/AdversaryFileSystem.tscn"
+	},
+	{
+		"username": "ending",
+		"ip": "134.234.12.14",
+		"fs": "res://FileSystem/EndingFileSystem.tscn"
+	}]
+
+
