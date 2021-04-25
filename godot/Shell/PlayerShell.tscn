@@ -19,6 +19,7 @@ warning_color = Color( 0.756863, 0.611765, 0, 1 )
 
 [node name="cat" type="Node" parent="Commands" index="0"]
 script = ExtResource( 11 )
+file_system_node = NodePath("../../FileSystem")
 
 [node name="cd" type="Node" parent="Commands" index="1"]
 script = ExtResource( 7 )
@@ -52,5 +53,6 @@ selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

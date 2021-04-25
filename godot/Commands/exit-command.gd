@@ -6,7 +6,7 @@ signal close
 
 func _ready():
 	aliases = ["exit", "quit"]
-	command_description = "close the shell"
+	command_description = "Closes the shell"
 
 
 func execute(args):

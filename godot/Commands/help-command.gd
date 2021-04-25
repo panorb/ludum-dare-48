@@ -13,7 +13,7 @@ func execute(args):
 	elif args.size() == 2:
 		for child in get_parent().get_children():
 			if args[1] in child.aliases:
-				if child.name == "help":
+				if child.name in self.aliases:
 					throw_error("THERE IS NO ESCAPE")
 				else:
 					send_message(child.print_description())

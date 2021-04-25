@@ -8,6 +8,7 @@ var active_behavior_file_index : int  = -1
 onready var action_parser = get_node("Actions")
 # Debug only
 onready var debug_behavior_script = get_node("Debug/BehaviorScript")
+onready var mouse_pointer = get_node("MousePointer")
 
 
 func _ready():
@@ -69,3 +70,19 @@ func _list_files_in_directory(path):
 	dir.list_dir_end()
 
 	return files
+
+func set_mouse_position(relative_position):
+	var mouse_width = mouse_pointer.rect_size.x
+	var mouse_height = mouse_pointer.rect_size.y
+	
+	var x = floor(relative_position.x * self.rect_size.x \
+			- mouse_width / 2)
+	var y = floor(relative_position.y * self.rect_size.y \
+			- mouse_height / 2)
+	
+	var max_x = self.rect_size.x - mouse_width
+	var max_y = self.rect_size.y - mouse_height
+	
+	mouse_pointer.rect_position.x = clamp(x, 0, max_x)
+	mouse_pointer.rect_position.y = clamp(y, 0, max_y)
+	
