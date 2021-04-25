@@ -11,7 +11,13 @@ func _ready():
 		child.connect("command_finished", self, "_on_Command_command_finished")
 
 func execute(cmd : String):
-	var args = cmd.split(" ")
+	var regex = RegEx.new()
+	regex.compile("(\"[^\"]*\"|[^\\s\"]+)")
+	
+	var args = []
+	for param in regex.search_all(cmd):
+		var string = param.get_string().lstrip("\"").rstrip("\"")
+		args.append(string)
 	
 	for child in get_children():
 		if args[0] in child.aliases:
