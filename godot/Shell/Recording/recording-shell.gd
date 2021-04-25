@@ -66,17 +66,26 @@ func _on_TextEdit_text_changed():
 	else:
 		set_command(text_edit.text)
 
+func _debug_output(msg: String):
+	var debug_output = get_node("Debug/Output")
+	debug_output.text = msg
+
 func _input(event):
 	if event is InputEventKey:
 		if event.is_action_pressed("ui_accept"):
 			if recording_active:
-				send_message("Outputting to output.json in behaviors directory...")
+				var t = OS.get_datetime()
+				var file_name = str(t.year) + "-" + str(t.month) + "-" \
+						+ str(t.day) + "-" + str(t.hour) + "-" + str(t.minute) + "-" + str(t.second)
+				
+				_debug_output("STOP: Outputting to " + file_name + ".json in behaviors directory...")
+				
 				var save_game = File.new()
-				save_game.open("res://Behaviors/output.json", File.WRITE)
+				save_game.open("res://Behaviors/" + file_name + ".json", File.WRITE)
 				save_game.store_string(JSON.print(recorded_actions, "", true))
 				save_game.close()
 			else:
-				send_message("Starting recording...")
+				_debug_output("REC: Starting recording...")
 				recorded_actions.clear()
 			
 			recording_active = !recording_active
