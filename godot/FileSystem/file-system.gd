@@ -40,17 +40,6 @@ func resolve_level_up_symbols(absolute_path):
 		final_path = final_path.rstrip("/")
 	return final_path
 
-func to_node_path(path):
-	var node_path
-	if path == "/":
-		node_path = ""
-	elif path == "~":
-		node_path = "home"
-	else:
-		node_path = path
-	return node_path.lstrip("/").rstrip("/")
-
-
 func to_file_path(node_path):
 	if node_path.empty():
 		return "/"
@@ -65,34 +54,45 @@ func level_up(directory):
 		directory = directory.left(pos_last_slash)
 	return directory
 
-# Return -1 for not existent, 0 for directory, 1 for file
-func check_path(absolute_path):
+func get_filesystem_node(absolute_path):
 	var base_dir = absolute_path.get_base_dir()
 	var last_element_name = absolute_path.get_file()
-	var node_path_base_dir = to_node_path(base_dir)
 	
-	var parent_node
-	if node_path_base_dir.empty():
-		if last_element_name.empty():
-			return 0
-		else:
-			parent_node = self
-	else:
-		parent_node = get_node_or_null(node_path_base_dir)
-	if not parent_node:
-		return -1
-	else:
+	var path_elements = absolute_path.split("/", false)
+	
+	if path_elements.empty():
+		return self
+	
+	var parent_node = self
+	
+	while path_elements:
+		var node_name = path_elements[0]
+		path_elements.remove(0)
+		
+		var child_found = false
 		for child in parent_node.get_children():
-			if child.get_fs_name() == last_element_name:
-				if child is preload("res://FileSystem/file.gd"):
-					return 1
+			print(node_name)
+			print(child.get_fs_name())
+			if child.get_fs_name() == node_name:
+				if is_file(child) and not path_elements.empty():
+					return null
 				else:
-					return 0
+					child_found = true
+					parent_node = child
+					break
+		if not child_found:
+			return null
+			
+	return parent_node
 		
-	return -1
-		
-func is_file(absolute_path):
-	if check_path(absolute_path) == 1:
-		return true
-	else:
-		return false
+func points_to_file(absolute_path):
+	return is_file(get_filesystem_node(absolute_path))
+
+func points_to_directory(absolute_path):
+	return is_directory(get_filesystem_node(absolute_path))
+
+func is_file(node):
+	return node is preload("res://FileSystem/file.gd")
+	
+func is_directory(node):
+	return node is preload("res://FileSystem/folder.gd")
