@@ -26,10 +26,10 @@ func execute(args):
 	var absolute_path = file_system.to_absolute_path(path)
 	absolute_path = file_system.resolve_level_up_symbols(absolute_path)
 	
-	var check_path = file_system.check_path(absolute_path)
-	if check_path == -1:
+	var node = file_system.get_filesystem_node(absolute_path)
+	if not node:
 		throw_error("Error: No such directory")
-	elif check_path == 1:
+	elif file_system.is_file(node):
 		throw_error("Error: Path points to a file")
 	else:
 		file_system.current_directory = absolute_path
