@@ -2,10 +2,7 @@ extends Node
 
 export(String) var current_directory = "/"
 
-func _process(_delta):
-	print(current_directory)
-	pass
-	
+
 func to_absolute_path(path):
 	if path.begins_with("~"):
 		path = "/home" + path.lstrip("~")

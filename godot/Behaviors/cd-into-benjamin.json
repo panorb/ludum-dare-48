@@ -1,4 +1,8 @@
 {
+    "000": {
+        "action": "sleep",
+        "length": 0.2
+    },
     "001": {
         "action": "type",
         "char": "c"
