@@ -51,5 +51,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="change_filesystem" from="Commands/ssh" to="." method="_on_ssh_change_filesystem"]
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

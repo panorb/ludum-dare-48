@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://FileSystem/PlayerFileSystem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://FileSystem/Adversary/AdversaryFileSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shell/Adversary/adversary-shell.gd" type="Script" id=3]
 [ext_resource path="res://Commands/cat-command.gd" type="Script" id=4]

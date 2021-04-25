@@ -36,6 +36,10 @@ config/name="Ludum Dare 48"
 run/main_scene="res://Shell/PlayerShell.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Shared/globals.gd"
+
 [display]
 
 window/size/width=1280

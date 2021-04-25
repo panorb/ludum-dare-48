@@ -2,6 +2,10 @@ class_name PlayerShell
 extends "shell.gd"
 
 onready var text_edit = get_node("TextEdit")
+onready var command_cat = get_node("Commands/cat")
+onready var command_cd = get_node("Commands/cd")
+onready var command_ls = get_node("Commands/ls")
+onready var command_ssh = get_node("Commands/ssh")
 
 func _ready():
 	text_edit.grab_focus()
@@ -40,3 +44,16 @@ func _on_TextEdit_text_changed():
 func _on_TextEdit_cursor_changed():
 	if not "\t" in text_edit.text:
 		cursor_index = text_edit.cursor_get_column()
+
+func _on_ssh_change_filesystem():
+	file_system.queue_free()
+	yield(get_tree(), "idle_frame")
+	var adversary_file_system = load("res://FileSystem/Adversary/AdversaryFileSystem.tscn")
+	file_system = adversary_file_system.instance()
+	self.add_child(file_system)
+	command_ls.file_system = file_system
+	command_cd.file_system = file_system
+	command_cat.file_system = file_system
+	command_ssh.file_system = file_system
+	
+	

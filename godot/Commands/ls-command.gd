@@ -39,3 +39,7 @@ func print_content(dir_node):
 			send_message("[accent]" + child.get_fs_name() + "[/accent]")
 		elif file_system.is_file(child):
 			send_message("[main]" + child.get_fs_name() + "[/main]")
+
+
+func _on_ssh_change_filesystem():
+	file_system = get_node(file_system_node)

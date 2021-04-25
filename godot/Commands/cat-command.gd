@@ -36,3 +36,6 @@ func execute(args):
 		send_message(node.content)
 		
 	execution_finished()
+
+func _on_ssh_change_filesystem():
+	file_system = get_node(file_system_node)
