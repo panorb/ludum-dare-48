@@ -1,0 +1,8 @@
+=== Process Overview ===
+ID    | Process name        | Memory            | CPU
+00000 | os-core.exe         | ██████     124 MB |  33%
+43191 | news-update.exe     | ██          35 MB |  13%
+84128 | conn-receive.exe    | █           12 MB |   3%
+30122 | no-tracker.exe      | █            4 MB |   1%
+
+Press any key to cancel...

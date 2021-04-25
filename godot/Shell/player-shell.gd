@@ -29,6 +29,10 @@ func _update_textedit():
 
 
 func _on_TextEdit_text_changed():
+	if not input_accepted:
+		_update_textedit()
+		return
+	
 	if "\t" in text_edit.text:
 		text_edit.text = text_edit.text.replace("\t", "")
 		_update_textedit()
