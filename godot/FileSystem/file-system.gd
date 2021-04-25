@@ -7,14 +7,13 @@ func _process(_delta):
 	pass
 	
 func to_absolute_path(path):
-	if path.is_abs_path():
-		return path
-
 	if path.begins_with("~"):
 		path = "/home" + path.lstrip("~")
 	if path.begins_with(".") and not path.begins_with(".."):
 		path = current_directory + path.lstrip(".")
-		
+	
+	if path.is_abs_path():
+		return path
 	var absolute_path = current_directory.rstrip("/") + "/" + path.rstrip("/")
 
 	return absolute_path
@@ -23,7 +22,8 @@ func resolve_level_up_symbols(absolute_path):
 	if not absolute_path.is_abs_path():
 		return absolute_path
 	
-	var path_elements = absolute_path.strip("/")
+	var path = absolute_path.lstrip("/").rstrip("/")
+	var path_elements = path.split("/", false)
 	var i = 0
 	while i < path_elements.size():
 		if path_elements[i] == "..":
@@ -31,6 +31,7 @@ func resolve_level_up_symbols(absolute_path):
 			if i > 0:
 				# remove one level higher
 				path_elements.remove(i-1)
+				i -= 1
 		else:
 			i += 1
 	
@@ -38,7 +39,9 @@ func resolve_level_up_symbols(absolute_path):
 	for element in path_elements:
 		final_path += element + "/"
 	
-	return final_path.rstrip("/")
+	if final_path != "/":
+		final_path = final_path.rstrip("/")
+	return final_path
 
 func to_node_path(path):
 	var node_path
@@ -65,23 +68,34 @@ func level_up(directory):
 		directory = directory.left(pos_last_slash)
 	return directory
 
-func path_exists(absolute_path):
-	var node_path = to_node_path(absolute_path)
-	if node_path.empty():
-		return true
-	var node = get_node_or_null(node_path)
-	if not node:
-		return false
+# Return -1 for not existent, 0 for directory, 1 for file
+func check_path(absolute_path):
+	var base_dir = absolute_path.get_base_dir()
+	var last_element_name = absolute_path.get_file()
+	var node_path_base_dir = to_node_path(base_dir)
+	
+	var parent_node
+	if node_path_base_dir.empty():
+		if last_element_name.empty():
+			return 0
+		else:
+			parent_node = self
 	else:
-		return true
+		parent_node = get_node_or_null(node_path_base_dir)
+	if not parent_node:
+		return -1
+	else:
+		for child in parent_node.get_children():
+			if child.get_fs_name() == last_element_name:
+				if child is preload("res://FileSystem/file.gd"):
+					return 1
+				else:
+					return 0
+		
+	return -1
 		
 func is_file(absolute_path):
-	if not path_exists(absolute_path):
-		return false
-	var node_path = to_node_path(absolute_path)
-	if node_path.empty():
-		return false
-	if get_node(node_path) is preload("res://FileSystem/file.gd"):
+	if check_path(absolute_path) == 1:
 		return true
 	else:
 		return false
