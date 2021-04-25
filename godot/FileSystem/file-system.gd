@@ -2,32 +2,43 @@ extends Node
 
 export(String) var current_directory = "/"
 
-
-func to_absolute_path(path, base_path):
-	path = path.replace("~", "/home")
+func _process(_delta):
+	print(current_directory)
+	pass
+	
+func to_absolute_path(path):
 	if path.is_abs_path():
 		return path
-	if not base_path.is_abs_path():
-		return ""
-		
-	if not base_path.ends_with("/"):
-		base_path += "/"
 
-	var absolute_path
-	if path == "..":
-		absolute_path = level_up(base_path)
-	elif path.begins_with("../"):
-		absolute_path = to_absolute_path(path.lstrip("../"), level_up(base_path))
-	elif path == ".":
-		absolute_path = base_path
-	elif path.begins_with("./"):
-		absolute_path = base_path + path.lstrip("./")
-	else:
-		absolute_path = base_path + path.lstrip("/")
-	if not absolute_path.ends_with("/"):
-		absolute_path += "/"
+	if path.begins_with("~"):
+		path = "/home" + path.lstrip("~")
+	if path.begins_with(".") and not path.begins_with(".."):
+		path = current_directory + path.lstrip(".")
+		
+	var absolute_path = current_directory.rstrip("/") + "/" + path.rstrip("/")
+
 	return absolute_path
 
+func resolve_level_up_symbols(absolute_path):
+	if not absolute_path.is_abs_path():
+		return absolute_path
+	
+	var path_elements = absolute_path.strip("/")
+	var i = 0
+	while i < path_elements.size():
+		if path_elements[i] == "..":
+			path_elements.remove(i)
+			if i > 0:
+				# remove one level higher
+				path_elements.remove(i-1)
+		else:
+			i += 1
+	
+	var final_path = "/"
+	for element in path_elements:
+		final_path += element + "/"
+	
+	return final_path.rstrip("/")
 
 func to_node_path(path):
 	var node_path
@@ -44,7 +55,7 @@ func to_file_path(node_path):
 	if node_path.empty():
 		return "/"
 	else:
-		return "/" + node_path + "/"
+		return "/" + node_path
 
 
 func level_up(directory):
@@ -54,11 +65,8 @@ func level_up(directory):
 		directory = directory.left(pos_last_slash)
 	return directory
 
-
-func path_exists(path):
-	path = to_absolute_path(path, current_directory)
-	
-	var node_path = to_node_path(path)
+func path_exists(absolute_path):
+	var node_path = to_node_path(absolute_path)
 	if node_path.empty():
 		return true
 	var node = get_node_or_null(node_path)
@@ -66,13 +74,11 @@ func path_exists(path):
 		return false
 	else:
 		return true
-
-
-func is_file(path):
-	if not path_exists(path):
+		
+func is_file(absolute_path):
+	if not path_exists(absolute_path):
 		return false
-	path = to_absolute_path(path, current_directory)
-	var node_path = to_node_path(path)
+	var node_path = to_node_path(absolute_path)
 	if node_path.empty():
 		return false
 	if get_node(node_path) is preload("res://FileSystem/file.gd"):
