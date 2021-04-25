@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Shell/PlayerShell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shell/Recording/recording-shell.gd" type="Script" id=2]
+
+[node name="RecordingShell" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Debug" type="Control" parent="." index="0"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="Label" parent="Debug" index="0"]
+margin_right = 40.0
+margin_bottom = 20.0
+
+[node name="cd" parent="Commands" index="1"]
+file_system_node = NodePath("../../../RecordingShell/FileSystem")
+
+[node name="ls" parent="Commands" index="4"]
+file_system_node = NodePath("../../../RecordingShell/FileSystem")

@@ -14,6 +14,7 @@ onready var mouse_pointer = get_node("MousePointer")
 func _ready():
 	action_parser.connect("type", self, "type")
 	action_parser.connect("keystroke", self, "keystroke")
+	action_parser.connect("mousepos", self, "set_mouse_position")
 	
 	known_behavior_files = _list_files_in_directory("res://Behaviors/")
 
