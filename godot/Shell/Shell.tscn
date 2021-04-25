@@ -59,8 +59,8 @@ margin_top = 60.0
 margin_right = 1201.0
 margin_bottom = 641.0
 bbcode_enabled = true
-bbcode_text = "[color=red]>[/color] [b]ls[/b] /fonts█"
-text = "> ls /fonts█"
+bbcode_text = "[color=red]>[/color] ls fonts█"
+text = "> ls fonts█"
 
 [node name="CursorBlinkTimer" type="Timer" parent="."]
 wait_time = 0.5

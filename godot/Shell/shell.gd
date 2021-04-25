@@ -1,8 +1,8 @@
 class_name Shell
 extends Control
 
-var backlog : PoolStringArray = []
-var command_history : PoolStringArray = []
+var backlog = []
+var command_history = []
 
 var current_command : String = ""
 var cursor_index : int = 0
@@ -23,17 +23,26 @@ export var warning_color : Color = Color("#c19c00")
 
 
 func _ready():
-	command_parser.connect("error_occurred", self, "_on_Commands_error_occurred")
+	command_parser.connect("error_occurred", self, "send_error")
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
-	command_parser.connect("message_sent", self, "_on_Commands_message_sent")
+	command_parser.connect("message_sent", self, "send_message")
+	command_parser.connect("clear_channel", self, "clear_channel")
 
 
-func _process(_delta):
+func _process(delta):
 	output_label.bbcode_text = ""
 	
-	for line in backlog:
-		output_label.bbcode_text += line + "\n"
+	var to_delete = []
+	
+	for i in range(backlog.size()):
+		if backlog[i]["time_left"] != -1:
+			backlog[i]["time_left"] -= delta
+			
+			if backlog[i]["time_left"] < 0:
+				to_delete.append(i)
 		
+		output_label.bbcode_text += backlog[i]["msg"] + "\n"
+	
 	if input_accepted:
 		var displayed_cmd = current_command
 		
@@ -46,10 +55,32 @@ func _process(_delta):
 		output_label.bbcode_text += get_last_line(displayed_cmd)
 	
 	output_label.bbcode_text = insert_colors(output_label.bbcode_text)
+	
+	delete_indexes(to_delete)
+
+
+func clear_channel(channel: String):
+	if channel == '*':
+		backlog.clear()
+	else:
+		var to_delete = []
+		for i in range(backlog.size()):
+			if backlog[i]["channel"] == channel:
+				to_delete.append(i)
+		
+		delete_indexes(to_delete)
+
+
+func delete_indexes(indexes):
+	indexes.sort()
+	indexes.invert()
+	
+	for i in indexes:
+		backlog.remove(i)
 
 
 func run_command():
-	backlog.append(get_last_line(current_command))
+	send(get_last_line(current_command))
 	
 	if not command_history or command_history and command_history[-1] != current_command:
 		command_history.append(current_command)
@@ -123,17 +154,23 @@ func get_cur_dir_line():
 #	if output_label.get_font("normal_font").get_string_size(text).x >= margin_container2.rect.x - 3:
 #		original_text += "\n"
 
+func send(msg: String, display_time := -1, channel := "main"):
+	backlog.append({
+					"msg": msg,
+					"time_left": display_time,
+					"channel": channel
+				   })
 
-func send_message(msg: String):
-	backlog.append("[main]" + msg + "[/main]")
+func send_message(msg: String, display_time := -1, channel := "main"):
+	send("[main]" + msg + "[/main]", display_time, channel)
 
 
-func send_warning(msg: String):
-	backlog.append("[warning]" + msg + "[/warning]")
+func send_warning(msg: String, display_time := -1, channel := "main"):
+	send("[warning]" + msg + "[/warning]", display_time, channel)
 
 
-func send_error(msg: String):
-	backlog.append("[error]" + msg + "[/error]")
+func send_error(msg: String, display_time := -1, channel := "main"):
+	send("[error]" + msg + "[/error]", display_time, channel)
 
 
 func type(chr):
@@ -164,23 +201,13 @@ func keystroke(key):
 func set_command(cmd: String):
 	current_command = cmd
 
-
-func _on_Commands_message_sent(msg: String):
-	send_message(msg)
-
-
-func _on_Commands_error_occurred(msg):
-	backlog.append("[color=red]" + msg + "[/color]")
-
-
 func _on_Commands_finished_execution():
 	yield(get_tree().create_timer(0.4), "timeout")
 	send_message("")
-	yield(get_tree().create_timer(0.1), "timeout")
-	
-	output_label.scroll_following = false
 	input_accepted = true
 
+	yield(get_tree().create_timer(0.1), "timeout")
+	output_label.scroll_following = false
 
 func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor

@@ -1,8 +1,8 @@
 extends "action.gd"
 
 
-func execute(action : Dictionary):
-	assert("key" in action)
+func execute(args : Dictionary):
+	assert("key" in args)
 	
-	emit_signal("keystroke", action["key"])
+	emit_signal("keystroke", args["key"])
 	emit_signal("finished")

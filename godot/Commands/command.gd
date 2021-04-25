@@ -1,20 +1,14 @@
 extends Node
 
-signal command_error(msg)
-signal command_message(msg)
+signal command_error(text, time, channel)
+signal command_message(text, time, channel)
 signal command_finished
 
-var aliases : PoolStringArray = ["NULL"]
-var command_description : String = ""
+func send_message(msg: String, display_time := -1, channel := "main"):
+	emit_signal("command_message", msg, display_time, channel)
 
-func send_message(text: String):
-	emit_signal("command_message", text)
-
-func print_description():
-	return name + " - " + command_description
-
-func throw_error(message: String):
-	emit_signal("command_error", message)
+func throw_error(msg: String, display_time := -1, channel := "main"):
+	emit_signal("command_error", msg, display_time, channel)
 
 func execution_finished():
 	emit_signal("command_finished")

@@ -15,14 +15,18 @@ func _ready():
 	action_parser.connect("type", self, "type")
 	action_parser.connect("keystroke", self, "keystroke")
 	action_parser.connect("mousepos", self, "set_mouse_position")
+	action_parser.connect("message", self, "send_message")
+	action_parser.connect("input_allow", self, "set_input_accepted")
 	
 	known_behavior_files = _list_files_in_directory("res://Behaviors/")
+
 
 func _process(_delta):
 	if active_behavior_file_index >= 0:
 		debug_behavior_script.text = known_behavior_files[active_behavior_file_index]
 	else:
 		debug_behavior_script.text = "[No script]"
+
 
 func _input(event):
 	if event is InputEventKey:
@@ -40,6 +44,7 @@ func _input(event):
 func type(chr):
 	.type(chr)
 	cursor_index += 1
+
 
 func run_behavior_script():
 	var file_path = "res://Behaviors/" + known_behavior_files[active_behavior_file_index]
@@ -71,6 +76,9 @@ func _list_files_in_directory(path):
 	dir.list_dir_end()
 
 	return files
+
+func set_input_accepted(allow):
+	input_accepted = allow
 
 func set_mouse_position(relative_position):
 	var mouse_width = mouse_pointer.rect_size.x

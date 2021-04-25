@@ -1,4 +1,4 @@
-extends "command.gd"
+extends "base-command.gd"
 
 export(NodePath) var file_system_node
 onready var file_system = get_node(file_system_node)

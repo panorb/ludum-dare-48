@@ -2,6 +2,7 @@ extends Node
 
 signal error_occurred(msg)
 signal message_sent(msg)
+signal clear_channel(channel)
 signal finished_execution
 
 func _ready():
