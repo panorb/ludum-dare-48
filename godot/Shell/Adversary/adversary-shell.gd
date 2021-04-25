@@ -1,20 +1,15 @@
 class_name AdversaryShell
 extends "../shell.gd"
 
-
 var known_behavior_files : PoolStringArray
 var active_behavior_file_index : int  = -1
-
-enum ACTION_TYPE {
-	MOUSE_HOVER,
-	SLEEP,
-	TYPE,
-	BACKSPACE,
-	ENTER
-}
+onready var action_parser = get_node("Actions")
 
 func _ready():
 	known_behavior_files = _list_files_in_directory("res://Behaviors/")
+	
+	action_parser.connect("type", self, "type")
+	action_parser.connect("keystroke", self, "keystroke")
 
 
 func _list_files_in_directory(path):

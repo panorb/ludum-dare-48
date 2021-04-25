@@ -7,6 +7,7 @@ var command_history : PoolStringArray = []
 var current_command : String = ""
 var cursor_index : int = 0
 var display_cursor : bool = false
+var command_history_position : int = 0
 
 onready var command_parser = get_node("Commands")
 onready var file_system = get_node("FileSystem")
@@ -25,6 +26,7 @@ func _ready():
 	command_parser.connect("error_occurred", self, "_on_Commands_error_occurred")
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("message_sent", self, "_on_Commands_message_sent")
+
 
 func _process(_delta):
 	output_label.bbcode_text = ""
@@ -45,14 +47,17 @@ func _process(_delta):
 	
 	output_label.bbcode_text = insert_colors(output_label.bbcode_text)
 
-func run_command(cmd: String):
-	backlog.append(get_last_line(cmd))
+
+func run_command():
+	backlog.append(get_last_line(current_command))
 	
-	if not command_history or command_history and command_history[-1] != cmd:
-		command_history.append(cmd)
+	if not command_history or command_history and command_history[-1] != current_command:
+		command_history.append(current_command)
 	
 	input_accepted = false
-	command_parser.execute(cmd)
+	command_parser.execute(current_command)
+	
+	current_command = ""
 
 
 func insert_colors(text: String):
@@ -69,6 +74,24 @@ func insert_color(text: String, name: String, color: Color):
 	return text
 
 
+func command_from_history():
+	if command_history_position >= 0:
+		command_history_position = 0
+		current_command = ""
+		cursor_index = 0
+		return
+	
+	if command_history_position < -command_history.size():
+		command_history_position = -command_history.size()
+		return
+	
+	var cmd = command_history[command_history.size() + command_history_position]
+	
+	if current_command != cmd:
+		current_command = cmd
+		cursor_index = len(current_command)
+
+
 func get_last_line(displayed_cmd : String):
 	return "[accent]" + file_system.current_directory + "[/accent]\n" \
 		+ "λ [main]" + displayed_cmd + "[/main]"
@@ -76,6 +99,7 @@ func get_last_line(displayed_cmd : String):
 
 func get_cur_dir_line():
 	return "[accent]" + file_system.current_directory + "[/accent]\n"
+
 
 #func render_line(original_text):
 #	var reg_exp_bbCodes = "#\\[[^\\]]+\\]#"
@@ -112,6 +136,31 @@ func send_error(msg: String):
 	backlog.append("[error]" + msg + "[/error]")
 
 
+func type(chr):
+	if input_accepted:
+		current_command += chr
+
+
+func keystroke(key):
+	if input_accepted:
+		match key:
+			"enter":
+				if current_command:
+					output_label.scroll_following = true
+					run_command()
+				else:
+					# TODO: Play error sound
+					pass
+			"backspace":
+				current_command = current_command.left(current_command.length() - 1)
+			"up":
+				command_history_position -= 1
+				command_from_history()
+			"down":
+				command_history_position += 1
+				command_from_history()
+
+
 func _on_Commands_message_sent(msg: String):
 	send_message(msg)
 
@@ -121,7 +170,13 @@ func _on_Commands_error_occurred(msg):
 
 
 func _on_Commands_finished_execution():
+	yield(get_tree().create_timer(0.4), "timeout")
+	send_message("")
+	yield(get_tree().create_timer(0.1), "timeout")
+	
+	output_label.scroll_following = false
 	input_accepted = true
+
 
 func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
