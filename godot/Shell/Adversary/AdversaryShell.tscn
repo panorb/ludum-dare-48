@@ -46,6 +46,7 @@ __meta__ = {
 
 [node name="cat" type="Node" parent="Commands" index="0"]
 script = ExtResource( 4 )
+file_system_node = NodePath("../../FileSystem")
 
 [node name="cd" type="Node" parent="Commands" index="1"]
 script = ExtResource( 7 )
