@@ -30,11 +30,11 @@ func _on_TextEdit_text_changed():
 		_update_textedit()
 
 	if "\n" in text_edit.text:
-		current_command = text_edit.text.replace("\n", "")
+		set_command(text_edit.text.replace("\n", ""))
 		keystroke("enter")
 		_update_textedit()
 	else:
-		current_command = text_edit.text
+		set_command(text_edit.text)
 
 
 func _on_TextEdit_cursor_changed():

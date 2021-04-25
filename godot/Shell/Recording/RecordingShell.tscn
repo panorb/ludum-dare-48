@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Shell/PlayerShell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shell/Recording/recording-shell.gd" type="Script" id=2]
+
+[node name="RecordingShell" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+accent_color = Color( 0.0862745, 0.776471, 0.0470588, 1 )
+error_color = Color( 0.772549, 0.0588235, 0.121569, 1 )
+warning_color = Color( 0.756863, 0.611765, 0, 1 )
+
+[node name="cd" parent="Commands" index="1"]
+file_system_node = NodePath("../../../RecordingShell/FileSystem")
+
+[node name="ls" parent="Commands" index="4"]
+file_system_node = NodePath("../../../RecordingShell/FileSystem")

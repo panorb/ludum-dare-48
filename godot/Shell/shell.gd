@@ -161,6 +161,10 @@ func keystroke(key):
 				command_from_history()
 
 
+func set_command(cmd: String):
+	current_command = cmd
+
+
 func _on_Commands_message_sent(msg: String):
 	send_message(msg)
 

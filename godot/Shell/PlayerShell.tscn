@@ -13,6 +13,9 @@
 
 [node name="PlayerShell" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+accent_color = Color( 0.0862745, 0.776471, 0.0470588, 1 )
+error_color = Color( 0.772549, 0.0588235, 0.121569, 1 )
+warning_color = Color( 0.756863, 0.611765, 0, 1 )
 
 [node name="cat" type="Node" parent="Commands" index="0"]
 script = ExtResource( 11 )
