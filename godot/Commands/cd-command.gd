@@ -3,7 +3,6 @@ extends "command.gd"
 export(NodePath) var file_system_node
 onready var file_system = get_node(file_system_node)
 
-
 func _ready():
 	aliases = ["cd"]
 	command_description = "Changes the current directory"

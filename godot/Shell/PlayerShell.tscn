@@ -29,6 +29,7 @@ script = ExtResource( 4 )
 
 [node name="ls" type="Node" parent="Commands" index="4"]
 script = ExtResource( 8 )
+file_system_node = NodePath("../../FileSystem")
 
 [node name="probe" type="Node" parent="Commands" index="5"]
 script = ExtResource( 5 )
