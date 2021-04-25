@@ -11,7 +11,7 @@
     },
     "003": {
         "action": "type",
-        "text": "s"
+        "char": "s"
     },
     "004": {
         "action": "sleep",
@@ -19,7 +19,7 @@
     },
     "005": {
         "action": "type",
-        "text": "s"
+        "char": "s"
     },
     "006": {
         "action": "sleep",
@@ -27,16 +27,18 @@
     },
     "007": {
         "action": "type",
-        "text": "s"
+        "char": "s"
     },
     "008": {
         "action": "sleep",
         "length": 0.4
     },
     "009": {
-        "action": "backspace"
+        "action": "keystroke",
+        "key": "backspace"
     },
     "010": {
-        "action": "enter"
+        "action": "keystroke",
+        "key": "enter"
     }
 }
