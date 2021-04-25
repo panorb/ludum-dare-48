@@ -1,8 +1,10 @@
-extends "base-command.gd"
+extends "command.gd"
+
 
 func _ready():
 	aliases = ["help", "man"]
 	command_description = "show a brief description of a command"
+
 
 func execute(args):
 	if args.size() == 1:
@@ -11,7 +13,7 @@ func execute(args):
 	elif args.size() == 2:
 		for child in get_parent().get_children():
 			if args[1] in child.aliases:
-				if child.command_name == "help":
+				if child.name == "help":
 					throw_error("THERE IS NO ESCAPE")
 				else:
 					send_message(child.print_description())

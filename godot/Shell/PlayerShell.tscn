@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
+[ext_resource path="res://Commands/ssh-command.gd" type="Script" id=3]
+[ext_resource path="res://Commands/help-command.gd" type="Script" id=4]
+[ext_resource path="res://Commands/probe-command.gd" type="Script" id=5]
+[ext_resource path="res://Commands/exit-command.gd" type="Script" id=6]
+[ext_resource path="res://Commands/cd-command.gd" type="Script" id=7]
+[ext_resource path="res://Commands/ls-command.gd" type="Script" id=8]
+[ext_resource path="res://FileSystem/PlayerFileSystem.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Commands/cat-command.gd" type="Script" id=11]
+
+[node name="PlayerShell" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="cat" type="Node" parent="Commands" index="0"]
+script = ExtResource( 11 )
+
+[node name="cd" type="Node" parent="Commands" index="1"]
+script = ExtResource( 7 )
+file_system_node = NodePath("../../FileSystem")
+
+[node name="exit" type="Node" parent="Commands" index="2"]
+script = ExtResource( 6 )
+
+[node name="help" type="Node" parent="Commands" index="3"]
+script = ExtResource( 4 )
+
+[node name="ls" type="Node" parent="Commands" index="4"]
+script = ExtResource( 8 )
+
+[node name="probe" type="Node" parent="Commands" index="5"]
+script = ExtResource( 5 )
+
+[node name="ssh" type="Node" parent="Commands" index="6"]
+script = ExtResource( 3 )
+
+[node name="FileSystem" parent="." index="3" instance=ExtResource( 10 )]
+
+[node name="TextEdit" type="TextEdit" parent="." index="4"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+selecting_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

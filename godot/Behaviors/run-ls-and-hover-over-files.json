@@ -1,0 +1,42 @@
+{
+    "001": {
+        "action": "mouse-hover",
+        "x": 0.5,
+        "y": 0.5,
+        "speed": 3
+    },
+    "002": {
+        "action": "sleep",
+        "length": 3
+    },
+    "003": {
+        "action": "type",
+        "text": "s"
+    },
+    "004": {
+        "action": "sleep",
+        "length": 0.2
+    },
+    "005": {
+        "action": "type",
+        "text": "s"
+    },
+    "006": {
+        "action": "sleep",
+        "length": 0.3
+    },
+    "007": {
+        "action": "type",
+        "text": "s"
+    },
+    "008": {
+        "action": "sleep",
+        "length": 0.4
+    },
+    "009": {
+        "action": "backspace"
+    },
+    "010": {
+        "action": "enter"
+    }
+}

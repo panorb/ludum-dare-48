@@ -10,7 +10,7 @@ func _ready():
 		child.connect("command_message", self, "_on_Command_command_message")
 		child.connect("command_finished", self, "_on_Command_command_finished")
 
-func execute_command(cmd : String):
+func execute(cmd : String):
 	var args = cmd.split(" ")
 	
 	for child in get_children():

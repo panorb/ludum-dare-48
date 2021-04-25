@@ -1,0 +1,13 @@
+{
+    "001": {
+        "action": "type",
+        "text": "cd ",
+        "speed": 0.2
+    },
+    "002": {
+        "action": "type",
+        "text": "benjamin",
+        "speed": 1.0
+    }
+
+}

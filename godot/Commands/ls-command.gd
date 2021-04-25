@@ -1,7 +1,9 @@
-extends "base-command.gd"
+extends "command.gd"
+
 
 func _ready():
-	aliases = ["probe"]
+	aliases = ["ls", "dir"]
+
 
 func execute(_args):
 	send_message("Not implemented.")

@@ -1,11 +1,14 @@
-extends "base-command.gd"
+extends "command.gd"
 
-onready var file_system = get_node("/root/Shell/FileSystem")
+export(NodePath) var file_system_node
+onready var file_system = get_node(file_system_node)
+
 
 func _ready():
 	aliases = ["cd"]
 	command_description = "Changes the current directory"
-	
+
+
 func execute(args):
 	if args.size() >= 3:
 		throw_error("Error: Too many arguments")
@@ -29,14 +32,4 @@ func execute(args):
 				file_system.current_directory)
 	
 	execution_finished()
-		
-	
-	
-	
-	
-	
-	
-	
-		
-		
-		
+

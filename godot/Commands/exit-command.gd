@@ -1,10 +1,13 @@
-extends "base-command.gd"
+extends "command.gd"
+
 
 signal close
+
 
 func _ready():
 	aliases = ["exit", "quit"]
 	command_description = "close the shell"
+
 
 func execute(args):
 	if args.size() >= 2:

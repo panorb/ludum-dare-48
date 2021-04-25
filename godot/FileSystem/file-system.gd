@@ -49,12 +49,14 @@ func to_node_path(path):
 	else:
 		node_path = path
 	return node_path.lstrip("/").rstrip("/")
-	
+
+
 func to_file_path(node_path):
 	if node_path.empty():
 		return "/"
 	else:
 		return "/" + node_path
+
 
 func level_up(directory):
 	if not directory == "/":

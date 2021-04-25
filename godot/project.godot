@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "",
+"class": "AdversaryShell",
+"language": "GDScript",
+"path": "res://Shell/Adversary/adversary-shell.gd"
+}, {
+"base": "",
 "class": "PlayerShell",
 "language": "GDScript",
 "path": "res://Shell/player-shell.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Shell/shell.gd"
 } ]
 _global_script_class_icons={
+"AdversaryShell": "",
 "PlayerShell": "",
 "Shell": ""
 }
@@ -27,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 48"
-run/main_scene="res://Shell/Shell.tscn"
+run/main_scene="res://Shell/PlayerShell.tscn"
 config/icon="res://icon.png"
 
 [display]
