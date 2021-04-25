@@ -12,7 +12,7 @@ func to_absolute_path(path):
 
 	if path.begins_with("~"):
 		path = "/home" + path.lstrip("~")
-	if path.begins_with("."):
+	if path.begins_with(".") and not path.begins_with(".."):
 		path = current_directory + path.lstrip(".")
 		
 	var absolute_path = current_directory.rstrip("/") + "/" + path.rstrip("/")
@@ -73,11 +73,10 @@ func path_exists(absolute_path):
 	else:
 		return true
 		
-func is_file(path):
-	if not path_exists(path):
+func is_file(absolute_path):
+	if not path_exists(absolute_path):
 		return false
-	path = to_absolute_path(path)
-	var node_path = to_node_path(path)
+	var node_path = to_node_path(absolute_path)
 	if node_path.empty():
 		return false
 	if get_node(node_path) is preload("res://FileSystem/file.gd"):
