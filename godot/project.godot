@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "",
 "class": "AdversaryShell",
 "language": "GDScript",
-"path": "res://Shell/adversary-shell.gd"
+"path": "res://Shell/Adversary/adversary-shell.gd"
 }, {
 "base": "",
 "class": "PlayerShell",

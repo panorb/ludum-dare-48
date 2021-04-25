@@ -1,8 +1,8 @@
-extends "base-command.gd"
+extends "command.gd"
 
 
 func _ready():
-	aliases = ["ls", "dir"]
+	aliases = ["cat"]
 
 
 func execute(_args):

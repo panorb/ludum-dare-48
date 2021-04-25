@@ -1,9 +1,17 @@
 class_name AdversaryShell
-extends "shell.gd"
+extends "../shell.gd"
 
 
 var known_behavior_files : PoolStringArray
+var active_behavior_file_index : int  = -1
 
+enum ACTION_TYPE {
+	MOUSE_HOVER,
+	SLEEP,
+	TYPE,
+	BACKSPACE,
+	ENTER
+}
 
 func _ready():
 	known_behavior_files = _list_files_in_directory("res://Behaviors/")
