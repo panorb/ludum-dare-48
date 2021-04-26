@@ -1,0 +1,6 @@
+=== Process Overview ===
+ID    | Process name        | Memory            | CPU
+00000 | os-core.exe         | ██████     124 MB |  33%
+20903 | lookup.exe          | ███         57 MB |  2%
+
+Press any key to cancel...
