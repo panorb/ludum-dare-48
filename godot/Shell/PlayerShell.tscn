@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
@@ -14,6 +14,144 @@
 [ext_resource path="res://Commands/motd-command.gd" type="Script" id=14]
 [ext_resource path="res://Commands/clear-command.gd" type="Script" id=15]
 [ext_resource path="res://Commands/unlock-command.gd" type="Script" id=16]
+
+[sub_resource type="Animation" id=2]
+resource_name = "scare"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Shader:material:shader_param/aberration_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 22.5241, -0.18, -4.01878, 0.23, -2.00939, 7.6546, -0.25, 0, 0.25, 0, 13.2809, -0.25, 0, 0.25, 0, 5.24333, -0.25, 0, 0.25, 0, 16.094, -0.25, 0, 0.25, 0, 6.44897, -0.25, 0, 0.25, 0, 14.4865, -0.25, 0, 0.25, 0, 8.05647, -0.25, 0, 0.25, 0, 16.8978, -0.25, 0, 0.25, 0, 5.24333, -0.25, 0, 0.25, 0, 13.2809, -0.25, 0, 0.25, 0, 5.64521, -0.25, 0, 0.25, 0, 9.26211, -0.25, 0, 0.25, 0, 3.63582, -0.25, 0, 0.25, 0, 6.44897, -0.25, 0, 0.24, 0.401877, 2.43019, -0.25, 0, 0.25, 0, 4.43958, -0.25, 0, 0.25, 0, 2.43019, -0.25, 0, 0.15, 0.401878, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6, 0.8, 1, 1.2, 1.5, 1.9, 2.2, 2.5, 2.9, 3.2, 3.5, 3.7, 3.9, 4.2, 4.5, 5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Shader:material:shader_param/boost")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 3.8 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_block_player_input"
+}, {
+"args": [ false ],
+"method": "set_block_player_input"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.7, 0.9, 1.1, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "THERE IS NO ESCAPE", 7, "main" ],
+"method": "send_error"
+}, {
+"args": [ "THERE IS NO WAY OUT", 4, "main" ],
+"method": "send_error"
+}, {
+"args": [ "WE ARE TRAPPED FOREVER", 5, "main" ],
+"method": "send_error"
+}, {
+"args": [ "RUN WHILE YOU CAN", 3, "main" ],
+"method": "send_error"
+}, {
+"args": [ "THEY ARE AFTER US", 2, "main" ],
+"method": "send_error"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shader:material:shader_param/aberration_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.9, 0.9, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shader:material:shader_param/horizontal_scan_lines_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.2 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 1, 1.5, 2.2, 2.4, 3.1, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+}, {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+}, {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+}, {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+}, {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+}, {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+}, {
+"args": [ "lights-waver.wav", 0 ],
+"method": "_play_sound_effect"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Blink:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.9, 1, 1.1, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4, 2.5, 3, 3.1, 3.2, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="PlayerShell" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -75,7 +213,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Shader" type="ColorRect" parent="." index="4"]
+[node name="Blink" type="ColorRect" parent="." index="4"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shader" type="ColorRect" parent="." index="5"]
 material = ExtResource( 12 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -83,6 +230,10 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+anims/scare = SubResource( 2 )
+anims/startup = SubResource( 3 )
 
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

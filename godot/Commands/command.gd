@@ -10,6 +10,7 @@ signal ssh_connect(adress)
 signal allow_input(allow)
 signal exit
 signal trigger_behavior(script_name)
+signal play_animation(animation_name)
 
 func update_file_system(fs : Node):
 	file_system = fs 
@@ -37,6 +38,9 @@ func clear_channel(channel: String):
 
 func ssh_connect(adress: Dictionary):
 	emit_signal("ssh_connect", adress)
+
+func play_animation(animation_name: String):
+	emit_signal("play_animation", animation_name)
 
 func exit():
 	emit_signal("exit")
