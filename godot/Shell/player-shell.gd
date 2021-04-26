@@ -16,7 +16,7 @@ func _ready():
 	
 	action_parser.connect("behavior_finished", self, "_on_Actions_behavior_finished")
 	
-	# run_behavior_script("start")
+	run_behavior_script("start")
 	# send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
 
