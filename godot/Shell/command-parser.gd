@@ -6,8 +6,10 @@ signal clear_channel(channel)
 signal finished_execution
 signal ssh_connect(adress)
 signal allow_input(allow)
+signal exit_shell
 
 var _command : Node = null
+
 
 func _ready():
 	for child in get_children():
@@ -17,6 +19,7 @@ func _ready():
 		child.connect("clear_channel", self, "_on_Command_clear_channel")
 		child.connect("ssh_connect", self, "_on_Command_ssh_connect")
 		child.connect("allow_input", self, "_on_Command_allow_input")
+		child.connect("exit", self, "_on_Command_exit")
 
 func input(input : String):
 	if _command:
@@ -25,7 +28,7 @@ func input(input : String):
 		_execute(input)
 
 func is_executing():
-	return _command != null
+	return _command != null	
 
 func _execute(cmd : String):
 	var regex = RegEx.new()
@@ -70,3 +73,6 @@ func _on_Command_ssh_connect(adress):
 	
 func _on_Command_allow_input(allow):
 	emit_signal("allow_input", allow)
+
+func _on_Command_exit():
+	emit_signal("exit_shell")

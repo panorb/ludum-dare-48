@@ -8,6 +8,7 @@ signal finished
 signal clear_channel(channel)
 signal ssh_connect(adress)
 signal allow_input(allow)
+signal exit
 
 func input(input: String):
 	pass
@@ -32,3 +33,6 @@ func clear_channel(channel: String):
 
 func ssh_connect(adress: Dictionary):
 	emit_signal("ssh_connect", adress)
+
+func exit():
+	emit_signal("exit")

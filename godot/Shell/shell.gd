@@ -1,6 +1,8 @@
 class_name Shell
 extends Control
 
+var world_node = null
+
 var backlog = []
 var command_history = []
 
@@ -22,6 +24,8 @@ export var accent_color : Color = Color("#16c60c")
 export var error_color : Color = Color("#c50f1f")
 export var warning_color : Color = Color("#c19c00")
 
+signal exit_shell
+
 
 func _ready():
 	command_parser.update_file_system(file_system)
@@ -31,7 +35,7 @@ func _ready():
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("ssh_connect", self, "_on_Commands_ssh_connect")
 	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
-
+	command_parser.connect("exit_shell", self, "_on_Commands_exit_shell")
 
 func _process(delta):
 	output_label.bbcode_text = ""
@@ -62,6 +66,9 @@ func _process(delta):
 	
 	delete_indexes(to_delete)
 
+func initialize(world : Node):
+	world_node = world
+	self.connect("exit_shell", world_node, "default_view")
 
 func clear_channel(channel: String):
 	if channel == '*':
@@ -249,3 +256,7 @@ func _on_Commands_ssh_connect(adress: Dictionary):
 
 func _on_Commands_allow_input(allow: bool):
 	input_accepted = allow
+
+
+func _on_Commands_exit_shell():
+	emit_signal("exit_shell")
