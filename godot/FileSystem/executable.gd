@@ -8,7 +8,8 @@ signal clear_channel(channel)
 
 
 func execute():
-	execution_finished()
+	Helper.pause_node(self, false)
+	set_process_unhandled_input(true)
 
 
 func send_message(msg: String, display_time := -1, channel := "main"):
@@ -20,6 +21,7 @@ func throw_error(msg: String, display_time := -1, channel := "main"):
 
 
 func execution_finished():
+	Helper.pause_node(self, true)
 	emit_signal("finished")
 
 

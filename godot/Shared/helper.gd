@@ -17,3 +17,11 @@ func list_files_in_directory(path):
 	dir.list_dir_end()
 
 	return files
+
+
+func pause_node(node: Node, pause : bool):
+	node.set_process(!pause)
+	node.set_process_input(!pause)
+	node.set_process_unhandled_input(!pause)
+	node.set_process_unhandled_key_input(!pause)
+	node.set_physics_process(!pause)
