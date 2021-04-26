@@ -21,13 +21,24 @@ func execute(args):
 		absolute_path = file_system.to_absolute_path(path)
 		absolute_path = file_system.resolve_level_up_symbols(absolute_path)
 	
-	var node = file_system.get_filesystem_node(absolute_path)
-	if not node:
-		throw_error("Error: No such directory")
-	elif file_system.is_file(node):
-		throw_error("Error: Path points to a file")
+	var dir_node = file_system.get_filesystem_node(absolute_path)
+	var error = dir_node["error"]
+	if error:
+		match(error):
+			1:
+				throw_error("Error: Access denied")
+		
+			2:
+				throw_error("Error: Invalid path")
+			_:
+				throw_error("Unknown error")
 	else:
-		print_content(node)
+		var node = dir_node["node"]
+		if file_system.is_file(node):
+			throw_error("Error: Path points to a file")
+		else:
+			print_content(node)
+
 	execution_finished()
 		
 func print_content(dir_node):

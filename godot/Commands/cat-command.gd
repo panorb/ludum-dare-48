@@ -22,15 +22,25 @@ func execute(args):
 	absolute_path = file_system.to_absolute_path(path)
 	absolute_path = file_system.resolve_level_up_symbols(absolute_path)
 	
-	var node = file_system.get_filesystem_node(absolute_path)
-	if not node:
-		throw_error("Error: Invalid path")
-	elif not file_system.is_file(node):
-		throw_error("Error: No file")
-	elif not file_system.is_text_file(node):
-		throw_error("Error: Cannot read binary file")
+	var dir_node = file_system.get_filesystem_node(absolute_path)
+	var error = dir_node["error"]
+	if error:
+		match(error):
+			1:
+				throw_error("Error: Access denied")
+		
+			2:
+				throw_error("Error: Invalid path")
+			_:
+				throw_error("Unknown error")
 	else:
-		send_message(node.content)
+		var node = dir_node["node"]
+		if not file_system.is_file(node):
+			throw_error("Error: No file")
+		elif not file_system.is_text_file(node):
+			throw_error("Error: Cannot read binary file")
+		else:
+			send_message(node.content)
 		
 	execution_finished()
 
