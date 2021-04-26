@@ -36,7 +36,7 @@ func execute(args):
 			_:
 				throw_error("Unknown error")
 	else:
-		var node = dir_node["node"]
+		var node = dir_node["last_node_found"]
 		if not file_system.is_file(node):
 			throw_error("Error: No file")
 		elif not file_system.is_executable(node):
