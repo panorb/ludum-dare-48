@@ -11,14 +11,12 @@ onready var command_run = get_node("Commands/run")
 
 func _ready():
 	block_player_input = false
-	current_ssh = "benjamin"
 	text_edit.grab_focus()
 	
 	action_parser.connect("behavior_finished", self, "_on_Actions_behavior_finished")
 	
-	run_behavior_script("start")
+	# run_behavior_script("start")
 	# send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
-
 
 func _unhandled_input(event):
 	if event is InputEventKey and not block_player_input:

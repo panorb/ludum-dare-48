@@ -2,17 +2,19 @@
 
 [ext_resource path="res://FileSystem/folder.gd" type="Script" id=1]
 [ext_resource path="res://FileSystem/Executables/ascii-game.gd" type="Script" id=2]
-[ext_resource path="res://FileSystem/file-system.gd" type="Script" id=3]
-[ext_resource path="res://FileSystem/text-file.gd" type="Script" id=4]
+[ext_resource path="res://FileSystem/Executables/whackamole-executable.gd" type="Script" id=3]
+[ext_resource path="res://FileSystem/file-system.gd" type="Script" id=4]
+[ext_resource path="res://FileSystem/text-file.gd" type="Script" id=5]
 
 [node name="FileSystem" type="Node"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="home" type="Node" parent="."]
 script = ExtResource( 1 )
 
 [node name="I" type="Node" parent="home"]
 script = ExtResource( 1 )
+password = "goodpw"
 
 [node name="am" type="Node" parent="home/I"]
 script = ExtResource( 1 )
@@ -21,7 +23,8 @@ script = ExtResource( 1 )
 script = ExtResource( 1 )
 
 [node name="congratulations|txt" type="Node" parent="home/I/am/proud"]
-script = ExtResource( 4 )
+script = ExtResource( 5 )
+behavior_name = "ending"
 content = "I really am :)"
 
 [node name="not" type="Node" parent="home/I/am"]
@@ -34,8 +37,39 @@ access_permission = false
 [node name="game|exe" type="Node" parent="home/I/am"]
 script = ExtResource( 2 )
 
+[node name="rome|txt" type="Node" parent="home"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+content = "In old rome the key for the next door was called [accent]hppeqx[/accent]."
+
+[node name="hint|txt" type="Node" parent="home"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": "
+"
+}
+content = "Looks like some simplistic form of encryption... There is one named after a famous roman statesman."
+
+[node name="solution|txt" type="Node" parent="home"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+content = "The cypher is called Ceasar cypher and is applied by shifting every letter by a specific number of letters in the alphabet. In this case the encryption key was 1 and so the decription key is -1.
+
+\"hppeqx\" -- -1 --> [accent]\"goodpw\"
+Apply it with the unlock command.
+[/accent]"
+
 [node name="user" type="Node" parent="."]
 script = ExtResource( 1 )
+access_permission = false
 
 [node name="drivers" type="Node" parent="."]
 script = ExtResource( 1 )
+access_permission = false
+
+[node name="whackamole|exe" type="Node" parent="."]
+script = ExtResource( 3 )

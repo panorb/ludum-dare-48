@@ -53,7 +53,7 @@ func _execute(cmd : String):
 
 func update_file_system(fs: Node):
 	for child in get_children():
-		child.file_system = fs
+		child.update_file_system(fs)
 
 func _on_Command_error(msg: String, display_time : float, channel : String):
 	emit_signal("error_occurred", msg, display_time, channel)

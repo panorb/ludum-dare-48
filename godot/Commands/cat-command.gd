@@ -2,7 +2,17 @@ extends "base-command.gd"
 
 func _ready():
 	aliases = ["cat"]
-	command_description = "Displays the content of a file"
+	command_description = "Displays the contents of a file"
+	long_description = """Displays the contents of a file specified as the first argument.
+
+cat [filepath]
+
+[b]Valid usage examples:[/b]
+cat curriculum.txt
+cat Documents/curriculum.txt
+cat ../../curriculum.txt
+cat "grandmas recipe.txt"
+"""
 
 func execute(args):
 	if args.size() >= 3:

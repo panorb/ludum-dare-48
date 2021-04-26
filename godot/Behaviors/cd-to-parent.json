@@ -2,7 +2,7 @@
     "actions": [
         {
             "action": "sleep",
-            "length": 0.3
+            "length": 1
         },
         {
             "action": "message",
