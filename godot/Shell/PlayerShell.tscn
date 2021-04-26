@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
@@ -16,7 +16,7 @@
 [ext_resource path="res://Commands/clear-command.gd" type="Script" id=15]
 [ext_resource path="res://Commands/unlock-command.gd" type="Script" id=16]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "scare"
 length = 5.0
 tracks/0/type = "bezier"
@@ -83,7 +83,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Shader:material:shader_param/aberration_amount")
@@ -185,7 +185,13 @@ custom_constants/margin_right = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
-[node name="MarginContainer" parent="MarginContainer" index="0"]
+[node name="NinePatchRect" parent="MarginContainer" index="0"]
+margin_left = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" parent="MarginContainer" index="1"]
 margin_left = 20.0
 margin_right = 1260.0
 margin_bottom = 700.0
@@ -196,12 +202,6 @@ size_flags_vertical = 1
 margin_right = 1220.0
 margin_bottom = 660.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="NinePatchRect" parent="MarginContainer" index="1"]
-margin_left = 20.0
-margin_right = 1260.0
-margin_bottom = 700.0
 size_flags_vertical = 3
 
 [node name="cat" type="Node" parent="Commands" index="0"]
@@ -247,17 +247,6 @@ script = ExtResource( 15 )
 [node name="unlock" type="Node" parent="Commands" index="10"]
 script = ExtResource( 16 )
 
-[node name="TextEdit" type="TextEdit" parent="." index="4"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-selecting_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Blink" type="ColorRect" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
@@ -276,9 +265,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextEdit" type="TextEdit" parent="." index="6"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+selecting_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
-anims/scare = SubResource( 2 )
-anims/startup = SubResource( 3 )
+anims/scare = SubResource( 1 )
+anims/startup = SubResource( 2 )
 
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]
