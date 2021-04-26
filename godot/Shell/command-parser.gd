@@ -5,6 +5,7 @@ signal message_sent(msg, time, channel)
 signal clear_channel(channel)
 signal finished_execution
 signal ssh_connect(adress)
+signal exit_shell
 
 func _ready():
 	for child in get_children():
@@ -13,6 +14,7 @@ func _ready():
 		child.connect("finished", self, "_on_Command_finished")
 		child.connect("clear_channel", self, "_on_Command_clear_channel")
 		child.connect("ssh_connect", self, "_on_Command_ssh_connect")
+		child.connect("exit", self, "_on_Command_exit")
 
 func execute(cmd : String):
 	var regex = RegEx.new()
@@ -49,3 +51,6 @@ func _on_Command_clear_channel(channel: String):
 
 func _on_Command_ssh_connect(adress):
 	emit_signal("ssh_connect", adress)
+
+func _on_Command_exit():
+	emit_signal("exit_shell")
