@@ -13,7 +13,6 @@ var recording_active = false
 
 
 func _ready():
-	current_ssh = "benjamin"
 	text_edit.grab_focus()
 
 	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
