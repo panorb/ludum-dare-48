@@ -217,7 +217,10 @@ func _play_sound_effect(filename: String, channel: int = 0):
 
 func _on_Commands_finished_execution():
 	yield(get_tree().create_timer(0.4), "timeout")
-	send_message("")
+	if backlog:
+		send_message("")
+	else:
+		_play_sound_effect("send-message.wav")
 	input_accepted = true
 
 	yield(get_tree().create_timer(0.1), "timeout")

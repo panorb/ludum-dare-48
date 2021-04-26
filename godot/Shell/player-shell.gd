@@ -12,7 +12,7 @@ func _ready():
 	current_ssh = "benjamin"
 	text_edit.grab_focus()
 
-	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
+	# send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
 
 func _unhandled_input(event):

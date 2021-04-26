@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Commands/cat-command.gd" type="Script" id=11]
 [ext_resource path="res://Shared/Shader/crt-material.tres" type="Material" id=12]
 [ext_resource path="res://Commands/run-command.gd" type="Script" id=13]
+[ext_resource path="res://Commands/motd-command.gd" type="Script" id=14]
+[ext_resource path="res://Commands/clear-command.gd" type="Script" id=15]
 
 [node name="PlayerShell" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -50,6 +52,12 @@ interval = 0.8
 
 [node name="run" type="Node" parent="Commands" index="8"]
 script = ExtResource( 13 )
+
+[node name="motd" type="Node" parent="Commands" index="9"]
+script = ExtResource( 14 )
+
+[node name="clear" type="Node" parent="Commands" index="10"]
+script = ExtResource( 15 )
 
 [node name="FileSystem" parent="." index="3" instance=ExtResource( 10 )]
 
