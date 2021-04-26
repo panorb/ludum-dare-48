@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Commands/animation-command.gd" type="Script" id=9]
 [ext_resource path="res://FileSystem/PlayerFileSystem.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Commands/cat-command.gd" type="Script" id=11]
+[ext_resource path="res://Shared/Shader/crt-material.tres" type="Material" id=12]
 
 [node name="PlayerShell" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -61,6 +62,11 @@ selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="." index="5"]
+material = ExtResource( 12 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 [connection signal="change_filesystem" from="Commands/ssh" to="." method="_on_ssh_change_filesystem"]
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]
