@@ -1,0 +1,60 @@
+{
+    "title":"Legend of Grundelduff",
+    "chapter":
+        {
+            "prologue": "Once opun a time, there was a mage called Grundelduff, who wanted to go on a grand adventure, so he left his house.",
+            "alternatives":
+                [
+                    {
+                      "description": "Go back in.",
+                      "chapter":
+                        {
+                            "prologue": "But he didn't have the courage.",
+                            "alternatives":[]
+                        }  
+                    },
+                    {
+                        "description": "Go into the forest.",
+                        "chapter":
+                          {
+                              "prologue": "He met a strange elf with huge ... ears.",
+                              "alternatives":
+                              [
+                                  {
+                                      "description": "Ask him to join you on your adventure.",
+                                      "chapter":
+                                      {
+                                          "prologue": "Not only was the elf surprised but also irritated by the suspicious offer, since he did not even know Grundelduff. The rumors about Gurndelduff's intentions spread quickly in the forest. Soon nobody wanted to talk to him any longer. He disappointedly returned back home and locked himself inside.",
+                                          "alternatives":[]
+                                      }
+                                  },
+                                  {
+                                    "description": "Call him names.",
+                                    "chapter":
+                                    {
+                                        "prologue": "The elf happened to be quite flattered by the names. He gave you a paper which you suspiciously called 'key'. It said: \"PeanutButterJelly\". Even though he didn't understand the meaning, it somehow made him really happy.",
+                                        "alternatives": []
+                                    }
+                                },
+                                {
+                                    "description": "Leave as fast as you can.",
+                                    "chapter":
+                                    {
+                                        "prologue": "You stumbled upon a stone and fell into a tar pit. Your adventure was obviously over.",
+                                        "alternatives": []
+                                    }
+                                }
+                              ]
+                          }  
+                    },
+                    {
+                        "description": "Go into the town.",
+                        "chapter":
+                          {
+                              "prologue": "But he was very much hated there, so after a lot of frustrating hours he came back to his house and locked himself inside.",
+                              "alternatives":[]
+                          }  
+                      }
+                ]
+        }
+}

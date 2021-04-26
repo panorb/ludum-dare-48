@@ -9,7 +9,7 @@ onready var music_volume_slider = get_node("MarginContainer/HBoxContainer/VBoxCo
 onready var effect_volume_slider = get_node("MarginContainer/HBoxContainer/VBoxContainer2/EffectVolumeSettings/EffectVolumeSlider")
 
 func _ready():
-	SoundController.play_music("main-menu_background.mp3", 0, 
+	SoundController.play_music("main-menu-background.mp3", 0, 
 			Globals.music_volume, true)
 	music_volume_slider.value = Globals.music_volume
 	effect_volume_slider.value = Globals.effect_volume
