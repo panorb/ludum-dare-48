@@ -30,7 +30,6 @@ export var warning_color : Color = Color("#c19c00")
 signal exit_shell
 
 
-
 func _ready():
 	command_parser.update_file_system(file_system)
 	command_parser.connect("error_occurred", self, "send_error")

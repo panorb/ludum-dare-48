@@ -15,6 +15,7 @@ func start_game():
 	change_scene(player_shell_scene)
 	
 func change_scene(new_scene):
+	SoundController.stop_music()
 	if current_scene_node:	
 		current_scene_node.queue_free()
 	var scene_instance = new_scene.instance()
