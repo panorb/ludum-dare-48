@@ -17,14 +17,12 @@ func _ready() -> void:
 		_music.append(AudioStreamPlayer.new())
 		_music[i].bus = str("BGM",i)
 		_music[i].volume_db = linear2db(Globals.music_volume)
-		_music[i].connect("finished", self, "_on_music_finished", [i])
 		add_child(_music[i])
 	
 	for i in range(EFFECT_LAYERS):
 		_effect.append(AudioStreamPlayer.new())
 		_effect[i].volume_db= linear2db(Globals.effect_volume)
 		_effect[i].bus = str("SFX",i)
-		_effect[i].connect("finished", self, "_on_effect_finished", [i])
 		add_child(_effect[i])
 
 func get_audio_effect_player(channel: int) -> AudioStreamPlayer:
@@ -96,13 +94,3 @@ func stop_effects()-> void:
 func stop_all() -> void:
 	stop_music()
 	stop_effects()
-
-
-func _on_music_finished(channel: int) -> void:
-	if _loop :
-		_music[channel].stop()
-		_music[channel].play()
-
-
-func _on_effect_finished(channel: int) -> void:
-	pass
