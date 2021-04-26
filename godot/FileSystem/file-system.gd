@@ -56,14 +56,14 @@ func level_up(directory):
 
 func get_filesystem_node(absolute_path):
 	var return_dir = {}
-	return_dir["node"] = null
+	return_dir["last_node_found"] = null
 	# O: no error, 1: access denied, 2: invalid path
 	return_dir["error"] = 0
 	
 	var path_elements = absolute_path.split("/", false)
 	
 	if path_elements.empty():
-		return_dir["node"] = self
+		return_dir["last_node_found"] = self
 		return return_dir
 	
 	var parent_node = self
@@ -76,9 +76,11 @@ func get_filesystem_node(absolute_path):
 		for child in parent_node.get_children():
 			if child.get_fs_name() == node_name:
 				if not child.is_unlocked():
+					return_dir["last_node_found"] = child
 					return_dir["error"] = 1
 					return return_dir
 				if is_file(child) and not path_elements.empty():
+					return_dir["last_node_found"] = child
 					return_dir["error"] = 2
 					return return_dir
 				else:
@@ -86,10 +88,11 @@ func get_filesystem_node(absolute_path):
 					parent_node = child
 					break
 		if not child_found:
+			return_dir["last_node_found"] = parent_node
 			return_dir["error"] = 2
 			return return_dir
 			
-	return_dir["node"] = parent_node
+	return_dir["last_node_found"] = parent_node
 	return_dir["error"] = 0
 	return return_dir
 		
