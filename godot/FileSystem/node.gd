@@ -2,6 +2,7 @@ extends Node
 
 export(bool) var access_permission = true
 export(String) var password = ""
+export(String) var behavior_name = ""
 
 func get_fs_name():
 	return name.replace('|', '.')

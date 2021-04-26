@@ -9,6 +9,7 @@ signal clear_channel(channel)
 signal ssh_connect(adress)
 signal allow_input(allow)
 signal exit
+signal trigger_behavior(script_name)
 
 func input(input: String):
 	pass
@@ -36,3 +37,6 @@ func ssh_connect(adress: Dictionary):
 
 func exit():
 	emit_signal("exit")
+
+func call_behavior_script(script_name):
+	emit_signal("trigger_behavior", script_name)

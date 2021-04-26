@@ -39,6 +39,7 @@ func _ready():
 	command_parser.connect("ssh_connect", self, "_on_Commands_ssh_connect")
 	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
 	command_parser.connect("exit_shell", self, "_on_Commands_exit_shell")
+	command_parser.connect("trigger_behavior", self, "run_behavior_script")
 	
 	action_parser.connect("type", self, "type")
 	action_parser.connect("keystroke", self, "keystroke")

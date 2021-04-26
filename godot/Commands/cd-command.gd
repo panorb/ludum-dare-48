@@ -44,6 +44,9 @@ func execute(args):
 			throw_error("Error: Path points to a file")
 		else:
 			file_system.current_directory = absolute_path
-	
+			var behavior_name = node.behavior_name
+			if not behavior_name.empty():
+				emit_signal("trigger_behavior", behavior_name)
+			
 	execution_finished()
 
