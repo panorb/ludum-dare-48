@@ -4,6 +4,7 @@ var in_execution : Node = null
 
 func _ready():
 	aliases = ["run"]
+	command_description = "Runs the specified executable"
 
 
 func execute(args):

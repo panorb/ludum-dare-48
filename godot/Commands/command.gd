@@ -11,6 +11,9 @@ signal allow_input(allow)
 signal exit
 signal trigger_behavior(script_name)
 
+func update_file_system(fs : Node):
+	file_system = fs 
+
 func input(input: String):
 	pass
 

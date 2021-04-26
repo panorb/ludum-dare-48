@@ -34,10 +34,30 @@ script = ExtResource( 1 )
 access_permission = false
 
 [node name="rome|txt" type="Node" parent="home"]
+script = ExtResource( 4 )
 __meta__ = {
-"_editor_description_": "In old rome the key for the next door was called [accent]hppeqx[/accent].
+"_editor_description_": ""
+}
+content = "In old rome the key for the next door was called [accent]hppeqx[/accent]."
+
+[node name="hint|txt" type="Node" parent="home"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": "
 "
 }
+content = "Looks like some simplistic form of encryption... There is one named after a famous roman statesman."
+
+[node name="solution|txt" type="Node" parent="home"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+content = "The cypher is called Ceasar cypher and is applied by shifting every letter by a specific number of letters in the alphabet. In this case the encryption key was 1 and so the decription key is -1.
+
+\"hppeqx\" -- -1 --> [accent]\"goodpw\"
+Apply it with the unlock command.
+[/accent]"
 
 [node name="user" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -47,5 +67,5 @@ access_permission = false
 script = ExtResource( 1 )
 access_permission = false
 
-[node name="whackamole" type="Node" parent="."]
+[node name="whackamole|exe" type="Node" parent="."]
 script = ExtResource( 2 )

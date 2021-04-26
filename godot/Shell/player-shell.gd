@@ -11,7 +11,6 @@ onready var command_run = get_node("Commands/run")
 
 func _ready():
 	block_player_input = false
-	current_ssh = "benjamin"
 	text_edit.grab_focus()
 	
 	action_parser.connect("behavior_finished", self, "_on_Actions_behavior_finished")

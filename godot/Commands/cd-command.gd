@@ -4,7 +4,17 @@ extends "base-command.gd"
 func _ready():
 	aliases = ["cd"]
 	command_description = "Changes the current directory"
+	long_description = """Changes the working directory to the directory specified as first argument
 
+cat [folderpath]
+
+[b]Valid usage examples:[/b]
+cd ..
+cd Folder
+cd ~
+cd ../..
+cd Folder/SecondFolder
+"""
 
 func execute(args):
 	if args.size() >= 3:

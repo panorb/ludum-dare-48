@@ -25,3 +25,10 @@ func pause_node(node: Node, pause : bool):
 	node.set_process_unhandled_input(!pause)
 	node.set_process_unhandled_key_input(!pause)
 	node.set_physics_process(!pause)
+
+func get_adress_from_fs(fs: Node):
+	for adress in Globals.valid_adresses:
+		if adress["fs"] == fs.filename:
+			return adress
+	
+	return null

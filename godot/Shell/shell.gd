@@ -10,13 +10,12 @@ var current_command : String = ""
 var cursor_index : int = 0
 var display_cursor : bool = false
 var command_history_position : int = 0
-var current_ssh : String
 
 onready var command_parser = get_node("Commands")
 onready var action_parser = get_node("Actions")
-onready var file_system = get_node("FileSystem")
 onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
+var file_system : Node
 
 var input_accepted : bool = true
 var block_player_input := true
@@ -31,12 +30,12 @@ signal exit_shell
 
 
 func _ready():
-	command_parser.update_file_system(file_system)
+	ssh_connect(Globals.valid_adresses[0])
 	command_parser.connect("error_occurred", self, "send_error")
 	command_parser.connect("message_sent", self, "send_message")
 	command_parser.connect("clear_channel", self, "clear_channel")
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
-	command_parser.connect("ssh_connect", self, "_on_Commands_ssh_connect")
+	command_parser.connect("ssh_connect", self, "ssh_connect")
 	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
 	command_parser.connect("exit_shell", self, "_on_Commands_exit_shell")
 	command_parser.connect("trigger_behavior", self, "run_behavior_script")
@@ -243,8 +242,6 @@ func run_behavior_script(name: String):
 	assert(behavior.size() > 0)
 	
 	file.close()
-	
-	
 	action_parser.execute(behavior)
 
 
@@ -268,15 +265,16 @@ func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
 
 
-func _on_Commands_ssh_connect(adress: Dictionary):
-	file_system.queue_free()
+func ssh_connect(adress: Dictionary):
+	if file_system:
+		file_system.queue_free()
 	yield(get_tree(), "idle_frame")
+	
 	var file_system_scene = load(adress["fs"])
 	file_system = file_system_scene.instance()
 	self.add_child(file_system)
 	
 	command_parser.update_file_system(file_system)
-	current_ssh = adress["username"]
 
 
 func _on_Commands_allow_input(allow: bool):
