@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://FileSystem/folder.gd" type="Script" id=1]
-[ext_resource path="res://FileSystem/file.gd" type="Script" id=2]
 [ext_resource path="res://FileSystem/file-system.gd" type="Script" id=3]
 [ext_resource path="res://FileSystem/text-file.gd" type="Script" id=4]
 
@@ -11,117 +10,24 @@ script = ExtResource( 3 )
 [node name="home" type="Node" parent="."]
 script = ExtResource( 1 )
 
-[node name="jochen" type="Node" parent="home"]
+[node name="I" type="Node" parent="home"]
 script = ExtResource( 1 )
 
-[node name="Documents" type="Node" parent="home/jochen"]
+[node name="am" type="Node" parent="home/I"]
 script = ExtResource( 1 )
 
-[node name="grandmas pie|txt" type="Node" parent="home/jochen/Documents"]
+[node name="proud" type="Node" parent="home/I/am"]
+script = ExtResource( 1 )
+
+[node name="congratulations|txt" type="Node" parent="home/I/am/proud"]
 script = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
-content = "Grandma’s Chocolate Pie
-1/2 cup cocoa
-1/2 cup all-purpose flour
-3 egg yolks
-1 1/2 cup sugar
-1/4 teaspoon salt
-2 cups milk
-1 teaspoon vanilla extract
+content = "I really am :)"
 
-Mix cocoa, flour, beaten egg yolks, sugar, and salt, add milk while stirring in a pot over medium/high heat. Cook until thick, beating it smooth. Cream-pies take some time to thicken, so stir, stir. 10-15 minutes. Just keep stirring until it thickens. Pour into a pre-baked pie shell. Put in the refrigerator to cool. add whipped cream or use leftover egg whites for a meringue topping. Enjoy!!"
-
-[node name="Downloads" type="Node" parent="home/jochen"]
+[node name="not" type="Node" parent="home/I/am"]
 script = ExtResource( 1 )
 
-[node name="hotbabes|png" type="Node" parent="home/jochen/Downloads"]
-script = ExtResource( 2 )
-
-[node name="spell-bane|json" type="Node" parent="home/jochen/Downloads"]
-script = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
-content = "{
-    \"description\": {
-        \"value\": \"<p>Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an attack roll or a saving throw before the spell ends, the target must roll a d4 and subtract the number rolled from the attack roll or saving throw.</p>\\n<p><strong>Higher Levels.</strong> When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.</p>\",
-        \"chat\": \"\",
-        \"unidentified\": \"\"
-    },
-    \"source\": \"PHB pg. 216\",
-    \"activation\": {
-        \"type\": \"action\",
-        \"cost\": 1,
-        \"condition\": \"\"
-    },
-    \"duration\": {
-        \"value\": 1,
-        \"units\": \"minute\"
-    },
-    \"target\": {
-        \"value\": 3,
-        \"width\": null,
-        \"units\": \"\",
-        \"type\": \"creature\"
-    },
-    \"range\": {
-        \"value\": 30,
-        \"long\": 0,
-        \"units\": \"ft\"
-    },
-    \"uses\": {
-        \"value\": 0,
-        \"max\": \"0\",
-        \"per\": \"\"
-    },
-    \"consume\": {
-        \"type\": \"\",
-        \"target\": \"\",
-        \"amount\": null
-    },
-    \"ability\": \"\",
-    \"actionType\": \"save\",
-    \"attackBonus\": 0,
-    \"chatFlavor\": \"\",
-    \"critical\": null,
-    \"damage\": {
-        \"parts\": [],
-        \"versatile\": \"\",
-        \"value\": \"\"
-    },
-    \"formula\": \"\",
-    \"save\": {
-        \"ability\": \"cha\",
-        \"dc\": null,
-        \"scaling\": \"spell\"
-    },
-    \"level\": 1,
-    \"school\": \"enc\",
-    \"components\": {
-        \"value\": \"\",
-        \"vocal\": true,
-        \"somatic\": true,
-        \"material\": true,
-        \"ritual\": false,
-        \"concentration\": true
-    },
-    \"materials\": {
-        \"value\": \"A drop of blood\",
-        \"consumed\": false,
-        \"cost\": 0,
-        \"supply\": 0
-    },
-    \"preparation\": {
-        \"mode\": \"prepared\",
-        \"prepared\": false
-    },
-    \"scaling\": {
-        \"mode\": \"level\",
-        \"formula\": \"\"
-    }
-}"
+[node name="proud" type="Node" parent="home/I/am/not"]
+script = ExtResource( 1 )
 
 [node name="user" type="Node" parent="."]
 script = ExtResource( 1 )

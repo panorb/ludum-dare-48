@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://FileSystem/text-file.gd" type="Script" id=1]
-[ext_resource path="res://FileSystem/file.gd" type="Script" id=2]
 [ext_resource path="res://FileSystem/folder.gd" type="Script" id=3]
 [ext_resource path="res://FileSystem/file-system.gd" type="Script" id=4]
 
@@ -11,120 +10,103 @@ script = ExtResource( 4 )
 [node name="home" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="benjamin" type="Node" parent="home"]
+[node name="Challenge" type="Node" parent="home"]
 script = ExtResource( 3 )
 
-[node name="Documents" type="Node" parent="home/benjamin"]
+[node name="d" type="Node" parent="home/Challenge"]
 script = ExtResource( 3 )
 
-[node name="grandmas pie|txt" type="Node" parent="home/benjamin/Documents"]
+[node name="e" type="Node" parent="home/Challenge/d"]
+script = ExtResource( 3 )
+
+[node name="e" type="Node" parent="home/Challenge/d/e"]
+script = ExtResource( 3 )
+
+[node name="p" type="Node" parent="home/Challenge/d/e/e"]
+script = ExtResource( 3 )
+
+[node name="e" type="Node" parent="home/Challenge/d/e/e/p"]
+script = ExtResource( 3 )
+
+[node name="r" type="Node" parent="home/Challenge/d/e/e/p/e"]
+script = ExtResource( 3 )
+
+[node name="a" type="Node" parent="home/Challenge/d/e/e/p/e/r"]
+script = ExtResource( 3 )
+
+[node name="n" type="Node" parent="home/Challenge/d/e/e/p/e/r/a"]
+script = ExtResource( 3 )
+
+[node name="d" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
+script = ExtResource( 3 )
+
+[node name="d" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d"]
+script = ExtResource( 3 )
+
+[node name="e" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d"]
+script = ExtResource( 3 )
+
+[node name="e" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e"]
+script = ExtResource( 3 )
+
+[node name="p" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e"]
+script = ExtResource( 3 )
+
+[node name="e" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p"]
+script = ExtResource( 3 )
+
+[node name="r" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e"]
+script = ExtResource( 3 )
+
+[node name="comehere|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e/r"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-content = "Grandma’s Chocolate Pie
-1/2 cup cocoa
-1/2 cup all-purpose flour
-3 egg yolks
-1 1/2 cup sugar
-1/4 teaspoon salt
-2 cups milk
-1 teaspoon vanilla extract
+content = "Congratulations ;)
 
-Mix cocoa, flour, beaten egg yolks, sugar, and salt, add milk while stirring in a pot over medium/high heat. Cook until thick, beating it smooth. Cream-pies take some time to thicken, so stir, stir. 10-15 minutes. Just keep stirring until it thickens. Pour into a pre-baked pie shell. Put in the refrigerator to cool. add whipped cream or use leftover egg whites for a meringue topping. Enjoy!!"
+now ssh to me my son,
+- jochen
 
-[node name="Downloads" type="Node" parent="home/benjamin"]
-script = ExtResource( 3 )
+P.S: The 'lookup' process might help you with the IP adress."
 
-[node name="hotbabes|png" type="Node" parent="home/benjamin/Downloads"]
-script = ExtResource( 2 )
+[node name="hint|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e/r"]
+script = ExtResource( 1 )
+content = "\"The 'lookup' process might help you with the IP adress.\"
+[accent]What does he mean by that? Wasn't there a command to look at running processes somewhere in the help?[/accent]
+"
 
-[node name="spell-bane|json" type="Node" parent="home/benjamin/Downloads"]
+[node name="solution|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e/r"]
+script = ExtResource( 1 )
+content = "The command was \"proc\" and if you look at the memory usage of the process it tells you the IP adress one part at a time.
+
+[accent]
+The full command you need is:
+ssh jochen@[IP ADRESS HERE]
+[/accent]"
+
+[node name="hint|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-content = "{
-    \"description\": {
-        \"value\": \"<p>Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an attack roll or a saving throw before the spell ends, the target must roll a d4 and subtract the number rolled from the attack roll or saving throw.</p>\\n<p><strong>Higher Levels.</strong> When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.</p>\",
-        \"chat\": \"\",
-        \"unidentified\": \"\"
-    },
-    \"source\": \"PHB pg. 216\",
-    \"activation\": {
-        \"type\": \"action\",
-        \"cost\": 1,
-        \"condition\": \"\"
-    },
-    \"duration\": {
-        \"value\": 1,
-        \"units\": \"minute\"
-    },
-    \"target\": {
-        \"value\": 3,
-        \"width\": null,
-        \"units\": \"\",
-        \"type\": \"creature\"
-    },
-    \"range\": {
-        \"value\": 30,
-        \"long\": 0,
-        \"units\": \"ft\"
-    },
-    \"uses\": {
-        \"value\": 0,
-        \"max\": \"0\",
-        \"per\": \"\"
-    },
-    \"consume\": {
-        \"type\": \"\",
-        \"target\": \"\",
-        \"amount\": null
-    },
-    \"ability\": \"\",
-    \"actionType\": \"save\",
-    \"attackBonus\": 0,
-    \"chatFlavor\": \"\",
-    \"critical\": null,
-    \"damage\": {
-        \"parts\": [],
-        \"versatile\": \"\",
-        \"value\": \"\"
-    },
-    \"formula\": \"\",
-    \"save\": {
-        \"ability\": \"cha\",
-        \"dc\": null,
-        \"scaling\": \"spell\"
-    },
-    \"level\": 1,
-    \"school\": \"enc\",
-    \"components\": {
-        \"value\": \"\",
-        \"vocal\": true,
-        \"somatic\": true,
-        \"material\": true,
-        \"ritual\": false,
-        \"concentration\": true
-    },
-    \"materials\": {
-        \"value\": \"A drop of blood\",
-        \"consumed\": false,
-        \"cost\": 0,
-        \"supply\": 0
-    },
-    \"preparation\": {
-        \"mode\": \"prepared\",
-        \"prepared\": false
-    },
-    \"scaling\": {
-        \"mode\": \"level\",
-        \"formula\": \"\"
-    }
-}"
+content = "Do the folder names mean anything?
+Maybe you could try chaining the folder names, if you knew what they form via cd w/o/r/d"
+
+[node name="solution|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+content = "They are forming \"deeperanddeeper\".
+You  are at the the 'n' now, so only \"nddeeper\" remain.
+
+[accent]The command you need is \"cd n/d/d/e/e/p/e/r\"[/accent]"
 
 [node name="user" type="Node" parent="."]
 script = ExtResource( 3 )
+access_permission = false
 
 [node name="drivers" type="Node" parent="."]
 script = ExtResource( 3 )
+access_permission = false
