@@ -11,6 +11,6 @@ clear
 clear
 """
 
-func execute(args):
+func execute(_args):
 	clear_channel("*")
 	execution_finished()
