@@ -243,6 +243,8 @@ func run_behavior_script(name: String):
 	assert(behavior.size() > 0)
 	
 	file.close()
+	
+	
 	action_parser.execute(behavior)
 
 
@@ -259,7 +261,7 @@ func _on_Commands_finished_execution():
 	input_accepted = true
 
 	yield(get_tree().create_timer(0.1), "timeout")
-	output_label.scroll_following = false
+	output_label.scroll_following = block_player_input
 
 
 func _on_CursorBlinkTimer_timeout():

@@ -19,7 +19,6 @@ func _ready():
 	# run_behavior_script("start")
 	# send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
-
 func _unhandled_input(event):
 	if event is InputEventKey and not block_player_input:
 		if event.scancode == KEY_UP:
