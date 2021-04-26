@@ -1,4 +1,4 @@
-extends "command.gd"
+extends "base-command.gd"
 
 
 signal close

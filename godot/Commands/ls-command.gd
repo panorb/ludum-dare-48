@@ -1,7 +1,4 @@
-extends "command.gd"
-
-export(NodePath) var file_system_node
-onready var file_system = get_node(file_system_node)
+extends "base-command.gd"
 
 func _ready():
 	aliases = ["ls", "dir"]
@@ -41,5 +38,3 @@ func print_content(dir_node):
 			send_message("[main]" + child.get_fs_name() + "[/main]")
 
 
-func _on_ssh_change_filesystem():
-	file_system = get_node(file_system_node)

@@ -1,6 +1,8 @@
 class_name RecordingShell
 extends "../shell.gd"
 
+const MOUSE_INTERVAL = 0.5
+
 onready var text_edit = get_node("TextEdit")
 var recorded_actions : Dictionary = {}
 var recording_index = 0
@@ -9,15 +11,18 @@ var time_passed = 0
 var time_passed_mouse = 0
 var recording_active = false
 
+
+func _ready():
+	current_ssh = "benjamin"
+	text_edit.grab_focus()
+
+	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
+
+
 func _process(delta):
 	if recording_active:
 		time_passed += delta
 		time_passed_mouse += delta
-
-func _ready():
-	text_edit.grab_focus()
-
-	send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
 
 
 func _unhandled_input(event):
@@ -87,11 +92,12 @@ func _input(event):
 			else:
 				_debug_output("REC: Starting recording...")
 				recorded_actions.clear()
+				recorded_actions["actions"] = []
 			
 			recording_active = !recording_active
 	
 	if event is InputEventMouseMotion:
-		if time_passed_mouse > 1.5:
+		if time_passed_mouse > MOUSE_INTERVAL:
 			record_sleep()
 			record({
 				"action": "hover",
@@ -104,11 +110,11 @@ func _input(event):
 func record(recording : Dictionary):
 	if recording_active:
 		print(recording["action"])
-		recorded_actions[_stringify_index(recording_index)] = recording
+		recorded_actions["actions"].append(recording)
 		recording_index += 1
 
 func record_sleep():
-	if time_passed:
+	if time_passed and recorded_actions["actions"]:
 		record({
 			"action": "sleep",
 			"length": time_passed
@@ -143,13 +149,6 @@ func set_command(cmd: String):
 		"cmd": cmd
 	})
 	.set_command(cmd)
-
-
-func _stringify_index(index: int):
-	var stringified = str(index)
-	while stringified.length() < 3:
-		stringified = "0" + stringified
-	return stringified
 
 
 func _on_TextEdit_cursor_changed():

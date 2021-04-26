@@ -1,7 +1,4 @@
-extends "command.gd"
-
-export(NodePath) var file_system_node
-onready var file_system = get_node(file_system_node)
+extends "base-command.gd"
 
 func _ready():
 	aliases = ["cat"]
@@ -30,12 +27,10 @@ func execute(args):
 		throw_error("Error: Invalid path")
 	elif not file_system.is_file(node):
 		throw_error("Error: No file")
-	elif not "content" in node:
+	elif not file_system.is_text_file(node):
 		throw_error("Error: Cannot read binary file")
 	else:
 		send_message(node.content)
 		
 	execution_finished()
 
-func _on_ssh_change_filesystem():
-	file_system = get_node(file_system_node)

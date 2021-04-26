@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/empty-backspace.wav-2fb28513e4e9ad62ba3d7edcb2c7c884.sample"
+
+[deps]
+
+source_file="res://Shared/Sounds/empty-backspace.wav"
+dest_files=[ "res://.import/empty-backspace.wav-2fb28513e4e9ad62ba3d7edcb2c7c884.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

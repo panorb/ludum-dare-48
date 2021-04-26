@@ -1,14 +1,18 @@
 extends Node
 
-signal error_occurred(msg)
-signal message_sent(msg)
+signal error_occurred(msg, time, channel)
+signal message_sent(msg, time, channel)
+signal clear_channel(channel)
 signal finished_execution
+signal ssh_connect(adress)
 
 func _ready():
 	for child in get_children():
-		child.connect("command_error", self, "_on_Command_command_error")
-		child.connect("command_message", self, "_on_Command_command_message")
-		child.connect("command_finished", self, "_on_Command_command_finished")
+		child.connect("error", self, "_on_Command_error")
+		child.connect("message", self, "_on_Command_message")
+		child.connect("finished", self, "_on_Command_finished")
+		child.connect("clear_channel", self, "_on_Command_clear_channel")
+		child.connect("ssh_connect", self, "_on_Command_ssh_connect")
 
 func execute(cmd : String):
 	var regex = RegEx.new()
@@ -27,11 +31,21 @@ func execute(cmd : String):
 	emit_signal("error_occurred", "Unknown command")
 	emit_signal("finished_execution")
 
-func _on_Command_command_error(msg : String):
-	emit_signal("error_occurred", msg)
-	
-func _on_Command_command_message(msg: String):
-	emit_signal("message_sent", msg)
+func update_file_system(fs: Node):
+	for child in get_children():
+		child.file_system = fs
 
-func _on_Command_command_finished():
+func _on_Command_error(msg: String, display_time : float, channel : String):
+	emit_signal("error_occurred", msg, display_time, channel)
+	
+func _on_Command_message(msg: String, display_time : float, channel : String):
+	emit_signal("message_sent", msg, display_time, channel)
+
+func _on_Command_finished():
 	emit_signal("finished_execution")
+
+func _on_Command_clear_channel(channel: String):
+	emit_signal("clear_channel", channel)
+
+func _on_Command_ssh_connect(adress):
+	emit_signal("ssh_connect", adress)

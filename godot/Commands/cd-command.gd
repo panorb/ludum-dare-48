@@ -1,7 +1,5 @@
-extends "command.gd"
+extends "base-command.gd"
 
-export(NodePath) var file_system_node
-onready var file_system = get_node(file_system_node)
 
 func _ready():
 	aliases = ["cd"]
@@ -35,5 +33,3 @@ func execute(args):
 	
 	execution_finished()
 
-func _on_ssh_change_filesystem():
-	file_system = get_node(file_system_node)

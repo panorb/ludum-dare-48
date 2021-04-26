@@ -45,6 +45,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Shared/globals.gd"
+Helper="*res://Shared/helper.gd"
+SoundController="*res://Shared/sound-controller.gd"
 
 [display]
 

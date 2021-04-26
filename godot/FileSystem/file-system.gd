@@ -88,6 +88,12 @@ func points_to_directory(absolute_path):
 
 func is_file(node):
 	return node is preload("res://FileSystem/file.gd")
-	
+
+func is_text_file(node):
+	return node is preload("res://FileSystem/text-file.gd")
+
+func is_executable(node):
+	return node is preload("res://FileSystem/executable.gd")
+
 func is_directory(node):
 	return node is preload("res://FileSystem/folder.gd")

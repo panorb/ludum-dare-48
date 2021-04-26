@@ -2,7 +2,6 @@ extends "action.gd"
 
 
 func execute(args : Dictionary):
-	assert("char" in args)
-	
-	emit_signal("type", args["char"])
+	assert("allow" in args)
+	emit_signal("input_allow", args["allow"])
 	emit_signal("finished")
