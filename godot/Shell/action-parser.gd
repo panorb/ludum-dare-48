@@ -15,7 +15,6 @@ func _ready():
 		node.connect("finished", self, "_on_Action_finished")
 		node.connect("type", self, "_on_Action_type")
 		node.connect("keystroke", self, "_on_Action_keystroke")
-		node.connect("mousepos", self, "_on_Action_mousepos")
 		node.connect("message", self, "_on_Action_message")
 		node.connect("input_allow", self, "_on_Action_input_allow")
 		

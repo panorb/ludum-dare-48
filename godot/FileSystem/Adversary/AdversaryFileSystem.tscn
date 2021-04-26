@@ -28,6 +28,7 @@ script = ExtResource( 1 )
 
 [node name="proud" type="Node" parent="home/I/am/not"]
 script = ExtResource( 1 )
+access_permission = false
 
 [node name="user" type="Node" parent="."]
 script = ExtResource( 1 )

@@ -1,116 +1,12 @@
 {
     "actions": [
         {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.961719,
-            "y": 0.940278
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.715625,
-            "y": 0.668056
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.35625,
-            "y": 0.331944
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.107813,
-            "y": 0.229167
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.110937,
-            "y": 0.154167
-        },
-        {
-            "action": "sleep",
-            "length": 0.566667
-        },
-        {
-            "action": "hover",
-            "speed": 0.566667,
-            "x": 0.114063,
-            "y": 0.022222
-        },
-        {
-            "action": "sleep",
-            "length": 1.783333
-        },
-        {
             "action": "type",
-            "char": "l"
+            "char": "T"
         },
         {
             "action": "sleep",
-            "length": 0.05
-        },
-        {
-            "action": "type",
-            "char": "s"
-        },
-        {
-            "action": "sleep",
-            "length": 2.066667
-        },
-        {
-            "action": "keystroke",
-            "key": "enter"
-        },
-        {
-            "action": "keystroke",
-            "key": "backspace"
-        },
-        {
-            "action": "sleep",
-            "length": 1.466667
-        },
-        {
-            "action": "type",
-            "char": "c"
-        },
-        {
-            "action": "sleep",
-            "length": 0.066667
-        },
-        {
-            "action": "type",
-            "char": "d"
-        },
-        {
-            "action": "sleep",
-            "length": 0.1
-        },
-        {
-            "action": "type",
-            "char": " "
-        },
-        {
-            "action": "sleep",
-            "length": 0.183333
+            "length": 0.02
         },
         {
             "action": "type",
@@ -118,7 +14,127 @@
         },
         {
             "action": "sleep",
-            "length": 0.2
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "i"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "s"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "i"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "s"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "t"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "h"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "e"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "p"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "a"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "s"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "s"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "w"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
         },
         {
             "action": "type",
@@ -126,7 +142,447 @@
         },
         {
             "action": "sleep",
-            "length": 0.183333
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "r"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "d"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "f"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "o"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "r"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "\""
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "C"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "h"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "a"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "l"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "l"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "e"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "n"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "g"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "e"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "\""
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "m"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "y"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "s"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "o"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "n"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": ","
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "g"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "o"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "o"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "d"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "l"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "u"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "c"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "k"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": ":"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "\""
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "x"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "d"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "f"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "u"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "l"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "d"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "4"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "8"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "\""
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "keystroke",
+            "key": "enter"
+        },
+        {
+            "action": "sleep",
+            "length": 0.5
+        },
+        {
+            "action": "type",
+            "char": "c"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "l"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "e"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "a"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "r"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "keystroke",
+            "key": "enter"
+        },
+        {
+            "action": "sleep",
+            "length": 0.8
         },
         {
             "action": "type",
@@ -138,42 +594,6 @@
         },
         {
             "action": "type",
-            "char": "e"
-        },
-        {
-            "action": "sleep",
-            "length": 0.1
-        },
-        {
-            "action": "keystroke",
-            "key": "enter"
-        },
-        {
-            "action": "keystroke",
-            "key": "backspace"
-        },
-        {
-            "action": "sleep",
-            "length": 1.95
-        },
-        {
-            "action": "type",
-            "char": "p"
-        },
-        {
-            "action": "sleep",
-            "length": 0.083333
-        },
-        {
-            "action": "type",
-            "char": "r"
-        },
-        {
-            "action": "sleep",
-            "length": 0.116667
-        },
-        {
-            "action": "type",
             "char": "o"
         },
         {
@@ -182,265 +602,23 @@
         },
         {
             "action": "type",
-            "char": "c"
-        },
-        {
-            "action": "sleep",
-            "length": 0.45
-        },
-        {
-            "action": "keystroke",
-            "key": "enter"
+            "char": "t"
         },
         {
             "action": "sleep",
             "length": 0.1
         },
         {
-            "action": "fakeinteractive",
-            "queue": [{
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | █████      120 MB |  34%\n43191 | news-update.exe     | ██          32 MB |  12%\n84128 | conn-receive.exe    | ██          10 MB |   3%\n30122 | no-tracker.exe      | █            2 MB |   1%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | █████      122 MB |  35%\n43191 | news-update.exe     | ██          34 MB |  11%\n84128 | conn-receive.exe    | █           14 MB |   5%\n30122 | no-tracker.exe      | █            2 MB |   0%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | ██████     124 MB |  33%\n43191 | news-update.exe     | ██          35 MB |  13%\n84128 | conn-receive.exe    | █           12 MB |   3%\n30122 | no-tracker.exe      | █            4 MB |   1%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | █████      120 MB |  34%\n43191 | news-update.exe     | ██          32 MB |  12%\n84128 | conn-receive.exe    | ██          10 MB |   3%\n30122 | no-tracker.exe      | █            2 MB |   1%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | █████      122 MB |  35%\n43191 | news-update.exe     | ██          34 MB |  11%\n84128 | conn-receive.exe    | █           14 MB |   5%\n30122 | no-tracker.exe      | █            2 MB |   0%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | ██████     124 MB |  33%\n43191 | news-update.exe     | ██          35 MB |  13%\n84128 | conn-receive.exe    | █           12 MB |   3%\n30122 | no-tracker.exe      | █            4 MB |   1%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | █████      120 MB |  34%\n43191 | news-update.exe     | ██          32 MB |  12%\n84128 | conn-receive.exe    | ██          10 MB |   3%\n30122 | no-tracker.exe      | █            2 MB |   1%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | █████      122 MB |  35%\n43191 | news-update.exe     | ██          34 MB |  11%\n84128 | conn-receive.exe    | █           14 MB |   5%\n30122 | no-tracker.exe      | █            2 MB |   0%\n\nPress any key to cancel...",
-                "time": 0.2
-            },
-            {
-                "text": "=== Process Overview ===\nID    | Process name        | Memory            | CPU\n00000 | os-core.exe         | ██████     124 MB |  33%\n43191 | news-update.exe     | ██          35 MB |  13%\n84128 | conn-receive.exe    | █           12 MB |   3%\n30122 | no-tracker.exe      | █            4 MB |   1%\n\nPress any key to cancel...",
-            }]
-        },
-        {
-            "action": "sleep",
-            "length": 0.866667
-        },
-        {
-            "action": "hover",
-            "speed": 9.966667,
-            "x": 0.076563,
-            "y": 0.168056
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.102344,
-            "y": 0.722222
-        },
-        {
-            "action": "sleep",
-            "length": 0.616667
-        },
-        {
-            "action": "hover",
-            "speed": 0.616667,
-            "x": 0.067969,
-            "y": 0.597222
-        },
-        {
-            "action": "sleep",
-            "length": 1.4
-        },
-        {
-            "action": "hover",
-            "speed": 1.4,
-            "x": 0.06875,
-            "y": 0.595833
-        },
-        {
-            "action": "sleep",
-            "length": 1.133333
-        },
-        {
-            "action": "hover",
-            "speed": 1.133333,
-            "x": 0.088281,
-            "y": 0.6125
-        },
-        {
-            "action": "sleep",
-            "length": 0.583333
-        },
-        {
-            "action": "hover",
-            "speed": 0.583333,
-            "x": 0.099219,
-            "y": 0.6
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.076563,
-            "y": 0.598611
-        },
-        {
-            "action": "sleep",
-            "length": 1.05
-        },
-        {
-            "action": "hover",
-            "speed": 1.05,
-            "x": 0.060156,
-            "y": 0.608333
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "hover",
-            "speed": 0.5,
-            "x": 0.092969,
-            "y": 0.625
-        },
-        {
-            "action": "sleep",
-            "length": 1.55
-        },
-        {
-            "action": "hover",
-            "speed": 1.55,
-            "x": 0.110937,
-            "y": 0.620833
-        },
-        {
-            "action": "sleep",
-            "length": 1.851076
-        },
-        {
             "action": "type",
-            "char": "k"
+            "char": "d"
         },
         {
             "action": "sleep",
-            "length": 0.166667
-        },
-        {
-            "action": "type",
-            "char": "i"
-        },
-        {
-            "action": "sleep",
-            "length": 0.2
-        },
-        {
-            "action": "type",
-            "char": "l"
-        },
-        {
-            "action": "sleep",
-            "length": 0.15
-        },
-        {
-            "action": "type",
-            "char": "l"
-        },
-        {
-            "action": "sleep",
-            "length": 0.416667
-        },
-        {
-            "action": "type",
-            "char": " "
-        },
-        {
-            "action": "sleep",
-            "length": 0.283333
-        },
-        {
-            "action": "type",
-            "char": "4"
-        },
-        {
-            "action": "sleep",
-            "length": 0.5
-        },
-        {
-            "action": "type",
-            "char": "3"
-        },
-        {
-            "action": "sleep",
-            "length": 0.433333
-        },
-        {
-            "action": "type",
-            "char": "1"
-        },
-        {
-            "action": "sleep",
-            "length": 1.05
-        },
-        {
-            "action": "type",
-            "char": "9"
-        },
-        {
-            "action": "sleep",
-            "length": 0.816667
-        },
-        {
-            "action": "type",
-            "char": "1"
-        },
-        {
-            "action": "sleep",
-            "length": 0.466667
-        },
-        {
-            "action": "keystroke",
-            "key": "backspace"
-        },
-        {
-            "action": "sleep",
-            "length": 0.108604
-        },
-        {
-            "action": "type",
-            "char": "2"
-        },
-        {
-            "action": "sleep",
-            "length": 0.550011
+            "length": 0.02
         },
         {
             "action": "keystroke",
             "key": "enter"
-        },
-        {
-            "action": "keystroke",
-            "key": "backspace"
         }
     ]
 }

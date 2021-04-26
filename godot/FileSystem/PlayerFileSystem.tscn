@@ -12,6 +12,7 @@ script = ExtResource( 3 )
 
 [node name="Challenge" type="Node" parent="home"]
 script = ExtResource( 3 )
+password = "xdfuld48"
 
 [node name="d" type="Node" parent="home/Challenge"]
 script = ExtResource( 3 )

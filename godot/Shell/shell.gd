@@ -13,11 +13,14 @@ var command_history_position : int = 0
 var current_ssh : String
 
 onready var command_parser = get_node("Commands")
+onready var action_parser = get_node("Actions")
 onready var file_system = get_node("FileSystem")
 onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 
 var input_accepted : bool = true
+var block_player_input := true
+
 export var muted : bool = false
 export var main_color : Color = Color("#cccccc")
 export var accent_color : Color = Color("#16c60c")
@@ -25,6 +28,7 @@ export var error_color : Color = Color("#c50f1f")
 export var warning_color : Color = Color("#c19c00")
 
 signal exit_shell
+
 
 
 func _ready():
@@ -36,6 +40,12 @@ func _ready():
 	command_parser.connect("ssh_connect", self, "_on_Commands_ssh_connect")
 	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
 	command_parser.connect("exit_shell", self, "_on_Commands_exit_shell")
+	
+	action_parser.connect("type", self, "type")
+	action_parser.connect("keystroke", self, "keystroke")
+	action_parser.connect("mousepos", self, "set_mouse_position")
+	action_parser.connect("message", self, "send_message")
+	action_parser.connect("input_allow", self, "set_input_accepted")
 
 func _process(delta):
 	output_label.bbcode_text = ""
@@ -69,6 +79,7 @@ func _process(delta):
 func initialize(world : Node):
 	world_node = world
 	self.connect("exit_shell", world_node, "default_view")
+
 
 func clear_channel(channel: String):
 	if channel == '*':
@@ -191,36 +202,48 @@ func send_error(msg: String, display_time := -1, channel := "main"):
 
 
 func type(chr):
-	if input_accepted:
-		current_command += chr
+	current_command += chr
+	cursor_index += 1
 
 
 func keystroke(key):
-	if input_accepted:
-		match key:
-			"enter":
-				if current_command:
-					output_label.scroll_following = true
-					_play_sound_effect("command-send.wav")
-					run_command()
-				else:
-					_play_sound_effect("error.wav")
-			"backspace":
-				if not current_command:
-					_play_sound_effect("empty-backspace.wav")
-					return
-				
-				current_command = current_command.left(current_command.length() - 1)
-			"up":
-				command_history_position -= 1
-				command_from_history()
-			"down":
-				command_history_position += 1
-				command_from_history()
+	match key:
+		"enter":
+			if current_command:
+				output_label.scroll_following = true
+				_play_sound_effect("command-send.wav")
+				run_command()
+			else:
+				_play_sound_effect("error.wav")
+		"backspace":
+			if not current_command:
+				_play_sound_effect("empty-backspace.wav")
+				return
+			
+			current_command = current_command.left(current_command.length() - 1)
+		"up":
+			command_history_position -= 1
+			command_from_history()
+		"down":
+			command_history_position += 1
+			command_from_history()
 
 
 func set_command(cmd: String):
 	current_command = cmd
+
+func run_behavior_script(name: String):
+	var file_path = "res://Behaviors/" + name + ".json"
+	
+	var file = File.new()
+	assert(file.file_exists(file_path))
+	
+	file.open(file_path, File.READ)
+	var behavior = JSON.parse(file.get_as_text()).result
+	assert(behavior.size() > 0)
+	
+	file.close()
+	action_parser.execute(behavior)
 
 
 func _play_sound_effect(filename: String, channel: int = 0):
@@ -260,3 +283,4 @@ func _on_Commands_allow_input(allow: bool):
 
 func _on_Commands_exit_shell():
 	emit_signal("exit_shell")
+

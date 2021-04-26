@@ -10,11 +10,6 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "",
-"class": "AdversaryShell",
-"language": "GDScript",
-"path": "res://Shell/Adversary/adversary-shell.gd"
-}, {
-"base": "",
 "class": "PlayerShell",
 "language": "GDScript",
 "path": "res://Shell/player-shell.gd"
@@ -30,7 +25,6 @@ _global_script_classes=[ {
 "path": "res://Shell/shell.gd"
 } ]
 _global_script_class_icons={
-"AdversaryShell": "",
 "PlayerShell": "",
 "RecordingShell": "",
 "Shell": ""
@@ -76,6 +70,14 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+record={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [rendering]

@@ -77,7 +77,7 @@ func _debug_output(msg: String):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.is_action_pressed("ui_accept"):
+		if event.is_action_pressed("record"):
 			if recording_active:
 				var t = OS.get_datetime()
 				var file_name = str(t.year) + "-" + str(t.month) + "-" \
@@ -98,13 +98,13 @@ func _input(event):
 	
 	if event is InputEventMouseMotion:
 		if time_passed_mouse > MOUSE_INTERVAL:
-			record_sleep()
-			record({
-				"action": "hover",
-				"speed": time_passed_mouse,
-				"x": event.position.x / get_viewport_rect().size.x,
-				"y": event.position.y / get_viewport_rect().size.y
-			})
+			#record_sleep()
+			#record({
+			#	"action": "hover",
+			#	"speed": time_passed_mouse,
+			#	"x": event.position.x / get_viewport_rect().size.x,
+			#	"y": event.position.y / get_viewport_rect().size.y
+			#})
 			time_passed_mouse = 0
 
 func record(recording : Dictionary):
@@ -117,7 +117,7 @@ func record_sleep():
 	if time_passed and recorded_actions["actions"]:
 		record({
 			"action": "sleep",
-			"length": time_passed
+			"length": 0.02
 		})
 	time_passed = 0
 

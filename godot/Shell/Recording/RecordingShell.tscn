@@ -21,12 +21,5 @@ margin_bottom = 20.0
 bbcode_text = "[color=red]>[/color] [b]ls[/b] /fonts█"
 text = "> ls /fonts█"
 
-[node name="cd" parent="Commands" index="1"]
-file_system_node = NodePath("../../../RecordingShell/FileSystem")
-
-[node name="ls" parent="Commands" index="4"]
-file_system_node = NodePath("../../../RecordingShell/FileSystem")
-
-[node name="ssh" parent="Commands" index="6"]
-file_system_node = NodePath("../../FileSystem")
-root_node = NodePath("../..")
+[node name="Shader" parent="." index="6"]
+visible = false
