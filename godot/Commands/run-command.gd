@@ -58,6 +58,7 @@ func execute(args):
 				in_execution.connect("message", self, "_on_Executable_message")
 				in_execution.connect("clear_channel", self, "_on_Executable_clear_channel")
 				in_execution.connect("allow_input", self, "_on_Executable_allow_input")
+				in_execution.connect("allow_shell_sounds", self, "_on_Executable_allow_shell_sounds")
 				in_execution.connections_made = true
 			in_execution.execute()
 			return
@@ -90,6 +91,9 @@ func _on_Executable_clear_channel(channel: String):
 
 func _on_Executable_allow_input(allow: bool):
 	allow_input(allow)
+
+func _on_Executable_allow_shell_sounds(allow: bool):
+	allow_shell_sounds(allow)
 
 func input(input):
 	in_execution.input(input)

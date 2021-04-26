@@ -9,6 +9,7 @@ signal allow_input(allow)
 signal exit_shell
 signal trigger_behavior(script_name)
 signal play_animation(animation_name)
+signal allow_shell_sounds(allow)
 
 var _command : Node = null
 
@@ -23,6 +24,7 @@ func _ready():
 		child.connect("exit", self, "_on_Command_exit")
 		child.connect("trigger_behavior", self, "_on_Command_trigger_behavior")
 		child.connect("play_animation", self, "_on_Command_play_animation")
+		child.connect("allow_shell_sounds", self, "_on_Command_allow_shell_sounds")
 
 func input(input : String):
 	if _command:
@@ -86,3 +88,6 @@ func _on_Command_trigger_behavior(script_name):
 
 func _on_Command_play_animation(animation_name):
 	emit_signal("play_animation", animation_name)
+
+func _on_Command_allow_shell_sounds(allow):
+	emit_signal("allow_shell_sounds", allow)

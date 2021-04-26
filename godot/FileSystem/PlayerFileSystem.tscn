@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://FileSystem/text-file.gd" type="Script" id=1]
-[ext_resource path="res://FileSystem/Executables/ascii-game.gd" type="Script" id=2]
+[ext_resource path="res://FileSystem/Executables/whackamole-executable.gd" type="Script" id=2]
 [ext_resource path="res://FileSystem/folder.gd" type="Script" id=3]
 [ext_resource path="res://FileSystem/file-system.gd" type="Script" id=4]
 
@@ -176,5 +176,5 @@ content = "At every puzzle location there are 2 files: hint.txt and solution.txt
 If you tried to solve the puzzle, but are stuck first read the hint.txt.
 At the bottom of the hint.txt you will find a password for the solution.txt, [b]only read it if you really have to. You can insert the password via the unlock command. Take a look at the help via 'help unlock' if you are unsure how to use it.[/b]"
 
-[node name="game|exe" type="Node" parent="."]
+[node name="whackamole|exe" type="Node" parent="."]
 script = ExtResource( 2 )

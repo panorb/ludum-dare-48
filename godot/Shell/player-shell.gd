@@ -7,13 +7,13 @@ onready var animation_player = get_node("AnimationPlayer")
 func _ready():
 	ssh_connect(Globals.valid_adresses[0])
 	block_player_input = false
+	run_behavior_script("start")
 	text_edit.grab_focus()
 	
 	action_parser.connect("behavior_finished", self, "_on_Actions_behavior_finished")
 	command_parser.connect("play_animation", self, "_on_Commands_play_animation")
 	animation_player.play("startup")
 	
-	run_behavior_script("start")
 
 func _unhandled_input(event):
 	if event is InputEventKey and not block_player_input:

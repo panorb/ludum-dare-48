@@ -18,9 +18,9 @@ onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 var file_system : Node
 
 var input_accepted : bool = true
+var shell_sounds := true
 var block_player_input := true
 
-export var muted : bool = false
 export var main_color : Color = Color("#cccccc")
 export var accent_color : Color = Color("#16c60c")
 export var error_color : Color = Color("#c50f1f")
@@ -36,6 +36,7 @@ func _ready():
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("ssh_connect", self, "ssh_connect")
 	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
+	command_parser.connect("allow_shell_sounds", self, "_on_Commands_allow_shell_sounds")
 	command_parser.connect("exit_shell", self, "_on_Commands_exit_shell")
 	
 	command_parser.connect("trigger_behavior", self, "run_behavior_script")
@@ -210,13 +211,13 @@ func keystroke(key):
 		"enter":
 			if current_command:
 				output_label.scroll_following = true
-				_play_sound_effect("command-send.wav")
+				_play_sound_effect("command-send.wav", 1)
 				run_command()
 			else:
-				_play_sound_effect("error.wav")
+				_play_sound_effect("error.wav", 1)
 		"backspace":
 			if not current_command:
-				_play_sound_effect("empty-backspace.wav")
+				_play_sound_effect("empty-backspace.wav", 1)
 				return
 			
 			current_command = current_command.left(current_command.length() - 1)
@@ -245,7 +246,7 @@ func run_behavior_script(name: String):
 	action_parser.execute(behavior)
 
 func _play_sound_effect(filename: String, channel: int = 0):
-	if not muted:
+	if shell_sounds:
 		SoundController.play_effect(filename, channel)
 
 
@@ -258,6 +259,10 @@ func _on_Commands_finished_execution():
 
 	yield(get_tree().create_timer(0.1), "timeout")
 	output_label.scroll_following = block_player_input
+
+
+func _on_Commands_allow_shell_sounds(allow):
+	shell_sounds = allow
 
 
 func _on_CursorBlinkTimer_timeout():

@@ -11,6 +11,7 @@ signal allow_input(allow)
 signal exit
 signal trigger_behavior(script_name)
 signal play_animation(animation_name)
+signal allow_shell_sounds(allow)
 
 func update_file_system(fs : Node):
 	file_system = fs 
@@ -23,6 +24,9 @@ func execute(_args):
 
 func allow_input(allow: bool):
 	emit_signal("allow_input", allow)
+
+func allow_shell_sounds(allow: bool):
+	emit_signal("allow_shell_sounds", allow)
 
 func send_message(msg: String, display_time: float = -1, channel := "main"):
 	emit_signal("message", msg, display_time, channel)

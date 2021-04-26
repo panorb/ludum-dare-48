@@ -35,6 +35,7 @@ func _ready():
 	empty_line = empty_line.repeat(field_width*(cell_width+1)+1)
 
 func execute():
+	allow_shell_sounds(false)
 	time_passed = 0
 	time_passed_last_integer = 0
 	score = 0
@@ -90,6 +91,7 @@ func _spawn_random_mole():
 	var time = rng.randf_range(2, 4)
 	
 	if _get_mole_index(x, y) == -1:
+		SoundController.play_effect("send-message.wav")
 		moles.append({
 			"x": x,
 			"y": y,
@@ -98,7 +100,9 @@ func _spawn_random_mole():
 
 func execution_finished():
 	clear_channel("whack")
+	allow_shell_sounds(true)
 	.execution_finished()
+	yield(get_tree(), "idle_frame")
 
 
 func _input(event):
@@ -125,6 +129,7 @@ func _input(event):
 			var index = _get_mole_index(cursor_x, cursor_y)
 			
 			if index >= 0:
+				SoundController.play_effect("command-send.wav")
 				score += 1
 				rerender = true
 				moles.remove(index)
@@ -132,6 +137,8 @@ func _input(event):
 				if not moles.size():
 					_spawn_random_mole()
 					render()
+			else:
+				SoundController.play_effect("error-message.wav")
 		
 		cursor_x = clamp(cursor_x, 0, field_width - 1)
 		cursor_y = clamp(cursor_y, 0, field_height - 1)
@@ -155,6 +162,7 @@ func _get_mole_index(x: int, y: int):
 
 func render():
 	clear_channel("whack")
+	send_message("[accent]Hit the moles with your hammer! Move your hammer with the [b]arrow keys[/b] and whack with [b]space[/b].[/accent]", -1, "whack")
 	send_message("Timer: " + str(time_passed_last_integer) + "/" + str(game_length), -1, "whack")
 	send_message("Score: " + str(score) + "/" + str(target_score), -1, "whack")
 	render_playing_field()

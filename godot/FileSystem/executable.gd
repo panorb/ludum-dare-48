@@ -5,12 +5,12 @@ signal message(text, time, channel)
 signal finished
 signal clear_channel(channel)
 signal allow_input(allow)
+signal allow_shell_sounds(allow)
 
 var connections_made := false
 
 func execute():
 	Helper.pause_node(self, false)
-	set_process_unhandled_input(true)
 
 
 func send_message(msg: String, display_time := -1, channel := "main"):
@@ -29,8 +29,14 @@ func execution_finished():
 func clear_channel(channel: String):
 	emit_signal("clear_channel", channel)
 
+
 func allow_input(allow: bool):
 	emit_signal("allow_input", allow)
+
+
+func allow_shell_sounds(allow: bool):
+	emit_signal("allow_shell_sounds", allow)
+
 
 func input(_input: String):
 	pass
