@@ -30,7 +30,7 @@ func execute(args):
 		throw_error("Error: Invalid path")
 	elif not file_system.is_file(node):
 		throw_error("Error: No file")
-	elif not "content" in node:
+	elif not file_system.is_text_file(node):
 		throw_error("Error: Cannot read binary file")
 	else:
 		send_message(node.content)

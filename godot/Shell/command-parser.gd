@@ -7,10 +7,10 @@ signal finished_execution
 
 func _ready():
 	for child in get_children():
-		child.connect("command_error", self, "_on_Command_command_error")
-		child.connect("command_message", self, "_on_Command_command_message")
-		child.connect("command_finished", self, "_on_Command_command_finished")
-		child.connect("command_clear_channel", self, "_on_Command_command_clear_channel")
+		child.connect("error", self, "_on_Command_error")
+		child.connect("message", self, "_on_Command_message")
+		child.connect("finished", self, "_on_Command_finished")
+		child.connect("clear_channel", self, "_on_Command_clear_channel")
 
 func execute(cmd : String):
 	var regex = RegEx.new()
@@ -29,14 +29,14 @@ func execute(cmd : String):
 	emit_signal("error_occurred", "Unknown command")
 	emit_signal("finished_execution")
 
-func _on_Command_command_error(msg: String, display_time : float, channel : String):
+func _on_Command_error(msg: String, display_time : float, channel : String):
 	emit_signal("error_occurred", msg, display_time, channel)
 	
-func _on_Command_command_message(msg: String, display_time : float, channel : String):
+func _on_Command_message(msg: String, display_time : float, channel : String):
 	emit_signal("message_sent", msg, display_time, channel)
 
-func _on_Command_command_finished():
+func _on_Command_finished():
 	emit_signal("finished_execution")
 
-func _on_Command_command_clear_channel(channel: String):
+func _on_Command_clear_channel(channel: String):
 	emit_signal("clear_channel", channel)
