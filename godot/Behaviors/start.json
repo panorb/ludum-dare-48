@@ -1,6 +1,22 @@
 {
     "actions": [
         {
+            "action": "message",
+            "text": "[accent]Welcome benjamin! Today it is sunny, no rain expected.[/accent]"
+        },
+        {
+            "action": "sleep",
+            "length": 3
+        },
+        {
+            "action": "message",
+            "text": "Started execution of bootup script..."
+        },
+        {
+            "action": "sleep",
+            "length": 3
+        },
+        {
             "action": "type",
             "char": "T"
         },
