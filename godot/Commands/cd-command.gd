@@ -46,7 +46,9 @@ func execute(args):
 			file_system.current_directory = absolute_path
 			var behavior_name = node.behavior_name
 			if not behavior_name.empty():
+				execution_finished()				
 				emit_signal("trigger_behavior", behavior_name)
+				return
 			
 	execution_finished()
 

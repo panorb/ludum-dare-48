@@ -84,5 +84,6 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]

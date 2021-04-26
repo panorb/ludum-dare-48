@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/main-menu-background.mp3-6349f4da117e4f2f68da16b648bfc59e.mp3str"
+
+[deps]
+
+source_file="res://Shared/Music/main-menu-background.mp3"
+dest_files=[ "res://.import/main-menu-background.mp3-6349f4da117e4f2f68da16b648bfc59e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
