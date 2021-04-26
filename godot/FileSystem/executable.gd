@@ -6,6 +6,7 @@ signal finished
 signal clear_channel(channel)
 signal allow_input(allow)
 
+var connections_made := false
 
 func execute():
 	Helper.pause_node(self, false)

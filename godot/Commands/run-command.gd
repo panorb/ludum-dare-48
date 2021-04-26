@@ -51,12 +51,14 @@ func execute(args):
 		elif not file_system.is_executable(node):
 			throw_error("Error: File is not executable")
 		else:
-			in_execution = node
-			in_execution.connect("finished", self, "_on_Executable_finished")
-			in_execution.connect("error", self, "_on_Executable_error")
-			in_execution.connect("message", self, "_on_Executable_message")
-			in_execution.connect("clear_channel", self, "_on_Executable_clear_channel")
-			in_execution.connect("allow_input", self, "_on_Executable_allow_input")
+			in_execution = node 
+			if not in_execution.connections_made:
+				in_execution.connect("finished", self, "_on_Executable_finished")
+				in_execution.connect("error", self, "_on_Executable_error")
+				in_execution.connect("message", self, "_on_Executable_message")
+				in_execution.connect("clear_channel", self, "_on_Executable_clear_channel")
+				in_execution.connect("allow_input", self, "_on_Executable_allow_input")
+				in_execution.connections_made = true
 			in_execution.execute()
 			return
 		
