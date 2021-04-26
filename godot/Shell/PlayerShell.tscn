@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Shell/Shell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shell/player-shell.gd" type="Script" id=2]
 [ext_resource path="res://Commands/ssh-command.gd" type="Script" id=3]
 [ext_resource path="res://Commands/help-command.gd" type="Script" id=4]
+[ext_resource path="res://Shell/wallpaper.png" type="Texture" id=5]
 [ext_resource path="res://Commands/exit-command.gd" type="Script" id=6]
 [ext_resource path="res://Commands/cd-command.gd" type="Script" id=7]
 [ext_resource path="res://Commands/ls-command.gd" type="Script" id=8]
@@ -20,6 +21,50 @@ script = ExtResource( 2 )
 accent_color = Color( 0.0862745, 0.776471, 0.0470588, 1 )
 error_color = Color( 0.772549, 0.0588235, 0.121569, 1 )
 warning_color = Color( 0.756863, 0.611765, 0, 1 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wallpaper" type="TextureRect" parent="MarginContainer2" index="0"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" parent="." index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="MarginContainer" parent="MarginContainer" index="0"]
+margin_left = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" parent="MarginContainer/MarginContainer" index="0"]
+margin_right = 1220.0
+margin_bottom = 660.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" parent="MarginContainer" index="1"]
+margin_left = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+size_flags_vertical = 3
 
 [node name="cat" type="Node" parent="Commands" index="0"]
 script = ExtResource( 11 )
@@ -64,7 +109,7 @@ script = ExtResource( 15 )
 [node name="unlock" type="Node" parent="Commands" index="10"]
 script = ExtResource( 16 )
 
-[node name="TextEdit" type="TextEdit" parent="." index="3"]
+[node name="TextEdit" type="TextEdit" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,7 +120,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Shader" type="ColorRect" parent="." index="4"]
+[node name="Shader" type="ColorRect" parent="." index="5"]
 material = ExtResource( 12 )
 anchor_right = 1.0
 anchor_bottom = 1.0
