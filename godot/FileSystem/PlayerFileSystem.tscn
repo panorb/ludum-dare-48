@@ -105,6 +105,19 @@ You  are at the the 'n' now, so only \"nddeeper\" remain.
 
 [accent]The command you need is \"cd n/d/d/e/e/p/e/r\"[/accent]"
 
+[node name="hint|txt" type="Node" parent="home/Challenge"]
+script = ExtResource( 1 )
+content = "There is an automated script that triggers when you are in that 'd' folder. If there only was a way to bypass that folder... Maybe if you knew what was inside it you could use that knowledge somehow."
+
+[node name="solution|txt" type="Node" parent="home/Challenge"]
+script = ExtResource( 1 )
+content = "ls [folder] can tell you whats inside a directory. Then you can chain the folders together inside of the cd command
+
+[accent]
+The command you need is:
+cd d/e
+[/accent]"
+
 [node name="user" type="Node" parent="."]
 script = ExtResource( 3 )
 access_permission = false

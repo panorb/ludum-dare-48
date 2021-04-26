@@ -1,0 +1,60 @@
+{
+    "actions": [
+        {
+            "action": "sleep",
+            "length": 0.3
+        },
+        {
+            "action": "message",
+            "text": "Started execution of script..."
+        },
+        {
+            "action": "sleep",
+            "length": 2
+        },
+        {
+            "action": "type",
+            "char": "c"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "d"
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": " "
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "."
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "type",
+            "char": "."
+        },
+        {
+            "action": "sleep",
+            "length": 0.02
+        },
+        {
+            "action": "keystroke",
+            "key": "enter"
+        }
+    ]
+}
