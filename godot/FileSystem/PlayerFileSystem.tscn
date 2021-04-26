@@ -13,10 +13,13 @@ script = ExtResource( 3 )
 
 [node name="Challenge" type="Node" parent="home"]
 script = ExtResource( 3 )
-password = "xdfuld48"
+__meta__ = {
+"_editor_description_": "xdfuld48"
+}
 
 [node name="d" type="Node" parent="home/Challenge"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="e" type="Node" parent="home/Challenge/d"]
 script = ExtResource( 3 )
@@ -41,21 +44,27 @@ script = ExtResource( 3 )
 
 [node name="d" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="d" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="e" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="e" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="p" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="e" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p"]
 script = ExtResource( 3 )
+behavior_name = "cd-to-parent"
 
 [node name="r" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e"]
 script = ExtResource( 3 )

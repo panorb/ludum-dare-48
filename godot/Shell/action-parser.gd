@@ -31,8 +31,6 @@ func _run_current_action():
 	assert("action" in cur_action)
 	assert(has_node(cur_action["action"]))
 	
-	print(cur_action["action"])
-	
 	var node = get_node(cur_action["action"])
 	node.execute(cur_action)
 
