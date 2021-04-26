@@ -66,7 +66,7 @@ func set_effect_volume(channel: int, volume : float = -1):
 func play_effect(filename: String, channel: int = 0, \
 	volume : float = -1) -> void:
 	if volume < 0:
-		volume = Globals.music_volume
+		volume = Globals.effect_volume
 	
 	var path = "res://Shared/Sounds/" + filename
 	
