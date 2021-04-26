@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://FileSystem/folder.gd" type="Script" id=1]
 [ext_resource path="res://FileSystem/Executables/ascii-game.gd" type="Script" id=2]
@@ -14,13 +14,15 @@ script = ExtResource( 1 )
 
 [node name="I" type="Node" parent="home"]
 script = ExtResource( 1 )
-password = "goodpw"
+password = "nevergonnagiveyouup"
 
 [node name="am" type="Node" parent="home/I"]
 script = ExtResource( 1 )
+password = "goodpw"
 
 [node name="proud" type="Node" parent="home/I/am"]
 script = ExtResource( 1 )
+password = "PeanutButterJelly"
 
 [node name="congratulations|txt" type="Node" parent="home/I/am/proud"]
 script = ExtResource( 5 )
@@ -37,31 +39,83 @@ access_permission = false
 [node name="game|exe" type="Node" parent="home/I/am"]
 script = ExtResource( 2 )
 
-[node name="rome|txt" type="Node" parent="home"]
+[node name="hint|txt" type="Node" parent="home/I/am"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+content = "Once again, a minigame. You can run it with the 'run' command you should know by now.
+
+[accent]If you are unable or unwilling to complete the minigame, you can look up the password in the solution.txt[/accent]
+
+Password for solution.txt:
+64432"
+
+[node name="solution|txt" type="Node" parent="home/I/am"]
+script = ExtResource( 5 )
+password = "64432"
+content = "The password you get for completing the minigame is \"PeanutButterJelly\"
+
+[accent]In this case the command you need to enter is:
+[b]unlock proud[/b]
+Afterwards enter the password: [b]PeanutButterJelly[/b][/accent]"
+
+[node name="rome|txt" type="Node" parent="home/I"]
 script = ExtResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
 content = "In old rome the key for the next door was called [accent]hppeqx[/accent]."
 
-[node name="hint|txt" type="Node" parent="home"]
+[node name="hint|txt" type="Node" parent="home/I"]
 script = ExtResource( 5 )
 __meta__ = {
 "_editor_description_": "
 "
 }
-content = "Looks like some simplistic form of encryption... There is one named after a famous roman statesman."
+content = "Looks like some simplistic form of encryption... There is one named after a famous roman statesman.
+Try key values close to zero first.
 
-[node name="solution|txt" type="Node" parent="home"]
+Password for solution.txt:
+74921"
+
+[node name="solution|txt" type="Node" parent="home/I"]
 script = ExtResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
+password = "74921"
 content = "The cypher is called Ceasar cypher and is applied by shifting every letter by a specific number of letters in the alphabet. In this case the encryption key was 1 and so the decription key is -1.
 
-\"hppeqx\" -- -1 --> [accent]\"goodpw\"
-Apply it with the unlock command.
-[/accent]"
+\"hppeqx\" -- -1 --> \"goodpw\"
+
+[accent]In this case the command you need to enter is:
+[b]unlock am[/b]
+Afterwards enter the password: [b]goodpw[/b][/accent]"
+
+[node name="whackamole|exe" type="Node" parent="home"]
+script = ExtResource( 3 )
+
+[node name="hint|txt" type="Node" parent="home"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+content = "There should be a way to run that executable somehow... Maybe try looking into the help to find it.
+
+[accent]If you are unable or unwilling to complete the minigame, you can look up the password in the solution.txt[/accent]
+
+Password for solution.txt:
+99941"
+
+[node name="solution|txt" type="Node" parent="home"]
+script = ExtResource( 5 )
+password = "99941"
+content = "The password you get for completing the minigame is \"nevergonnagiveyouup\"
+
+[accent]In this case the command you need to enter is:
+[b]unlock I[/b]
+Afterwards enter the password: [b]nevergonnagiveyouup[/b][/accent]"
 
 [node name="user" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -70,6 +124,3 @@ access_permission = false
 [node name="drivers" type="Node" parent="."]
 script = ExtResource( 1 )
 access_permission = false
-
-[node name="whackamole|exe" type="Node" parent="."]
-script = ExtResource( 3 )

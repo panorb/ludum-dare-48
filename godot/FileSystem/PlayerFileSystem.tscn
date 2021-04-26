@@ -13,8 +13,9 @@ script = ExtResource( 3 )
 [node name="Challenge" type="Node" parent="home"]
 script = ExtResource( 3 )
 __meta__ = {
-"_editor_description_": "xdfuld48"
+"_editor_description_": ""
 }
+password = "xdfuld48"
 
 [node name="d" type="Node" parent="home/Challenge"]
 script = ExtResource( 3 )
@@ -84,16 +85,25 @@ P.S: The 'lookup' process might help you with the IP adress."
 script = ExtResource( 1 )
 content = "\"The 'lookup' process might help you with the IP adress.\"
 [accent]What does he mean by that? Wasn't there a command to look at running processes somewhere in the help?[/accent]
+
+Password for solution.txt:
+84199
 "
 
 [node name="solution|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e/r"]
 script = ExtResource( 1 )
-content = "The command was \"proc\" and if you look at the memory usage of the process it tells you the IP address one part at a time.
+password = "84199"
+content = "The command was \"proc\" and if you look at the memory usage of the process \"lookup\" it tells you the IP address one part at a time.
 
 [accent]
 The full command you need is:
-ssh jochen@10.19.57.187
+[b]ssh jochen@10.19.57.187[/b]
 [/accent]"
+
+[node name="easteregg|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p"]
+script = ExtResource( 1 )
+content = "Someone is being very thorough ;)
+If you want to see something cool try accessing the help for the help command!"
 
 [node name="hint|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
 script = ExtResource( 1 )
@@ -101,30 +111,55 @@ __meta__ = {
 "_editor_description_": ""
 }
 content = "Do the folder names mean anything?
-Maybe you could try chaining the folder names, if you knew what they form via cd w/o/r/d"
+Maybe you could try chaining the folder names, if you knew what they form via [b]cd w/o/r/d[/b]
+
+Password for solution.txt:
+[b]94028[/b]"
 
 [node name="solution|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
+password = "94028"
 content = "They are forming \"deeperanddeeper\".
-You  are at the the 'n' now, so only \"nddeeper\" remain.
+You  are at the the 'n' now, so only \"nddeeper\" remains.
 
-[accent]The command you need is \"cd n/d/d/e/e/p/e/r\"[/accent]"
+[accent]The command you need is:
+[b]cd n/d/d/e/e/p/e/r[/b][/accent]"
 
 [node name="hint|txt" type="Node" parent="home/Challenge"]
 script = ExtResource( 1 )
-content = "There is an automated script that triggers when you are in that 'd' folder. If there only was a way to bypass that folder... Maybe if you knew what was inside it you could use that knowledge somehow."
+content = "There is an automated script that triggers when you are in that 'd' folder. If there only was a way to bypass that folder... Maybe if you knew what was inside it you could use that knowledge somehow.
+
+Password for solution.txt:
+[b]34791[/b]"
 
 [node name="solution|txt" type="Node" parent="home/Challenge"]
 script = ExtResource( 1 )
-content = "ls [folder] can tell you whats inside a directory. Then you can chain the folders together inside of the cd command
+password = "34791"
+content = "[b]ls [folder][/b] can tell you whats inside a directory. Then you can chain the folders together inside of the cd command
 
 [accent]
 The command you need is:
-cd d/e
+[b]cd d/e[/b]
 [/accent]"
+
+[node name="hint|txt" type="Node" parent="home"]
+script = ExtResource( 1 )
+content = "Did you pay attention when the shell first booted up? An automatic script ran and inputed some commands into the command line... Maybe find a way to look at those...
+
+Password for solution.txt:
+83914"
+
+[node name="solution|txt" type="Node" parent="home"]
+script = ExtResource( 1 )
+password = "83914"
+content = "To take a look at the command history you use the up and down arrow keys on your keyboard. If you go back as far as you can you find the password neccessary to unlock the 'Challenge' folder.
+
+[accent]In this case the command you need to enter is:
+[b]unlock challenge[/b]
+Afterwards enter the password: [b]xdfuld48[/b][/accent]"
 
 [node name="user" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -133,3 +168,9 @@ access_permission = false
 [node name="drivers" type="Node" parent="."]
 script = ExtResource( 3 )
 access_permission = false
+
+[node name="readme|txt" type="Node" parent="."]
+script = ExtResource( 1 )
+content = "At every puzzle location there are 2 files: hint.txt and solution.txt
+If you tried to solve the puzzle, but are stuck first read the hint.txt.
+At the bottom of the hint.txt you will find a password for the solution.txt, [b]only read it if you really have to. You can insert the password via the unlock command. Take a look at the help via 'help unlock' if you are unsure how to use it.[/b]"

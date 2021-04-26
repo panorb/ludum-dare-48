@@ -1,7 +1,7 @@
 extends Node
 
 export(String) var current_directory = "/"
-
+const behavior_name = ""
 
 func to_absolute_path(path):
 	if path.begins_with("~"):

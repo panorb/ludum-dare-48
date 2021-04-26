@@ -30,7 +30,6 @@ signal exit_shell
 
 
 func _ready():
-	ssh_connect(Globals.valid_adresses[0])
 	command_parser.connect("error_occurred", self, "send_error")
 	command_parser.connect("message_sent", self, "send_message")
 	command_parser.connect("clear_channel", self, "clear_channel")

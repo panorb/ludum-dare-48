@@ -5,6 +5,7 @@ onready var text_edit = get_node("TextEdit")
 onready var animation_player = get_node("AnimationPlayer")
 
 func _ready():
+	ssh_connect(Globals.valid_adresses[0])
 	block_player_input = false
 	text_edit.grab_focus()
 	
