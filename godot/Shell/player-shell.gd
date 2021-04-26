@@ -2,21 +2,17 @@ class_name PlayerShell
 extends "shell.gd"
 
 onready var text_edit = get_node("TextEdit")
-onready var command_cat = get_node("Commands/cat")
-onready var command_cd = get_node("Commands/cd")
-onready var command_ls = get_node("Commands/ls")
-onready var command_ssh = get_node("Commands/ssh")
-onready var command_run = get_node("Commands/run")
-
+onready var animation_player = get_node("AnimationPlayer")
 
 func _ready():
 	block_player_input = false
 	text_edit.grab_focus()
 	
 	action_parser.connect("behavior_finished", self, "_on_Actions_behavior_finished")
+	command_parser.connect("play_animation", self, "_on_Commands_play_animation")
+	animation_player.play("startup")
 	
-	# run_behavior_script("start")
-	# send_message("[accent]=WELCOME User TO LYNUZ(OS)(TM) SUBSYSTEM=[/accent]")
+	run_behavior_script("start")
 
 func _unhandled_input(event):
 	if event is InputEventKey and not block_player_input:
@@ -63,3 +59,6 @@ func _on_TextEdit_cursor_changed():
 
 func _on_Actions_behavior_finished():
 	block_player_input = false
+
+func _on_Commands_play_animation(animation_name: String):
+	animation_player.play(animation_name)

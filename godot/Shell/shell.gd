@@ -38,6 +38,7 @@ func _ready():
 	command_parser.connect("ssh_connect", self, "ssh_connect")
 	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
 	command_parser.connect("exit_shell", self, "_on_Commands_exit_shell")
+	
 	command_parser.connect("trigger_behavior", self, "run_behavior_script")
 	
 	action_parser.connect("type", self, "type")
@@ -244,7 +245,6 @@ func run_behavior_script(name: String):
 	file.close()
 	action_parser.execute(behavior)
 
-
 func _play_sound_effect(filename: String, channel: int = 0):
 	if not muted:
 		SoundController.play_effect(filename, channel)
@@ -280,6 +280,9 @@ func ssh_connect(adress: Dictionary):
 func _on_Commands_allow_input(allow: bool):
 	input_accepted = allow
 
+
+func set_block_player_input(block: bool):
+	block_player_input = block
 
 func _on_Commands_exit_shell():
 	emit_signal("exit_shell")

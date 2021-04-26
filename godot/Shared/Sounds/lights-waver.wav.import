@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lights-waver.wav-45ddd7e8838a0bd04c9474a5ed820172.sample"
+
+[deps]
+
+source_file="res://Shared/Sounds/lights-waver.wav"
+dest_files=[ "res://.import/lights-waver.wav-45ddd7e8838a0bd04c9474a5ed820172.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

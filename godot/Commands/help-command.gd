@@ -15,10 +15,11 @@ func execute(args):
 		for child in get_parent().get_children():
 			if args[1] in child.aliases:
 				if child.name in self.aliases:
-					throw_error("THERE IS NO ESCAPE")
+					execution_finished()
+					play_animation("scare")
 				else:
 					send_message(child.long_description)
-				execution_finished()
+					execution_finished()
 				return
 		throw_error("Error: Unknown command")
 	else:
