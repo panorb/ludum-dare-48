@@ -1,10 +1,10 @@
 extends "file.gd"
 
-
 signal error(text, time, channel)
 signal message(text, time, channel)
 signal finished
 signal clear_channel(channel)
+signal allow_input(allow)
 
 
 func execute():
@@ -27,3 +27,9 @@ func execution_finished():
 
 func clear_channel(channel: String):
 	emit_signal("clear_channel", channel)
+
+func allow_input(allow: bool):
+	emit_signal("allow_input", allow)
+
+func input(input: String):
+	pass

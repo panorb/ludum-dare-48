@@ -1,5 +1,6 @@
 extends "base-command.gd"
 
+var input_allowed : bool = false
 var in_execution : Node = null
 
 func _ready():
@@ -48,10 +49,22 @@ func execute(args):
 			in_execution.connect("error", self, "_on_Executable_error")
 			in_execution.connect("message", self, "_on_Executable_message")
 			in_execution.connect("clear_channel", self, "_on_Executable_clear_channel")
+			in_execution.connect("allow_input", self, "_on_Executable_allow_input")
 			in_execution.execute()
 			return
 		
 	execution_finished()
+
+func allow_input(allow: bool):
+	input_allowed = allow
+	.allow_input(allow)
+
+func _input(event):
+	if input_allowed:
+		if event is InputEventKey:
+			if event.pressed and event.scancode == KEY_ESCAPE:
+				allow_input(false)
+				execution_finished()
 
 func _on_Executable_error(msg: String, display_time : float, channel : String):
 	throw_error(msg, display_time, channel)
@@ -65,4 +78,10 @@ func _on_Executable_finished():
 
 func _on_Executable_clear_channel(channel: String):
 	clear_channel(channel)
+
+func _on_Executable_allow_input(allow: bool):
+	allow_input(allow)
+
+func input(input):
+	in_execution.input(input)
 
