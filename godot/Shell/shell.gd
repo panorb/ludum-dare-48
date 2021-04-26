@@ -8,6 +8,7 @@ var current_command : String = ""
 var cursor_index : int = 0
 var display_cursor : bool = false
 var command_history_position : int = 0
+var current_ssh : String
 
 onready var command_parser = get_node("Commands")
 onready var file_system = get_node("FileSystem")
@@ -19,7 +20,6 @@ export var main_color : Color = Color("#cccccc")
 export var accent_color : Color = Color("#16c60c")
 export var error_color : Color = Color("#c50f1f")
 export var warning_color : Color = Color("#c19c00")
-
 
 
 func _ready():
