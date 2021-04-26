@@ -5,6 +5,9 @@ signal message_sent(msg, time, channel)
 signal clear_channel(channel)
 signal finished_execution
 signal ssh_connect(adress)
+signal allow_input(allow)
+
+var _command : Node = null
 
 func _ready():
 	for child in get_children():
@@ -13,8 +16,18 @@ func _ready():
 		child.connect("finished", self, "_on_Command_finished")
 		child.connect("clear_channel", self, "_on_Command_clear_channel")
 		child.connect("ssh_connect", self, "_on_Command_ssh_connect")
+		child.connect("allow_input", self, "_on_Command_allow_input")
 
-func execute(cmd : String):
+func input(input : String):
+	if _command:
+		_command.input(input)
+	else:
+		_execute(input)
+
+func is_executing():
+	return _command != null
+
+func _execute(cmd : String):
 	var regex = RegEx.new()
 	regex.compile("(\"[^\"]*\"|[^\\s\"]+)")
 	
@@ -25,6 +38,8 @@ func execute(cmd : String):
 	
 	for child in get_children():
 		if args[0] in child.aliases:
+			emit_signal("allow_input", false)
+			_command = child
 			child.execute(args)
 			return
 	
@@ -42,6 +57,9 @@ func _on_Command_message(msg: String, display_time : float, channel : String):
 	emit_signal("message_sent", msg, display_time, channel)
 
 func _on_Command_finished():
+	yield(get_tree().create_timer(0.4), "timeout")
+	
+	_command = null
 	emit_signal("finished_execution")
 
 func _on_Command_clear_channel(channel: String):
@@ -49,3 +67,6 @@ func _on_Command_clear_channel(channel: String):
 
 func _on_Command_ssh_connect(adress):
 	emit_signal("ssh_connect", adress)
+	
+func _on_Command_allow_input(allow):
+	emit_signal("allow_input", allow)

@@ -7,6 +7,16 @@ signal message(text, time, channel)
 signal finished
 signal clear_channel(channel)
 signal ssh_connect(adress)
+signal allow_input(allow)
+
+func input(input: String):
+	pass
+
+func execute(_args):
+	pass
+
+func allow_input(allow: bool):
+	emit_signal("allow_input", allow)
 
 func send_message(msg: String, display_time := -1, channel := "main"):
 	emit_signal("message", msg, display_time, channel)

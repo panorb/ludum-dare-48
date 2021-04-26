@@ -30,6 +30,7 @@ func _ready():
 	command_parser.connect("clear_channel", self, "clear_channel")
 	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("ssh_connect", self, "_on_Commands_ssh_connect")
+	command_parser.connect("allow_input", self, "_on_Commands_allow_input")
 
 
 func _process(delta):
@@ -83,13 +84,13 @@ func delete_indexes(indexes):
 
 
 func run_command():
-	send(get_last_line(current_command))
+	if not command_parser.is_executing():
+		if not command_history or (command_history and command_history[-1] != current_command):
+			command_history.append(current_command)
 	
-	if not command_history or command_history and command_history[-1] != current_command:
-		command_history.append(current_command)
-	
-	input_accepted = false
-	command_parser.execute(current_command)
+	if input_accepted:
+		send(get_last_line(current_command))	
+		command_parser.input(current_command)
 	
 	current_command = ""
 
@@ -127,8 +128,11 @@ func command_from_history():
 
 
 func get_last_line(displayed_cmd : String):
-	return "[accent]" + file_system.current_directory + "[/accent]\n" \
-		+ "λ [main]" + displayed_cmd + "[/main]"
+	if command_parser.is_executing():
+		return "[main]" + displayed_cmd + "[/main]"
+	else:
+		return "[accent]" + file_system.current_directory + "[/accent]\n" \
+			+ "λ [main]" + displayed_cmd + "[/main]"
 
 
 func get_cur_dir_line():
@@ -211,12 +215,13 @@ func keystroke(key):
 func set_command(cmd: String):
 	current_command = cmd
 
+
 func _play_sound_effect(filename: String, channel: int = 0):
 	if not muted:
 		SoundController.play_effect(filename, channel)
 
+
 func _on_Commands_finished_execution():
-	yield(get_tree().create_timer(0.4), "timeout")
 	if backlog:
 		send_message("")
 	else:
@@ -226,8 +231,10 @@ func _on_Commands_finished_execution():
 	yield(get_tree().create_timer(0.1), "timeout")
 	output_label.scroll_following = false
 
+
 func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
+
 
 func _on_Commands_ssh_connect(adress: Dictionary):
 	file_system.queue_free()
@@ -238,3 +245,7 @@ func _on_Commands_ssh_connect(adress: Dictionary):
 	
 	command_parser.update_file_system(file_system)
 	current_ssh = adress["username"]
+
+
+func _on_Commands_allow_input(allow: bool):
+	input_accepted = allow
