@@ -12,7 +12,11 @@ func execute(args):
 		execution_finished()
 		return
 	
-	if args.size() == 1 or args[1].empty() or args[1] == "/":
+	if args.size() == 1 or not args[1]:
+		execution_finished()
+		return
+	
+	if args[1] == "/":
 		# Go to root directory
 		file_system.current_directory = "/"
 		execution_finished()
@@ -23,13 +27,23 @@ func execute(args):
 	var absolute_path = file_system.to_absolute_path(path)
 	absolute_path = file_system.resolve_level_up_symbols(absolute_path)
 	
-	var node = file_system.get_filesystem_node(absolute_path)
-	if not node:
-		throw_error("Error: No such directory")
-	elif file_system.is_file(node):
-		throw_error("Error: Path points to a file")
+	var dir_node = file_system.get_filesystem_node(absolute_path)
+	var error = dir_node["error"]
+	if error != 0:
+		match(error):
+			1:
+				throw_error("Error: Access denied")
+		
+			2:
+				throw_error("Error: No such directory")
+			_:
+				throw_error("Unknown error")
 	else:
-		file_system.current_directory = absolute_path
+		var node = dir_node["node"]
+		if file_system.is_file(node):
+			throw_error("Error: Path points to a file")
+		else:
+			file_system.current_directory = absolute_path
 	
 	execution_finished()
 
