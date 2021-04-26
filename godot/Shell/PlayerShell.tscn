@@ -47,7 +47,7 @@ script = ExtResource( 3 )
 [node name="proc" type="Node" parent="Commands" index="7"]
 script = ExtResource( 9 )
 command_description = "Displays running processes"
-animation_name = "proc"
+animation_name = "proc-player"
 aliases = [ "proc" ]
 interval = 0.8
 

@@ -46,6 +46,7 @@ func next_frame():
 func _input(event):
 	if event is InputEventKey and playing:
 		if frame_counter > 1:
+			clear_channel(animation_name)
 			execution_finished()
 			playing = false
 
