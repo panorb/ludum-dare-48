@@ -22,6 +22,11 @@ func _unhandled_input(event):
 		elif event.scancode == KEY_DOWN:
 			keystroke("down")
 			_update_textedit()
+		
+		if event.scancode == KEY_BACKSPACE and not current_command:
+			_play_sound_effect("empty-backspace.wav")
+			pass
+		
 
 
 func _update_textedit():

@@ -9,11 +9,6 @@ onready var _tween: Tween = null
 # Playback Options
 var _loop: bool = true
 
-# Settings that should be put into an Options script
-const DEFAULT_MUSIC_VOLUME: int = -12
-const DEFAULT_EFFECT_VOLUME: int = -12
-
-
 func _ready() -> void:
 	_tween = Tween.new()
 	add_child(_tween)
@@ -21,13 +16,13 @@ func _ready() -> void:
 	for i in range(MUSIC_LAYERS):
 		_music.append(AudioStreamPlayer.new())
 		_music[i].bus = str("BGM",i)
-		_music[i].volume_db = DEFAULT_MUSIC_VOLUME
+		_music[i].volume_db = linear2db(Globals.music_volume)
 		_music[i].connect("finished", self, "_on_music_finished", [i])
 		add_child(_music[i])
 	
 	for i in range(EFFECT_LAYERS):
 		_effect.append(AudioStreamPlayer.new())
-		_effect[i].volume_db= DEFAULT_EFFECT_VOLUME
+		_effect[i].volume_db= linear2db(Globals.effect_volume)
 		_effect[i].bus = str("SFX",i)
 		_effect[i].connect("finished", self, "_on_effect_finished", [i])
 		add_child(_effect[i])
@@ -35,11 +30,15 @@ func _ready() -> void:
 func get_audio_effect_player(channel: int) -> AudioStreamPlayer:
 	return _effect[channel]
 
-func play_music(path:String, channel: int = 0, \
-	volume_db : int = DEFAULT_MUSIC_VOLUME, should_loop: bool = true) -> void:
+func play_music(filename: String, channel: int = 0, \
+	volume : float = -1, should_loop: bool = true) -> void:
+	if volume < 0:
+		volume = Globals.music_volume
+	
+	var path = "res://Shared/Music/" + filename
 	
 	var stream = load(path)
-	_music[channel].volume_db = volume_db
+	_music[channel].volume_db = linear2db(volume)
 	_music[channel].stop()
 	_music[channel].stream = stream
 	_music[channel].play()
@@ -51,20 +50,30 @@ func crossfade_music_channels(channel_from : int, channel_to : int):
 	
 	_tween.stop_all()
 	_tween.interpolate_property(from, "volume_db", null, -100, 3, Tween.TRANS_LINEAR)
-	_tween.interpolate_property(to, "volume_db", null, DEFAULT_MUSIC_VOLUME, 0.5, Tween.TRANS_LINEAR)
+	_tween.interpolate_property(to, "volume_db", null, Globals.music_volume, 0.5, Tween.TRANS_LINEAR)
 	_tween.start()
 
-func set_music_volume(channel: int, volume_db: int):
-	_music[channel].volume_db = volume_db
+func set_music_volume(channel: int, volume : float = -1):
+	if volume < 0:
+		volume = Globals.music_volume
+	
+	_music[channel].volume_db = linear2db(volume)
 
-func set_effect_volume(channel: int, volume_db: int):
-	_effect[channel].volume_db = volume_db
+func set_effect_volume(channel: int, volume : float = -1):
+	if volume < 0:
+		volume = Globals.effect_volume
+		
+	_effect[channel].volume_db = linear2db(volume)
 
-func play_effect(path:String, channel: int = 0, \
-	volume_db : int = DEFAULT_EFFECT_VOLUME) -> void:
+func play_effect(filename: String, channel: int = 0, \
+	volume : float = -1) -> void:
+	if volume < 0:
+		volume = Globals.music_volume
+	
+	var path = "res://Shared/Sounds/" + filename
 	
 	var stream = load(path)
-	_effect[channel].volume_db = volume_db
+	_effect[channel].volume_db = linear2db(volume)
 	_effect[channel].stop()
 	_effect[channel].stream = stream
 	_effect[channel].play()

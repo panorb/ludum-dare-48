@@ -18,3 +18,6 @@ var valid_adresses = [
 	}]
 
 
+var music_volume: int = 1
+var effect_volume: int = 1
+

@@ -16,6 +16,7 @@ onready var margin_container2 = get_node("MarginContainer/MarginContainer")
 onready var output_label = get_node("MarginContainer/MarginContainer/Label")
 
 var input_accepted : bool = true
+export var muted : bool = false
 export var main_color : Color = Color("#cccccc")
 export var accent_color : Color = Color("#16c60c")
 export var error_color : Color = Color("#c50f1f")
@@ -162,14 +163,17 @@ func send(msg: String, display_time := -1, channel := "main"):
 				   })
 
 func send_message(msg: String, display_time := -1, channel := "main"):
+	_play_sound_effect("send-message.wav", 1)
 	send("[main]" + msg + "[/main]", display_time, channel)
 
 
 func send_warning(msg: String, display_time := -1, channel := "main"):
+	_play_sound_effect("send-message.wav", 1)
 	send("[warning]" + msg + "[/warning]", display_time, channel)
 
 
 func send_error(msg: String, display_time := -1, channel := "main"):
+	_play_sound_effect("error-message.wav", 1)
 	send("[error]" + msg + "[/error]", display_time, channel)
 
 
@@ -184,11 +188,15 @@ func keystroke(key):
 			"enter":
 				if current_command:
 					output_label.scroll_following = true
+					_play_sound_effect("command-send.wav")
 					run_command()
 				else:
-					# TODO: Play error sound
-					pass
+					_play_sound_effect("error.wav")
 			"backspace":
+				if not current_command:
+					_play_sound_effect("empty-backspace.wav")
+					return
+				
 				current_command = current_command.left(current_command.length() - 1)
 			"up":
 				command_history_position -= 1
@@ -200,6 +208,10 @@ func keystroke(key):
 
 func set_command(cmd: String):
 	current_command = cmd
+
+func _play_sound_effect(filename: String, channel: int = 0):
+	if not muted:
+		SoundController.play_effect(filename, channel)
 
 func _on_Commands_finished_execution():
 	yield(get_tree().create_timer(0.4), "timeout")

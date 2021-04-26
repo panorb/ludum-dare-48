@@ -41,8 +41,6 @@ script = ExtResource( 5 )
 
 [node name="ssh" type="Node" parent="Commands" index="6"]
 script = ExtResource( 3 )
-file_system_node = NodePath("../../FileSystem")
-root_node = NodePath("../..")
 
 [node name="proc" type="Node" parent="Commands" index="7"]
 script = ExtResource( 9 )
@@ -63,7 +61,6 @@ selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="change_filesystem" from="Commands/ssh" to="." method="_on_ssh_change_filesystem"]
 [connection signal="cursor_changed" from="TextEdit" to="." method="_on_TextEdit_cursor_changed"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]
