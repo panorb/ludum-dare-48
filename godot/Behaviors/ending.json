@@ -234,7 +234,7 @@
         },
         {
             "action": "sleep",
-            "length": 5
+            "length": 2
         },
         {
             "action": "type",
@@ -370,7 +370,7 @@
         },
         {
             "action": "sleep",
-            "length": 6
+            "length": 3
         },
         {
             "action": "type",
@@ -506,7 +506,7 @@
         },
         {
             "action": "sleep",
-            "length": 6
+            "length": 3
         },
         {
             "action": "type",
@@ -642,143 +642,7 @@
         },
         {
             "action": "sleep",
-            "length": 6
-        },
-        {
-            "action": "type",
-            "char": "c"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "a"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "t"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": " "
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "c"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "r"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "e"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "d"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "i"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "t"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "s"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "4"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "."
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "t"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "x"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "type",
-            "char": "t"
-        },
-        {
-            "action": "sleep",
-            "length": 0.04
-        },
-        {
-            "action": "keystroke",
-            "key": "enter"
-        },
-        {
-            "action": "sleep",
-            "length": 4
+            "length": 3
         },
         {
             "action": "type",
