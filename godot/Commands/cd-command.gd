@@ -39,7 +39,7 @@ func execute(args):
 			_:
 				throw_error("Unknown error")
 	else:
-		var node = dir_node["node"]
+		var node = dir_node["last_node_found"]
 		if file_system.is_file(node):
 			throw_error("Error: Path points to a file")
 		else:

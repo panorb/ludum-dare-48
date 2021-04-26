@@ -79,11 +79,11 @@ content = "\"The 'lookup' process might help you with the IP adress.\"
 
 [node name="solution|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e/r"]
 script = ExtResource( 1 )
-content = "The command was \"proc\" and if you look at the memory usage of the process it tells you the IP adress one part at a time.
+content = "The command was \"proc\" and if you look at the memory usage of the process it tells you the IP address one part at a time.
 
 [accent]
 The full command you need is:
-ssh jochen@[IP ADRESS HERE]
+ssh jochen@10.19.57.187
 [/accent]"
 
 [node name="hint|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n"]
