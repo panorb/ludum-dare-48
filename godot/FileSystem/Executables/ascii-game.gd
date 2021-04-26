@@ -5,8 +5,8 @@ var current_alternatives = []
 func execute():
 	var json_dict = parse_file("ascii-game")
 	assert("title" in json_dict)
-	send_message(json_dict["title"])
-	
+	send_message("[accent][b]" + json_dict["title"] + "[/accent][/b]")
+	yield(get_tree().create_timer(2), "timeout")
 	assert("chapter" in json_dict)
 	process_chapter(json_dict["chapter"])
 
@@ -27,12 +27,13 @@ func parse_file(file_name: String):
 func process_chapter(chapter):
 	assert("prologue" in chapter)
 	send_message("[b]" + chapter["prologue"] + "[/b]")
-	
+	yield(get_tree().create_timer(2), "timeout")
 	assert("alternatives")
 	process_alternatives(chapter["alternatives"])
 
 func process_alternatives(alternatives):
 	if alternatives.empty():
+		yield(get_tree().create_timer(2), "timeout")
 		send_message("[b]-- The End --[/b]")
 		execution_finished()
 		return

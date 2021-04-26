@@ -2,45 +2,45 @@
     "title":"Legend of Grundelduff",
     "chapter":
         {
-            "prologue": "Once opun a time, there was a mage called Grundelduff, who wanted to go on a grand adventure, so he left his house.",
+            "prologue": "Once opun a time, there was a mage called Grundelduff, who set out for a grand adventure, so he left his house. What should he do next?",
             "alternatives":
                 [
                     {
-                      "description": "Go back in.",
+                      "description": "Return inside. There was no point leaving the house in this weather",
                       "chapter":
                         {
-                            "prologue": "But he didn't have the courage.",
+                            "prologue": "He entered his home sweet home and locked the door. All his courage and his thirst for adventure were gone.",
                             "alternatives":[]
                         }  
                     },
                     {
-                        "description": "Go into the forest.",
+                        "description": "Go for a walk into the forest.",
                         "chapter":
                           {
-                              "prologue": "He met a strange elf with huge ... ears.",
+                              "prologue": "When he arrived in the woods he suddenly noticed a strange elf with huge ... ears. Should Grundelduff come closer?",
                               "alternatives":
                               [
                                   {
-                                      "description": "Ask him to join you on your adventure.",
+                                      "description": "Sure, he could definitely ask him to join his adventure.",
                                       "chapter":
                                       {
-                                          "prologue": "Not only was the elf surprised but also irritated by the suspicious offer, since he did not even know Grundelduff. The rumors about Gurndelduff's intentions spread quickly in the forest. Soon nobody wanted to talk to him any longer. He disappointedly returned back home and locked himself inside.",
+                                          "prologue": "When Grundelduff approached the elf and asked him to join his trip, the elf got extremely scared. Not only was he surprised but also irritated by the suspicious offer, since he did not even know Grundelduff. The rumors about Gurndelduff's intentions spread quickly in the forest. Soon nobody wanted to talk to him any longer. He disappointedly returned back home and locked himself inside.",
                                           "alternatives":[]
                                       }
                                   },
                                   {
-                                    "description": "Call him names.",
+                                    "description": "With his extremely large ears, Grundelduff could call him funny names.",
                                     "chapter":
                                     {
-                                        "prologue": "The elf happened to be quite flattered by the names. He gave you a paper which you suspiciously called 'key'. It said: \"PeanutButterJelly\". Even though he didn't understand the meaning, it somehow made him really happy.",
+                                        "prologue": "Surprisingly, the elf happened to be quite flattered by the names. He gave Grundelduff a paper which he suspiciously called 'key'. It said: \"PeanutButterJelly\". Even though Grundelduff didn't understand the meaning, it somehow made him really happy.",
                                         "alternatives": []
                                     }
                                 },
                                 {
-                                    "description": "Leave as fast as you can.",
+                                    "description": "Grundelduff should escape from this scary creature immediately. Nobody knows what elves are up to.",
                                     "chapter":
                                     {
-                                        "prologue": "You stumbled upon a stone and fell into a tar pit. Your adventure was obviously over.",
+                                        "prologue": "While running, Grundelduff tripped over a stone and fell into a tar pit. Completely covered by a slimy black liquid Grundelduff had to admit to himself that his adventure had been a complete failure.",
                                         "alternatives": []
                                     }
                                 }
@@ -48,10 +48,10 @@
                           }  
                     },
                     {
-                        "description": "Go into the town.",
+                        "description": "Go into town to meet other people.",
                         "chapter":
                           {
-                              "prologue": "But he was very much hated there, so after a lot of frustrating hours he came back to his house and locked himself inside.",
+                              "prologue": "Grundelduff headed downtown, but after he had arrived, he quickly realized that the presence of a mage was not really appreciated in the town. On the contrary, people seemed to be very hostile, so after a lot of frustrating hours he came back to his house and locked himself inside.",
                               "alternatives":[]
                           }  
                       }
