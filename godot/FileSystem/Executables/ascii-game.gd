@@ -5,7 +5,7 @@ var current_alternatives = []
 func execute():
 	var json_dict = parse_file("ascii-game")
 	assert("title" in json_dict)
-	send_message("[accent][b]" + json_dict["title"] + "[/accent][/b]")
+	send_message("[accent][b]" + json_dict["title"] + "[/b][/accent]")
 	yield(get_tree().create_timer(2), "timeout")
 	assert("chapter" in json_dict)
 	process_chapter(json_dict["chapter"])
