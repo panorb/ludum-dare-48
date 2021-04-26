@@ -24,10 +24,12 @@ export var warning_color : Color = Color("#c19c00")
 
 
 func _ready():
+	command_parser.update_file_system(file_system)
 	command_parser.connect("error_occurred", self, "send_error")
-	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
 	command_parser.connect("message_sent", self, "send_message")
 	command_parser.connect("clear_channel", self, "clear_channel")
+	command_parser.connect("finished_execution", self, "_on_Commands_finished_execution")
+	command_parser.connect("ssh_connect", self, "_on_Commands_ssh_connect")
 
 
 func _process(delta):
@@ -223,3 +225,13 @@ func _on_Commands_finished_execution():
 
 func _on_CursorBlinkTimer_timeout():
 	display_cursor = !display_cursor
+
+func _on_Commands_ssh_connect(adress: Dictionary):
+	file_system.queue_free()
+	yield(get_tree(), "idle_frame")
+	var file_system_scene = load(adress["fs"])
+	file_system = file_system_scene.instance()
+	self.add_child(file_system)
+	
+	command_parser.update_file_system(file_system)
+	current_ssh = adress["username"]

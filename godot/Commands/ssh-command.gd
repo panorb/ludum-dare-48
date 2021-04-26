@@ -2,14 +2,6 @@ extends "base-command.gd"
 
 var enabled = true
 
-signal change_filesystem(adress)
-
-export(NodePath) var file_system_node
-onready var file_system = get_node(file_system_node)
-
-export(NodePath) var root_node
-onready var root = get_node(root_node)
-
 func _ready():
 	aliases = ["ssh", "connect"]
 	command_description = "Log into a remote machine and execute commands"
@@ -56,7 +48,7 @@ func execute(args):
 		return
 	
 	send_message("Logged in at " + username + "@" + ip_address)
-	emit_signal("change_filesystem", result)
+	ssh_connect(result)
 	
 	execution_finished()
 
@@ -65,7 +57,7 @@ func _get_ssh_result(username: String, ip: String):
 	for adress in Globals.valid_adresses:
 		if ip == adress["ip"]:
 			if username == adress["username"]:
-				if root.current_ssh == username:
+				if adress["fs"] == file_system.filename:
 					return "Error: Already connected"
 				else:
 					return adress

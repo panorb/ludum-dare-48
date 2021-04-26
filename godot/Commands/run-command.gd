@@ -1,7 +1,5 @@
 extends "base-command.gd"
 
-export(NodePath) var file_system_node
-onready var file_system = get_node(file_system_node)
 var in_execution : Node = null
 
 func _ready():
