@@ -4,7 +4,15 @@ var enabled = true
 
 func _ready():
 	aliases = ["ssh", "connect"]
-	command_description = "Log into a remote machine and execute commands"
+	command_description = "Login to the remote machine provided"
+	long_description = """Logs into the remote machine provided.
+	Adresses are formatted like this: [username]@[ip_adress]
+	
+ssh [username]@[ip_adress]
+
+[b]Valid usage examples:[/b]
+ssh benjamin@10.234.122.64
+"""
 
 func execute(args):
 	if args.size() >= 3:

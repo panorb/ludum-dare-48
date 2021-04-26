@@ -2,7 +2,15 @@ extends "base-command.gd"
 
 func _ready():
 	aliases = ["exit", "quit"]
-	command_description = "Closes the shell"
+	command_description = "Closes the shell and returns to main menu"
+	long_description = """Closes the shell and returns to main menu
+
+exit
+
+[b]Valid usage examples:[/b]
+exit
+"""
+	
 
 func execute(args):
 	if args.size() >= 2:

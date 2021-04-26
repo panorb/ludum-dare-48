@@ -6,4 +6,4 @@ var command_description : String = ""
 var long_description : String = ""
 
 func print_description():
-	return name + " - " + command_description
+	return "[b]" + name + "[/b] - " + command_description

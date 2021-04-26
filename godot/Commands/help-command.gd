@@ -2,9 +2,8 @@ extends "base-command.gd"
 
 
 func _ready():
-	aliases = ["help", "man"]
-	command_description = "show a brief description of a command"
-
+	aliases = ["help", "man", "manual", "?"]
+	command_description = "Show a list of commands or information for a single command"
 
 func execute(args):
 	if args.size() == 1:

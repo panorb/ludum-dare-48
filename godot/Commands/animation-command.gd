@@ -1,6 +1,8 @@
 extends "command.gd"
 
 export var command_description : String
+export(String, MULTILINE) var long_description : String
+
 export(Array, String) var aliases = []
 
 export var default_anim : String = "player"
@@ -67,7 +69,7 @@ func _frame_timer_timeout():
 		next_frame()
 
 func print_description():
-	return name + " - " + command_description
+	return "[b]" + name + "[/b] - " + command_description
 
 func _get_frame_index():
 	return frame_counter % animation_files.size()

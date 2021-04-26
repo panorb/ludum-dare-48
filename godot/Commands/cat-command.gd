@@ -11,8 +11,7 @@ cat [filepath]
 cat curriculum.txt
 cat Documents/curriculum.txt
 cat ../../curriculum.txt
-cat "grandmas recipe.txt"
-"""
+cat \"grandmas recipe.txt\""""
 
 func execute(args):
 	if args.size() >= 3:

@@ -6,7 +6,7 @@ func _ready():
 	command_description = "Changes the current directory"
 	long_description = """Changes the working directory to the directory specified as first argument
 
-cat [folderpath]
+cd [folderpath]
 
 [b]Valid usage examples:[/b]
 cd ..

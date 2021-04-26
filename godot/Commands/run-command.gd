@@ -6,7 +6,14 @@ var in_execution : Node = null
 func _ready():
 	aliases = ["run"]
 	command_description = "Runs the specified executable"
+	long_description = """Runs the executable provided as argument.
 
+run [filepath]
+
+[b]Valid usage examples:[/b]
+run mygame.exe
+run ../reader.exe
+"""
 
 func execute(args):
 	if args.size() >= 3:

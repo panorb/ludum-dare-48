@@ -5,7 +5,17 @@ var input_allowed = false
 
 func _ready():
 	aliases = ["unlock"]
-	command_description = "unlocks files and folders if provided the correct password"
+	command_description = "Unlocks files and folders if provided the correct password"
+	"""Unlocks files and folders if provided the correct password
+
+unlock [filepath]
+unlock [folderpath]
+
+[b]Valid usage examples:[/b]
+unlock Documents
+unlock ../Documents
+unlock mytax.txt
+"""
 
 func execute(args):
 	if args.size() >= 3:

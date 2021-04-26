@@ -3,6 +3,16 @@ extends "base-command.gd"
 func _ready():
 	aliases = ["ls", "dir"]
 	command_description = "Prints all the files and directories in a directory"
+	long_description = """Prints all the files and directories in a directory or in the current directory if no directory is provided.
+
+ls (folderpath)
+
+[b]Valid usage examples:[/b]
+ls
+ls home
+ls ..
+ls ../Documents
+"""
 
 
 func execute(args):

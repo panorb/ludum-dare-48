@@ -2,7 +2,14 @@ extends "base-command.gd"
 
 func _ready():
 	aliases = ["motd"]
-	command_description = "Shows the message of the day that can be configured"
+	command_description = "Shows a message of the day that can be configured"
+	long_description = """Shows a message of the day that can be configured.
+
+motd
+
+[b]Valid usage examples:[/b]
+motd
+"""
 
 func execute(args):
 	send_message("""Hello my son, you wanted to prove your hacking skills to me
