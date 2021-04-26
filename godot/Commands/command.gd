@@ -14,7 +14,7 @@ signal trigger_behavior(script_name)
 func update_file_system(fs : Node):
 	file_system = fs 
 
-func input(input: String):
+func input(_input: String):
 	pass
 
 func execute(_args):
@@ -23,10 +23,10 @@ func execute(_args):
 func allow_input(allow: bool):
 	emit_signal("allow_input", allow)
 
-func send_message(msg: String, display_time := -1, channel := "main"):
+func send_message(msg: String, display_time: float = -1, channel := "main"):
 	emit_signal("message", msg, display_time, channel)
 
-func throw_error(msg: String, display_time := -1, channel := "main"):
+func throw_error(msg: String, display_time: float = -1, channel := "main"):
 	emit_signal("error", msg, display_time, channel)
 
 func execution_finished():

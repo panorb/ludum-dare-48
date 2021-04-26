@@ -31,5 +31,5 @@ func clear_channel(channel: String):
 func allow_input(allow: bool):
 	emit_signal("allow_input", allow)
 
-func input(input: String):
+func input(_input: String):
 	pass

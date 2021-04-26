@@ -11,7 +11,6 @@ signal trigger_behavior(script_name)
 
 var _command : Node = null
 
-
 func _ready():
 	for child in get_children():
 		child.connect("error", self, "_on_Command_error")
@@ -55,6 +54,10 @@ func update_file_system(fs: Node):
 	for child in get_children():
 		child.update_file_system(fs)
 
+func finish_command():
+	_command = null
+	emit_signal("finished_execution")
+
 func _on_Command_error(msg: String, display_time : float, channel : String):
 	emit_signal("error_occurred", msg, display_time, channel)
 	
@@ -62,10 +65,7 @@ func _on_Command_message(msg: String, display_time : float, channel : String):
 	emit_signal("message_sent", msg, display_time, channel)
 
 func _on_Command_finished():
-	yield(get_tree().create_timer(0.4), "timeout")
-	
-	_command = null
-	emit_signal("finished_execution")
+	get_tree().create_timer(0.4).connect("timeout", self, "finish_command")
 
 func _on_Command_clear_channel(channel: String):
 	emit_signal("clear_channel", channel)
