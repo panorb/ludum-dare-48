@@ -22,8 +22,11 @@ func execute(args):
 		throw_error("Error: Too many arguments")
 		execution_finished()
 		return
+	
 	if args.size() == 1 or args[1].empty():
 		throw_error("Error: Too few arguments")
+		execution_finished()
+		return
 	
 	var path = args[1]
 	path.replace("\\", "/")

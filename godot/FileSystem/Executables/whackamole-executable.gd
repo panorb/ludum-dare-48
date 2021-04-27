@@ -20,7 +20,7 @@ var empty_line = "-"
 var time_passed = 0
 var time_passed_last_integer : int = 0
 
-var target_score = 13
+var target_score = 8
 var game_length = 12
 
 var cursor_timer = 0.5

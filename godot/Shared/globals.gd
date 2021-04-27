@@ -20,6 +20,10 @@ var valid_adresses = [
 		"tag": "end"
 	}]
 
+func _ready():
+	for i in range(len(valid_adresses)):
+		valid_adresses[i]["fs_scene"] = load(valid_adresses[i]["fs"])
+	
 
 var music_volume: float = 1
 var effect_volume: float = 1

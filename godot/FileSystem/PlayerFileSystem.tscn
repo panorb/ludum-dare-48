@@ -123,10 +123,10 @@ __meta__ = {
 }
 password = "94028"
 content = "They are forming \"deeperanddeeper\".
-You  are at the the 'n' now, so only \"nddeeper\" remains.
+You  are at the the 'n' now, so only \"ddeeper\" remains.
 
 [accent]The command you need is:
-[b]cd n/d/d/e/e/p/e/r[/b][/accent]"
+[b]cd d/d/e/e/p/e/r[/b][/accent]"
 
 [node name="hint|txt" type="Node" parent="home/Challenge"]
 script = ExtResource( 1 )

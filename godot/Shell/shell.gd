@@ -272,11 +272,12 @@ func _on_CursorBlinkTimer_timeout():
 func ssh_connect(adress: Dictionary):
 	if file_system:
 		file_system.queue_free()
-	yield(get_tree(), "idle_frame")
 	
-	var file_system_scene = load(adress["fs"])
+	var file_system_scene = adress["fs_scene"]
 	file_system = file_system_scene.instance()
 	self.add_child(file_system)
+	
+	yield(get_tree(), "idle_frame")
 	
 	command_parser.update_file_system(file_system)
 
