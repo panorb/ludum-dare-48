@@ -31,3 +31,4 @@ func _on_MusicVolumeSlider_value_changed(value):
 
 func _on_EffectVolumeSlider_value_changed(value):
 	Globals.effect_volume = value
+	SoundController.play_effect("error.wav")

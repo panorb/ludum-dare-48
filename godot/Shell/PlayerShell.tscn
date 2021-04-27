@@ -204,20 +204,20 @@ margin_bottom = 660.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="cat" type="Node" parent="Commands" index="0"]
-script = ExtResource( 11 )
+[node name="unlock" type="Node" parent="Commands" index="0"]
+script = ExtResource( 16 )
 
-[node name="cd" type="Node" parent="Commands" index="1"]
+[node name="ls" type="Node" parent="Commands" index="1"]
+script = ExtResource( 8 )
+
+[node name="cd" type="Node" parent="Commands" index="2"]
 script = ExtResource( 7 )
 
-[node name="exit" type="Node" parent="Commands" index="2"]
-script = ExtResource( 6 )
+[node name="cat" type="Node" parent="Commands" index="3"]
+script = ExtResource( 11 )
 
-[node name="help" type="Node" parent="Commands" index="3"]
-script = ExtResource( 4 )
-
-[node name="ls" type="Node" parent="Commands" index="4"]
-script = ExtResource( 8 )
+[node name="run" type="Node" parent="Commands" index="4"]
+script = ExtResource( 13 )
 
 [node name="ssh" type="Node" parent="Commands" index="5"]
 script = ExtResource( 3 )
@@ -235,8 +235,8 @@ aliases = [ "proc" ]
 default_anim = "adv"
 interval = 0.8
 
-[node name="run" type="Node" parent="Commands" index="7"]
-script = ExtResource( 13 )
+[node name="help" type="Node" parent="Commands" index="7"]
+script = ExtResource( 4 )
 
 [node name="motd" type="Node" parent="Commands" index="8"]
 script = ExtResource( 14 )
@@ -244,8 +244,8 @@ script = ExtResource( 14 )
 [node name="clear" type="Node" parent="Commands" index="9"]
 script = ExtResource( 15 )
 
-[node name="unlock" type="Node" parent="Commands" index="10"]
-script = ExtResource( 16 )
+[node name="exit" type="Node" parent="Commands" index="10"]
+script = ExtResource( 6 )
 
 [node name="Blink" type="ColorRect" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0 )

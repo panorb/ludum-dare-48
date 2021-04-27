@@ -6,7 +6,7 @@ var input_allowed = false
 func _ready():
 	aliases = ["unlock"]
 	command_description = "Unlocks files and folders if provided the correct password"
-	"""Unlocks files and folders if provided the correct password
+	long_description = """Unlocks files and folders if provided the correct password
 
 unlock [filepath]
 unlock [folderpath]

@@ -39,7 +39,6 @@ func execute(args):
 		match(error):
 			1:
 				throw_error("Error: Access denied")
-		
 			2:
 				throw_error("Error: Invalid path")
 			_:
