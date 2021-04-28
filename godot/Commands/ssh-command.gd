@@ -6,8 +6,8 @@ func _ready():
 	aliases = ["ssh", "connect"]
 	command_description = "Login to the remote machine provided"
 	long_description = """Logs into the remote machine provided.
-	Adresses are formatted like this: [username]@[ip_adress]
-	
+Adresses are formatted like this: [username]@[ip_adress]
+
 ssh [username]@[ip_adress]
 
 [b]Valid usage examples:[/b]
@@ -30,7 +30,8 @@ func execute(args):
 	
 	
 	if ssh_command_elements.size() != 2:
-		throw_error("Error: Invalid argument")
+		throw_error("""Error: Invalid target
+Look at [accent]help ssh[/accent] for information on how adresses are structured""")
 		execution_finished()
 		return
 	
@@ -70,6 +71,6 @@ func _get_ssh_result(username: String, ip: String):
 				else:
 					return adress
 			else:
-				return "Error: Unknown user"
+				return "Error: Server responded: 'Unknown user'"
 	
-	return "Error: Could not connect to host"
+	return "Error: Could not connect to ip adress"

@@ -60,12 +60,14 @@ content = "The password you get for completing the minigame is \"PeanutButterJel
 [b]unlock proud[/b]
 Afterwards enter the password: [b]PeanutButterJelly[/b][/accent]"
 
-[node name="rome|txt" type="Node" parent="home/I"]
+[node name="ceasar|txt" type="Node" parent="home/I"]
 script = ExtResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
-content = "In old rome the key for the next door was called [accent]hppeqx[/accent]."
+content = "Ceasar called the key to the next door  [accent]hppeqx[/accent].
+
+[warning]This one is a bit hard and requires foreknowledge. If you are stuck do not hesitate to read hint and solution[/warning]"
 
 [node name="hint|txt" type="Node" parent="home/I"]
 script = ExtResource( 5 )
@@ -73,8 +75,9 @@ __meta__ = {
 "_editor_description_": "
 "
 }
-content = "Looks like some simplistic form of encryption... There is one named after a famous roman statesman.
-Try key values close to zero first.
+content = "The [accent]ceasar cypher[/accent] is a symplistic form of encryption. It works by shifting every character in a text by a specific amount of characters. For example if the key is +1, a becomes b, b becomed c and so on. So the word abacus would become bcbdbt. Decryption works by doing the same with a key of -1.
+
+Try key values close to 0 first! If the decrypted password has meaning, its probably correct! Otherwise, try again.
 
 Password for solution.txt:
 74921"
@@ -85,9 +88,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 password = "74921"
-content = "The cypher is called Ceasar cypher and is applied by shifting every letter by a specific number of letters in the alphabet. In this case the encryption key was 1 and so the decription key is -1.
+content = "The key used here was +1. To decrypt it we use -1.
 
-\"hppeqx\" -- -1 --> \"goodpw\"
+\"hppeqx\" -- key: -1 --> \"goodpw\"
 
 [accent]In this case the command you need to enter is:
 [b]unlock am[/b]

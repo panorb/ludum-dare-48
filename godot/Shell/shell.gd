@@ -48,7 +48,7 @@ func _ready():
 	action_parser.connect("input_allow", self, "set_input_accepted")
 
 func _process(delta):
-	output_label.bbcode_text = ""
+	var bbcode_text = ""
 	
 	var to_delete = []
 	
@@ -59,7 +59,7 @@ func _process(delta):
 			if backlog[i]["time_left"] < 0:
 				to_delete.append(i)
 		
-		output_label.bbcode_text += backlog[i]["msg"] + "\n"
+		bbcode_text += backlog[i]["msg"] + "\n"
 	
 	if input_accepted:
 		var displayed_cmd = current_command
@@ -70,9 +70,11 @@ func _process(delta):
 			else:
 				displayed_cmd += "█"
 		
-		output_label.bbcode_text += get_last_line(displayed_cmd)
+		bbcode_text += get_last_line(displayed_cmd)
 	
-	output_label.bbcode_text = insert_colors(output_label.bbcode_text)
+	bbcode_text = insert_colors(bbcode_text)
+	if bbcode_text != output_label.bbcode_text:
+		output_label.bbcode_text = bbcode_text
 	
 	delete_indexes(to_delete)
 
@@ -102,13 +104,16 @@ func delete_indexes(indexes):
 
 
 func run_command():
+	command_history_position = 0
+	var command = current_command.strip_edges()
+	
 	if not command_parser.is_executing():
-		if not command_history or (command_history and command_history[-1] != current_command):
-			command_history.append(current_command)
+		if not command_history or (command_history and command_history[-1] != command):
+			command_history.append(command)
 	
 	if input_accepted:
-		send(get_last_line(current_command))	
-		command_parser.input(current_command)
+		send(get_last_line(command))	
+		command_parser.input(command)
 	
 	current_command = ""
 
@@ -136,6 +141,7 @@ func command_from_history():
 	
 	if command_history_position < -command_history.size():
 		command_history_position = -command_history.size()
+		cursor_index = len(current_command)
 		return
 	
 	var cmd = command_history[command_history.size() + command_history_position]

@@ -79,7 +79,8 @@ content = "Congratulations ;)
 now ssh to me my son,
 - jochen
 
-P.S: The 'lookup' process might help you with the IP adress."
+P.S: The [accent]lookup[/accent] process might help you with the IP adress.
+P.P.S: Adresses in the local network [accent]usually start with 10.[/accent]"
 
 [node name="hint|txt" type="Node" parent="home/Challenge/d/e/e/p/e/r/a/n/d/d/e/e/p/e/r"]
 script = ExtResource( 1 )
@@ -173,4 +174,4 @@ access_permission = false
 script = ExtResource( 1 )
 content = "At every puzzle location there are 2 files: hint.txt and solution.txt
 If you tried to solve the puzzle, but are stuck first read the hint.txt.
-At the bottom of the hint.txt you will find a password for the solution.txt, [b]only read it if you really have to. You can insert the password via the unlock command. Take a look at the help via 'help unlock' if you are unsure how to use it.[/b]"
+At the bottom of the hint.txt you will find a password for the solution.txt, only read it if you really have to. You can insert the password via the [accent]unlock[/accent] command. Take a look at the help via [accent]help unlock[/accent] if you are unsure how to use it."

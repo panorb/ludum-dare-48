@@ -7,10 +7,11 @@ func _ready():
 
 func execute(args):
 	if args.size() == 1:
+		send_message("""[warning]You can go forward and backward inside of the [accent]command history[/accent] with the [accent]up and down arrow keys[/accent].
+To see usage information about a specific command use [accent]help [command][/accent][/warning]""")
+		send_message("")
 		for child in get_parent().get_children():
 			send_message(child.print_description())
-		send_message("")
-		send_message("[accent]You can go forward and backward inside of the command history with the up and down arrow keys.[/accent]")
 	elif args.size() == 2:
 		for child in get_parent().get_children():
 			if args[1] in child.aliases:

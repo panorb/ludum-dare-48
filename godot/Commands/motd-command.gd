@@ -16,6 +16,6 @@ func execute(_args):
 So here you go, I set up this shell as a challenge for you.
 Find your way around and go [accent]deeper and deeper[/accent] into its folders.
 
-If you don't know where to start, I suggest you type 'help' and press enter ;)""")
+If you don't know where to start, I suggest you type [accent]help[/accent] and press enter ;)""")
 
 	execution_finished()

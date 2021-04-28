@@ -39,7 +39,6 @@ func _load_animation_files(tag: String):
 		_load_animation_files(default_anim)
 
 func next_frame():
-	frame_counter += 1
 	var frame_index = _get_frame_index()
 	
 	# Read frame from file
@@ -55,6 +54,9 @@ func next_frame():
 	
 	clear_channel(name)
 	send_message(text, -1, name)
+	
+	frame_counter += 1
+	
 	get_tree().create_timer(interval).connect("timeout", self, "_frame_timer_timeout")
 
 func _input(event):
